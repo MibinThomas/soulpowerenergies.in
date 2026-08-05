@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand Primary Colors */
+  --color-solar-gold: #F59E0B;
+  --color-solar-gold-hover: #D97706;
+  --color-solar-gold-light: #FEF3C7;
+  
+  --color-forest-green: #064E3B;
+  --color-forest-green-light: #047857;
+  --color-forest-green-soft: #ECFDF5;
+
+  --color-navy: #0F172A;
+  --color-navy-dark: #0B132B;
+  
+  --color-soft-mint: #F0FDF4;
+  --color-warm-white: #FAFAF9;
+  --color-neutral-dark: #1E293B;
+  --color-neutral-body: #475569;
+  --color-neutral-muted: #94A3B8;
+  --color-neutral-border: #E2E8F0;
+
+  --background: #FAFAF9;
+  --foreground: #1E293B;
+}
+
+@theme {
+  --color-solar-gold: var(--color-solar-gold);
+  --color-solar-gold-hover: var(--color-solar-gold-hover);
+  --color-solar-gold-light: var(--color-solar-gold-light);
+
+  --color-forest-green: var(--color-forest-green);
+  --color-forest-green-light: var(--color-forest-green-light);
+  --color-forest-green-soft: var(--color-forest-green-soft);
+
+  --color-navy: var(--color-navy);
+  --color-navy-dark: var(--color-navy-dark);
+
+  --color-soft-mint: var(--color-soft-mint);
+  --color-warm-white: var(--color-warm-white);
+
+  --font-heading: var(--font-heading), system-ui, sans-serif;
+  --font-body: var(--font-body), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom focus ring for WCAG compliance */
+*:focus-visible {
+  outline: 2px solid #D97706;
+  outline-offset: 2px;
+}
+
+/* Reduced Motion Respect */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom Utilities */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.dark-glass-panel {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+}
+
+.solar-glow {
+  box-shadow: 0 0 35px -5px rgba(245, 158, 11, 0.35);
+}
+
+.green-glow {
+  box-shadow: 0 0 35px -5px rgba(6, 78, 59, 0.35);
+}
+
+/* Line clamp support */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
