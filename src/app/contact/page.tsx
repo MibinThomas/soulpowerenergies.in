@@ -67,6 +67,15 @@ export default function ContactPage() {
                     <p className="text-xs text-white/70">
                       Serving Kozhikode, Wayanad & surrounding regions
                     </p>
+                    <a
+                      href={siteConfig.contact.mapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs text-amber-300 hover:underline font-semibold pt-1"
+                    >
+                      <MapPin className="w-3.5 h-3.5" />
+                      <span>Open in Google Maps &rarr;</span>
+                    </a>
                   </div>
                 </div>
 

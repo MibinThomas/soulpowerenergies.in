@@ -32,12 +32,14 @@ export function generateLocalBusinessSchema() {
     "@id": siteConfig.url,
     url: siteConfig.url,
     telephone: siteConfig.contact.phone || "",
+    email: siteConfig.contact.email || "",
+    hasMap: siteConfig.contact.mapUrl,
     priceRange: "₹₹₹",
     address: {
       "@type": "PostalAddress",
-      streetAddress: siteConfig.primaryLocation.town,
-      addressLocality: siteConfig.primaryLocation.district,
-      addressRegion: siteConfig.primaryLocation.state,
+      streetAddress: siteConfig.contact.address.street,
+      addressLocality: siteConfig.contact.address.town,
+      addressRegion: siteConfig.contact.address.district,
       addressCountry: siteConfig.primaryLocation.country,
     },
     geo: {

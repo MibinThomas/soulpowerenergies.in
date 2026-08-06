@@ -49,10 +49,10 @@ export function StickyMobileActionBar() {
     },
     {
       id: "location",
-      label: "Thiruvambady HQ",
+      label: "Thiruvambadi HQ Location",
       icon: MapPin,
-      href: "/contact#location",
-      isExternal: false,
+      href: siteConfig.contact.mapUrl,
+      isExternal: true,
       color: "hover:border-sky-400 text-sky-300",
     },
     {

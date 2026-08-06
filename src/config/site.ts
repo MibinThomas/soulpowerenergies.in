@@ -20,18 +20,19 @@ export interface SiteConfig {
     wording: string;
   };
   contact: {
-    phone: string | null;
-    whatsapp: string | null;
-    email: string | null;
+    phone: string;
+    whatsapp: string;
+    email: string;
+    mapUrl: string;
     address: {
-      street: string | null;
+      street: string;
       town: string;
       district: string;
       state: string;
       pincode: string | null;
       formatted: string;
     };
-    businessHours: string | null;
+    businessHours: string;
   };
   social: {
     facebook: string | null;
@@ -57,13 +58,13 @@ export const siteConfig: SiteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://soulpowerenergies.in",
 
   primaryLocation: {
-    town: "Thiruvambady",
-    district: "Kozhikode",
+    town: "Thiruvambadi",
+    district: "Calicut",
     state: "Kerala",
     country: "India",
   },
 
-  serviceAreas: ["Kozhikode", "Wayanad", "Thiruvambady", "Northern Kerala"],
+  serviceAreas: ["Calicut / Kozhikode", "Wayanad", "Thiruvambadi", "Northern Kerala"],
 
   partner: {
     name: "Virgin Power",
@@ -76,24 +77,21 @@ export const siteConfig: SiteConfig = {
       "Engineering and execution capabilities supported by Virgin Power and Engineering Pvt. Ltd., an organization associated with recognized renewable-energy bodies and standards.",
   },
 
-  /* 
-    CONTACT PLACEHOLDERS
-    Keep these as null until official contact details are provided by the client.
-    The UI will gracefully hide active links or display contact request prompts.
-  */
   contact: {
-    phone: null, // Placeholder: e.g., "+91 XXXXX XXXXX"
-    whatsapp: null, // Placeholder: e.g., "+91 XXXXX XXXXX"
-    email: null, // Placeholder: e.g., "info@soulpowerenergies.in"
+    phone: "+91 96560 63369",
+    whatsapp: "919656063369",
+    email: "info@soulpowerenergies.in",
+    mapUrl: "https://maps.app.goo.gl/yjU8L1mtqQJTH7oq9?g_st=aw",
     address: {
-      street: null, // Placeholder street address
-      town: "Thiruvambady",
-      district: "Kozhikode",
+      street: "1st Floor, Ancillae Bhavan Block A Complex, Punnackal Road",
+      town: "Thiruvambadi",
+      district: "Calicut",
       state: "Kerala",
       pincode: null,
-      formatted: "Thiruvambady, Kozhikode, Kerala, India",
+      formatted:
+        "Soul Power Energies, 1st Floor, Ancillae Bhavan Block A Complex, Punnackal Road, Thiruvambadi, Calicut",
     },
-    businessHours: null, // Placeholder: e.g., "Mon - Sat: 9:00 AM - 6:00 PM"
+    businessHours: "Mon - Sat: 9:00 AM - 6:00 PM",
   },
 
   social: {
