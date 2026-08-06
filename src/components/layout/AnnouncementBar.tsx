@@ -6,7 +6,7 @@ export function AnnouncementBar() {
   const hasWhatsapp = Boolean(siteConfig.contact.whatsapp);
 
   return (
-    <div className="bg-[#6F746A] text-white text-[11px] sm:text-xs py-1.5 px-4 border-b border-white/10">
+    <div className="hidden sm:block bg-[#6F746A] text-white text-xs py-1.5 px-4 border-b border-white/10">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 text-center sm:text-left">
         <div className="flex items-center gap-2 truncate">
           <ShieldCheck className="w-3.5 h-3.5 text-amber-300 shrink-0" />

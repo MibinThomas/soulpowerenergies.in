@@ -36,8 +36,12 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${fontHeading.variable} ${fontBody.variable} ${fontSerif.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-[#868B80] text-white selection:bg-amber-300 selection:text-slate-950 font-sans">
+      <body
+        className="min-h-full flex flex-col bg-[#868B80] text-white selection:bg-amber-300 selection:text-slate-950 font-sans"
+        suppressHydrationWarning
+      >
         {children}
       </body>
     </html>
