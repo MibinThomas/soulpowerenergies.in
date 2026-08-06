@@ -1,10 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/Button";
-import { Badge } from "@/components/ui/Badge";
-import { ShieldCheck, MapPin, ArrowRight, CheckCircle2, Sun, Sparkles } from "lucide-react";
+import { motion, Variants } from "framer-motion";
+import { ArrowRight, CheckCircle2, Sparkles, ShieldCheck, Zap } from "lucide-react";
 import { SolarPowerSwitchShowcase } from "./SolarPowerSwitchShowcase";
 
 export function HeroSection() {
@@ -15,25 +13,46 @@ export function HeroSection() {
     { num: "04", label: "Solar Active", desc: "Grid Sync" },
   ];
 
-  return (
-    <section className="relative overflow-hidden bg-[#888D83] text-white pt-4 sm:pt-10 pb-12 sm:pb-24">
-      {/* Background Soft Studio Glows */}
-      <div className="absolute top-1/4 right-10 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-amber-400/10 rounded-full blur-[100px] sm:blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-white/5 rounded-full blur-[90px] sm:blur-[120px] pointer-events-none" />
+  // Motion Variants
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.1,
+      },
+    },
+  };
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10 sm:space-y-16">
-        {/* Main 2-Column Hero Stage */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center">
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 18 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6 },
+    },
+  };
+
+  return (
+    <section className="relative overflow-hidden bg-[#888D83] text-white pt-4 sm:pt-10 pb-10 sm:pb-20">
+      {/* Background Soft Ambient Studio Glows */}
+      <div className="absolute top-1/4 right-5 sm:right-10 w-[280px] sm:w-[520px] h-[280px] sm:h-[520px] bg-amber-400/15 rounded-full blur-[90px] sm:blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-5 left-5 sm:left-10 w-[220px] sm:w-[420px] h-[220px] sm:h-[420px] bg-white/5 rounded-full blur-[80px] sm:blur-[120px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8 sm:space-y-14">
+        {/* Main Hero Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* Left Column: Nestive Copy & Steps */}
+          {/* Left Column: Mobile-Optimized Copy */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="lg:col-span-6 space-y-6 sm:space-y-8"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="lg:col-span-6 space-y-5 sm:space-y-7 text-left"
           >
-            {/* Social Proof Avatar Stack Badge */}
-            <div className="inline-flex items-center gap-2.5 px-3 sm:px-3.5 py-1.5 rounded-full nestive-pill text-[11px] sm:text-xs text-white/90 max-w-full">
+            {/* Social Proof Trust Badge */}
+            <motion.div variants={itemVariants} className="inline-flex items-center gap-2.5 px-3 sm:px-3.5 py-1.5 rounded-full nestive-pill text-[11px] sm:text-xs text-white/90 max-w-full">
               <div className="flex -space-x-2 shrink-0">
                 <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-amber-400 border-2 border-[#888D83] flex items-center justify-center text-[9px] sm:text-[10px] font-bold text-slate-950">
                   SP
@@ -45,58 +64,60 @@ export function HeroSection() {
                   ★
                 </div>
               </div>
-              <span className="font-medium truncate">+10,000 People in Kerala Powered by Soul Power</span>
-            </div>
+              <span className="font-medium truncate">+10,000 Kerala Homes Powered</span>
+            </motion.div>
 
-            {/* Editorial Serif Display Headline */}
-            <div className="space-y-2 sm:space-y-3">
-              <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white italic font-normal tracking-tight leading-[1.1]">
+            {/* SEO-Optimized Headline Hierarchy */}
+            <motion.div variants={itemVariants} className="space-y-2 sm:space-y-3">
+              <h1 className="font-serif text-3.5xl sm:text-5xl lg:text-6xl text-white italic font-normal tracking-tight leading-[1.1]">
                 Power Your Home <br className="hidden sm:inline" />
-                The Smart Way
+                <span className="not-italic font-sans text-amber-300 font-bold block sm:inline">The Smart Way</span>
               </h1>
-              <p className="text-sm sm:text-lg text-white/80 max-w-xl leading-relaxed">
-                Ambient control of your rooftop space — without lifting a finger. Your home is just four simple steps away from being completely energy independent!
+              
+              {/* Short & Impactful Value Prop for Mobile */}
+              <p className="text-sm sm:text-lg text-white/85 max-w-xl leading-relaxed">
+                Zero grid dependence. Custom rooftop solar & EV charging systems engineered for Kozhikode & Wayanad.
               </p>
-            </div>
+            </motion.div>
 
-            {/* Nestive Glass Pill Button */}
-            <div className="pt-2">
-              <Link href="/contact#assessment">
-                <button className="inline-flex items-center gap-3 p-1.5 pr-6 rounded-full nestive-pill hover:bg-white/25 transition-all group cursor-pointer">
-                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white border border-white/30 group-hover:scale-105 transition-transform">
-                    <Sparkles className="w-5 h-5 text-amber-300" />
+            {/* Conversion CTA Pill Button */}
+            <motion.div variants={itemVariants} className="pt-1 sm:pt-2">
+              <Link href="/contact#assessment" className="inline-block">
+                <button className="inline-flex items-center gap-3 p-1.5 pr-6 rounded-full nestive-pill bg-white/15 hover:bg-white/25 border border-white/30 transition-all group cursor-pointer shadow-lg shadow-black/10">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white text-slate-900 flex items-center justify-center font-bold shadow-md group-hover:scale-105 transition-transform">
+                    <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500 fill-amber-400" />
                   </div>
-                  <span className="text-sm font-bold tracking-wider uppercase text-white">
+                  <span className="text-xs sm:text-sm font-bold tracking-wider uppercase text-white">
                     CONNECT YOUR SPACE
                   </span>
-                  <ArrowRight className="w-4 h-4 text-white/70 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 text-white/80 group-hover:translate-x-1 transition-transform" />
                 </button>
               </Link>
-            </div>
+            </motion.div>
 
-            {/* Horizontal Step Cards (01 - 04) */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-white/15">
+            {/* Desktop Step Cards (01 - 04) */}
+            <motion.div variants={itemVariants} className="hidden sm:grid grid-cols-4 gap-3 pt-4 border-t border-white/15">
               {steps.map((step) => (
                 <div
                   key={step.num}
-                  className="p-3.5 rounded-2xl nestive-card space-y-2 hover:border-white/40 transition-colors"
+                  className="p-3 rounded-2xl nestive-card space-y-1.5 hover:border-white/40 transition-colors"
                 >
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-bold text-amber-300 font-mono">{step.num}</span>
                     <CheckCircle2 className="w-3.5 h-3.5 text-white/50" />
                   </div>
                   <div>
-                    <h3 className="text-xs font-bold text-white font-heading">{step.label}</h3>
+                    <h2 className="text-xs font-bold text-white font-heading">{step.label}</h2>
                     <p className="text-[10px] text-white/60">{step.desc}</p>
                   </div>
                 </div>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* Right Column: Embedded 3D Solar Power Showcase */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
+            initial={{ opacity: 0, scale: 0.97 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="lg:col-span-6 relative"
@@ -104,8 +125,25 @@ export function HeroSection() {
             <SolarPowerSwitchShowcase />
           </motion.div>
         </div>
+
+        {/* Mobile Streamlined 4-Step Pill Strip */}
+        <div className="sm:hidden pt-2">
+          <div className="grid grid-cols-2 gap-2">
+            {steps.map((step) => (
+              <div
+                key={step.num}
+                className="p-2.5 rounded-xl nestive-card flex items-center gap-2 border border-white/20"
+              >
+                <span className="text-[11px] font-bold text-amber-300 font-mono shrink-0">{step.num}</span>
+                <div className="truncate">
+                  <span className="text-xs font-bold text-white block truncate">{step.label}</span>
+                  <span className="text-[10px] text-white/60 block truncate">{step.desc}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
 }
-
