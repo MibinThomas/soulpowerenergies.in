@@ -54,8 +54,17 @@ export function ProcessTimeline() {
 
         {/* Desktop Process Timeline */}
         <div className="hidden lg:block relative my-12">
-          {/* Connector Line */}
-          <div className="absolute top-1/2 left-10 right-10 h-1 bg-gradient-to-r from-amber-300 via-white/40 to-emerald-300 -translate-y-1/2 z-0 opacity-70" />
+          {/* Base Background Track Line */}
+          <div className="absolute top-8 left-16 right-16 h-[2px] bg-white/15 z-0" />
+
+          {/* Animated Glowing Connection Line (Animates Left to Right) */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            className="absolute top-8 left-16 right-16 h-[2px] bg-gradient-to-r from-amber-300 via-amber-200 to-emerald-300 z-0 origin-left shadow-[0_0_10px_rgba(252,211,77,0.6)]"
+          />
 
           <div className="grid grid-cols-5 gap-4 relative z-10">
             {steps.map((step, idx) => {
@@ -66,10 +75,10 @@ export function ProcessTimeline() {
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="flex flex-col items-center text-center group"
+                  transition={{ duration: 0.5, delay: idx * 0.12 }}
+                  className="flex flex-col items-center text-center group relative z-10"
                 >
-                  <div className="w-16 h-16 rounded-2xl nestive-card border border-white/30 shadow-lg text-amber-300 flex items-center justify-center group-hover:scale-110 group-hover:bg-white group-hover:text-slate-900 transition-all duration-300 mb-6 relative">
+                  <div className="w-16 h-16 rounded-2xl nestive-card border border-white/30 shadow-lg text-amber-300 flex items-center justify-center group-hover:scale-110 group-hover:bg-white group-hover:text-slate-900 transition-all duration-300 mb-6 relative bg-[#888D83] backdrop-blur-md">
                     <Icon className="w-7 h-7" />
                     <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-white text-slate-900 text-[10px] font-bold flex items-center justify-center shadow-md">
                       {step.number}
