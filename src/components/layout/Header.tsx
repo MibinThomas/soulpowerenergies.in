@@ -36,7 +36,7 @@ export function Header() {
         className={`w-full transition-all duration-300 ${
           isScrolled
             ? "nestive-nav py-3 shadow-xl"
-            : "bg-[#888D83]/90 backdrop-blur-md border-b border-white/10 py-4"
+            : "bg-[#888D83]/90 backdrop-blur-md py-4"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">

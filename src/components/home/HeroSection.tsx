@@ -16,7 +16,7 @@ export function HeroSection() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-[#888D83] text-white pt-10 pb-16 lg:pt-16 lg:pb-24 border-b border-white/10">
+    <section className="relative overflow-hidden bg-[#888D83] text-white pt-10 pb-16 lg:pt-16 lg:pb-24">
       {/* Background Soft Studio Glows */}
       <div className="absolute top-1/4 right-10 w-[500px] h-[500px] bg-amber-400/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />

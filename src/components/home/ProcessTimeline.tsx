@@ -39,7 +39,7 @@ export function ProcessTimeline() {
   ];
 
   return (
-    <section className="py-20 bg-[#888D83] text-white relative overflow-hidden border-b border-white/10" id="process">
+    <section className="py-20 bg-[#888D83] text-white relative overflow-hidden" id="process">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Title */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">

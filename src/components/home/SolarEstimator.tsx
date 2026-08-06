@@ -21,7 +21,7 @@ export function SolarEstimator() {
   });
 
   return (
-    <section className="py-20 bg-[#888D83] text-white relative border-b border-white/10" id="estimator">
+    <section className="py-20 bg-[#888D83] text-white relative" id="estimator">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Title */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">

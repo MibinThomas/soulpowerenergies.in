@@ -9,7 +9,7 @@ export function Footer() {
   const hasEmail = Boolean(siteConfig.contact.email);
 
   return (
-    <footer className="bg-[#6F746A] text-white pt-16 pb-12 border-t border-white/10 relative overflow-hidden">
+    <footer className="bg-[#6F746A] text-white pt-16 pb-12 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-b border-white/15">
           {/* Col 1 & 2: Brand & Partnership */}

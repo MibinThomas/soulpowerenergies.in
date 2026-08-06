@@ -34,7 +34,7 @@ export function EVChargingSection() {
   ];
 
   return (
-    <section className="py-20 bg-[#888D83] text-white relative overflow-hidden border-b border-white/10" id="ev-charging">
+    <section className="py-20 bg-[#888D83] text-white relative overflow-hidden" id="ev-charging">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Heading & Use Case Selector */}

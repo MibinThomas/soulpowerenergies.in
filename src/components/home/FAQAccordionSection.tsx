@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 export function FAQAccordionSection() {
   return (
-    <section className="py-20 bg-[#888D83] text-white relative border-b border-white/10" id="faq">
+    <section className="py-20 bg-[#888D83] text-white relative" id="faq">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Title */}
         <div className="text-center space-y-4 mb-16">

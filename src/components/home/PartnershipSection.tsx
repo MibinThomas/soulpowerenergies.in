@@ -9,7 +9,7 @@ import { ShieldCheck, CheckCircle2, Award } from "lucide-react";
 
 export function PartnershipSection() {
   return (
-    <section className="py-20 bg-[#888D83] text-white relative border-b border-white/10" id="partnership">
+    <section className="py-20 bg-[#888D83] text-white relative" id="partnership">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Visual Image */}
