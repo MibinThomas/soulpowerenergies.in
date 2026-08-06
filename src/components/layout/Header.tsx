@@ -75,10 +75,9 @@ export function Header() {
 
           {/* Right Action Actions */}
           <div className="flex items-center gap-2 sm:gap-3">
-            <Link href="/contact#assessment">
-              <Button variant="primary" size="md" className="shadow-lg bg-white text-slate-900 hover:bg-amber-100 border-none font-bold rounded-xl px-3 sm:px-5 text-xs sm:text-sm py-1.5 sm:py-2">
-                <span className="hidden sm:inline">Site Assessment</span>
-                <span className="sm:hidden">Assess</span>
+            <Link href="/contact#assessment" className="hidden sm:inline-block">
+              <Button variant="primary" size="md" className="shadow-lg bg-white text-slate-900 hover:bg-amber-100 border-none font-bold rounded-xl px-5 text-sm py-2">
+                Site Assessment
               </Button>
             </Link>
 
