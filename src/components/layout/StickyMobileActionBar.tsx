@@ -5,53 +5,39 @@ import { siteConfig } from "@/config/site";
 import { Phone, MessageCircle, FileText } from "lucide-react";
 
 export function StickyMobileActionBar() {
-  const phone = siteConfig.contact.phone;
-  const whatsapp = siteConfig.contact.whatsapp;
+  const phone = siteConfig.contact.phone || "+919876543210";
+  const whatsapp = siteConfig.contact.whatsapp || "+919876543210";
 
   return (
-    <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-slate-900/95 backdrop-blur-md border-t border-slate-800 p-2 shadow-2xl">
+    <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[#6F746A]/95 backdrop-blur-lg border-t border-white/20 p-2 shadow-2xl">
       <div className="grid grid-cols-3 gap-2 text-center text-xs font-semibold">
         {/* Call Link */}
-        {phone ? (
-          <a
-            href={`tel:${phone}`}
-            className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-slate-800 text-slate-100 hover:bg-slate-700 active:scale-95 transition-all"
-          >
-            <Phone className="w-4 h-4 text-amber-400 mb-1" />
-            <span>Call Us</span>
-          </a>
-        ) : (
-          <div className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-slate-800/50 text-slate-500 cursor-not-allowed">
-            <Phone className="w-4 h-4 text-slate-500 mb-1" />
-            <span>Call (Soon)</span>
-          </div>
-        )}
+        <a
+          href={`tel:${phone}`}
+          className="flex flex-col items-center justify-center py-2 px-1 rounded-xl nestive-card text-white hover:bg-white/20 active:scale-95 transition-all border border-white/20"
+        >
+          <Phone className="w-4 h-4 text-amber-300 mb-0.5" />
+          <span className="text-[11px]">Call Us</span>
+        </a>
 
         {/* WhatsApp Link */}
-        {whatsapp ? (
-          <a
-            href={`https://wa.me/${whatsapp}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-emerald-900/40 text-emerald-300 border border-emerald-700/50 hover:bg-emerald-800/50 active:scale-95 transition-all"
-          >
-            <MessageCircle className="w-4 h-4 text-emerald-400 mb-1" />
-            <span>WhatsApp</span>
-          </a>
-        ) : (
-          <div className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-slate-800/50 text-slate-500 cursor-not-allowed">
-            <MessageCircle className="w-4 h-4 text-slate-500 mb-1" />
-            <span>Chat (Soon)</span>
-          </div>
-        )}
+        <a
+          href={`https://wa.me/${whatsapp}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex flex-col items-center justify-center py-2 px-1 rounded-xl nestive-card text-emerald-300 hover:bg-white/20 active:scale-95 transition-all border border-white/20"
+        >
+          <MessageCircle className="w-4 h-4 text-emerald-300 mb-0.5" />
+          <span className="text-[11px]">WhatsApp</span>
+        </a>
 
         {/* Enquire CTA */}
         <Link
           href="/contact#assessment"
-          className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-amber-500 text-slate-950 hover:bg-amber-600 font-bold active:scale-95 transition-all shadow-md"
+          className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-white text-slate-900 hover:bg-amber-100 font-bold active:scale-95 transition-all shadow-md"
         >
-          <FileText className="w-4 h-4 text-slate-950 mb-1" />
-          <span>Enquire</span>
+          <FileText className="w-4 h-4 text-slate-900 mb-0.5" />
+          <span className="text-[11px]">Enquire</span>
         </Link>
       </div>
     </div>

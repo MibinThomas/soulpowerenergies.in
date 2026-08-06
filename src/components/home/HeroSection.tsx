@@ -16,45 +16,45 @@ export function HeroSection() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-[#888D83] text-white pt-10 pb-16 lg:pt-16 lg:pb-24">
+    <section className="relative overflow-hidden bg-[#888D83] text-white pt-4 sm:pt-10 pb-12 sm:pb-24">
       {/* Background Soft Studio Glows */}
-      <div className="absolute top-1/4 right-10 w-[500px] h-[500px] bg-amber-400/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/4 right-10 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-amber-400/10 rounded-full blur-[100px] sm:blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-white/5 rounded-full blur-[90px] sm:blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10 sm:space-y-16">
         {/* Main 2-Column Hero Stage */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center">
           
           {/* Left Column: Nestive Copy & Steps */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-6 space-y-8"
+            className="lg:col-span-6 space-y-6 sm:space-y-8"
           >
             {/* Social Proof Avatar Stack Badge */}
-            <div className="inline-flex items-center gap-3 px-3.5 py-1.5 rounded-full nestive-pill text-xs text-white/90">
-              <div className="flex -space-x-2">
-                <div className="w-6 h-6 rounded-full bg-amber-400 border-2 border-[#888D83] flex items-center justify-center text-[10px] font-bold text-slate-950">
+            <div className="inline-flex items-center gap-2.5 px-3 sm:px-3.5 py-1.5 rounded-full nestive-pill text-[11px] sm:text-xs text-white/90 max-w-full">
+              <div className="flex -space-x-2 shrink-0">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-amber-400 border-2 border-[#888D83] flex items-center justify-center text-[9px] sm:text-[10px] font-bold text-slate-950">
                   SP
                 </div>
-                <div className="w-6 h-6 rounded-full bg-sky-400 border-2 border-[#888D83] flex items-center justify-center text-[10px] font-bold text-slate-950">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-sky-400 border-2 border-[#888D83] flex items-center justify-center text-[9px] sm:text-[10px] font-bold text-slate-950">
                   VP
                 </div>
-                <div className="w-6 h-6 rounded-full bg-emerald-400 border-2 border-[#888D83] flex items-center justify-center text-[10px] font-bold text-slate-950">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-emerald-400 border-2 border-[#888D83] flex items-center justify-center text-[9px] sm:text-[10px] font-bold text-slate-950">
                   ★
                 </div>
               </div>
-              <span className="font-medium">+10,000 People in Kerala Powered by Soul Power</span>
+              <span className="font-medium truncate">+10,000 People in Kerala Powered by Soul Power</span>
             </div>
 
             {/* Editorial Serif Display Headline */}
-            <div className="space-y-3">
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-white italic font-normal tracking-tight leading-[1.1]">
-                Power Your Home <br />
+            <div className="space-y-2 sm:space-y-3">
+              <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white italic font-normal tracking-tight leading-[1.1]">
+                Power Your Home <br className="hidden sm:inline" />
                 The Smart Way
               </h1>
-              <p className="text-base sm:text-lg text-white/80 max-w-xl leading-relaxed">
+              <p className="text-sm sm:text-lg text-white/80 max-w-xl leading-relaxed">
                 Ambient control of your rooftop space — without lifting a finger. Your home is just four simple steps away from being completely energy independent!
               </p>
             </div>

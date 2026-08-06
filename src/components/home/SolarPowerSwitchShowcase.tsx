@@ -47,34 +47,34 @@ export function SolarPowerSwitchShowcase() {
   return (
     <div className="w-full relative">
       {/* Outer Container with Nestive Glass Elevation */}
-      <div className="relative rounded-3xl overflow-hidden nestive-card p-6 sm:p-8 transition-all duration-500">
+      <div className="relative rounded-3xl overflow-hidden nestive-card p-4 sm:p-8 transition-all duration-500">
         
         {/* Top Control Bar Header */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-6 pb-6 border-b border-white/15">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-white/15">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full nestive-pill text-amber-300 text-xs font-bold mb-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full nestive-pill text-amber-300 text-[11px] sm:text-xs font-bold mb-2">
               <Sparkles className="w-3.5 h-3.5 animate-spin" style={{ animationDuration: "6s" }} />
-              <span>3D Smart Home Energy Showcase</span>
+              <span>3D Smart Home Showcase</span>
             </div>
-            <h3 className="text-xl sm:text-2xl font-normal font-serif italic text-white">
+            <h3 className="text-lg sm:text-2xl font-normal font-serif italic text-white">
               Flip the Switch to Power Your Space
             </h3>
-            <p className="text-xs text-white/70">
+            <p className="text-[11px] sm:text-xs text-white/70 mt-1">
               {isPowered
-                ? "Solar Energy Active: Warm golden light illuminating every room with zero grid bill."
-                : "Traditional Grid: Dim unpowered state, grid dependence, higher monthly costs."}
+                ? "Solar Energy Active: Warm golden light illuminating every room."
+                : "Traditional Grid: Dim unpowered state with grid reliance."}
             </p>
           </div>
 
           {/* Interactive Toggle Switch */}
-          <div className="flex items-center gap-3 shrink-0">
-            <span className={`text-xs font-bold transition-colors ${!isPowered ? "text-amber-300 font-black" : "text-white/50"}`}>
+          <div className="flex items-center justify-between sm:justify-end w-full sm:w-auto gap-2 sm:gap-3 shrink-0 pt-2 sm:pt-0">
+            <span className={`text-[11px] sm:text-xs font-bold transition-colors ${!isPowered ? "text-amber-300 font-black" : "text-white/50"}`}>
               Traditional Grid
             </span>
             
             <button
               onClick={() => setIsPowered(!isPowered)}
-              className={`relative w-22 h-11 rounded-full p-1.5 transition-colors duration-500 focus:outline-none cursor-pointer ${
+              className={`relative w-18 sm:w-22 h-9 sm:h-11 rounded-full p-1 transition-colors duration-500 focus:outline-none cursor-pointer ${
                 isPowered
                   ? "bg-gradient-to-r from-amber-400 via-amber-500 to-emerald-400"
                   : "bg-white/20"
@@ -84,22 +84,22 @@ export function SolarPowerSwitchShowcase() {
               <motion.div
                 layout
                 transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                className={`w-8 h-8 rounded-full bg-white shadow-lg flex items-center justify-center ${
-                  isPowered ? "translate-x-11 text-amber-600" : "translate-x-0 text-slate-700"
+                className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white shadow-lg flex items-center justify-center ${
+                  isPowered ? "translate-x-9 sm:translate-x-11 text-amber-600" : "translate-x-0 text-slate-700"
                 }`}
               >
-                {isPowered ? <Sun className="w-5 h-5 fill-amber-400" /> : <Zap className="w-4 h-4" />}
+                {isPowered ? <Sun className="w-4 h-4 sm:w-5 sm:h-5 fill-amber-400" /> : <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
               </motion.div>
             </button>
 
-            <span className={`text-xs font-bold transition-colors ${isPowered ? "text-emerald-300 font-black" : "text-white/50"}`}>
+            <span className={`text-[11px] sm:text-xs font-bold transition-colors ${isPowered ? "text-emerald-300 font-black" : "text-white/50"}`}>
               Solar Energized
             </span>
           </div>
         </div>
 
         {/* 3D Modern Solar Home Stage */}
-        <div className="relative rounded-2xl overflow-hidden min-h-[440px] sm:min-h-[540px] bg-[#6F746A] shadow-2xl flex flex-col justify-between p-6 sm:p-8">
+        <div className="relative rounded-2xl overflow-hidden min-h-[340px] sm:min-h-[540px] bg-[#6F746A] shadow-2xl flex flex-col justify-between p-4 sm:p-8">
           
           {/* Base Unpowered Image Layer */}
           <div className="absolute inset-0 z-0 bg-[#6F746A]">
@@ -134,20 +134,20 @@ export function SolarPowerSwitchShowcase() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
-              className="absolute top-0 right-0 w-96 h-96 bg-amber-400/20 rounded-full blur-3xl z-2 pointer-events-none"
+              className="absolute top-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-amber-400/20 rounded-full blur-3xl z-2 pointer-events-none"
             />
           )}
 
           {/* Top Status Tag */}
           <div className="relative z-10 flex items-center justify-between">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/80 backdrop-blur-md border border-slate-700/80 text-white text-xs font-bold">
-              <span className={`w-2.5 h-2.5 rounded-full ${isPowered ? "bg-emerald-400 animate-ping" : "bg-amber-500"}`} />
-              <span>{isPowered ? "100% Solar Power Live" : "Night Grid Dependency"}</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-slate-900/80 backdrop-blur-md border border-slate-700/80 text-white text-[10px] sm:text-xs font-bold">
+              <span className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full ${isPowered ? "bg-emerald-400 animate-ping" : "bg-amber-500"}`} />
+              <span>{isPowered ? "100% Solar Live" : "Grid Dependency"}</span>
             </div>
 
             <div className="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md border border-slate-700/80 text-xs font-medium text-slate-300">
               <Plus className="w-3.5 h-3.5 text-amber-400" />
-              <span>Click or hover + tags to inspect feature</span>
+              <span>Tap + tags to inspect feature</span>
             </div>
           </div>
 
@@ -164,7 +164,7 @@ export function SolarPowerSwitchShowcase() {
                   <button
                     onClick={() => setActiveHotspot(isActive ? null : hs.id)}
                     onMouseEnter={() => setActiveHotspot(hs.id)}
-                    className={`relative flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full transition-all duration-300 cursor-pointer ${
+                    className={`relative flex items-center justify-center w-7 h-7 sm:w-9 sm:h-9 rounded-full transition-all duration-300 cursor-pointer ${
                       isActive
                         ? "bg-white text-slate-900 scale-110 shadow-xl"
                         : isPowered
@@ -173,7 +173,7 @@ export function SolarPowerSwitchShowcase() {
                     }`}
                     aria-label={`Inspect ${hs.title}`}
                   >
-                    {isActive ? <X className="w-4 h-4" /> : <Plus className="w-4 h-4 font-black stroke-[3]" />}
+                    {isActive ? <X className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> : <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4 font-black stroke-[3]" />}
                     {isPowered && !isActive && (
                       <span className="absolute inset-0 rounded-full border-2 border-amber-300 animate-ping" style={{ animationDuration: "3s" }} />
                     )}

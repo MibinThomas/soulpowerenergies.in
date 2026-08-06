@@ -66,17 +66,18 @@ export function Header() {
           </nav>
 
           {/* Right Action Actions */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <Link href="/contact#assessment">
-              <Button variant="primary" size="md" className="shadow-lg shadow-amber-500/20 bg-white text-slate-900 hover:bg-amber-100 border-none font-bold rounded-xl px-5">
-                Site Assessment
+              <Button variant="primary" size="md" className="shadow-lg bg-white text-slate-900 hover:bg-amber-100 border-none font-bold rounded-xl px-3 sm:px-5 text-xs sm:text-sm py-1.5 sm:py-2">
+                <span className="hidden sm:inline">Site Assessment</span>
+                <span className="sm:hidden">Assess</span>
               </Button>
             </Link>
 
             {/* Mobile Drawer Trigger */}
             <button
               onClick={() => setMobileNavOpen(true)}
-              className="md:hidden p-2.5 rounded-xl border border-white/20 bg-white/10 text-white hover:bg-white/20 focus:outline-none"
+              className="md:hidden p-2 rounded-xl border border-white/25 bg-white/15 text-white hover:bg-white/25 focus:outline-none cursor-pointer"
               aria-label="Open navigation menu"
             >
               <Menu className="w-5 h-5" />
