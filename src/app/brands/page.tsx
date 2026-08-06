@@ -28,41 +28,41 @@ export default function BrandsPage() {
   return (
     <>
       <Header />
-      <main id="main-content" className="flex-1 bg-slate-50">
+      <main id="main-content" className="flex-1 bg-[#888D83] text-white">
         {/* Page Hero */}
-        <section className="bg-slate-900 text-white py-16 lg:py-24 border-b border-slate-800 relative overflow-hidden">
+        <section className="py-16 lg:py-24 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4 text-center">
-            <Badge variant="navy" className="text-amber-400 border-slate-700">
+            <Badge variant="gold" className="px-3.5 py-1 nestive-pill text-amber-300">
               Technology Directory
             </Badge>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight font-heading text-white">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-normal font-serif italic tracking-tight text-white">
               Brands & Solar Technology Selection
             </h1>
-            <p className="text-base sm:text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
               We install Tier-1 solar photovoltaic panels, string inverters, and certified EV charging hardware engineered for optimal climate performance in Kerala.
             </p>
           </div>
         </section>
 
         {/* Quality Standards Banner */}
-        <section className="py-12 bg-white border-b border-slate-200">
+        <section className="py-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="p-8 rounded-3xl bg-slate-900 text-white border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+            <div className="p-8 rounded-3xl nestive-card text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
               <div className="space-y-2">
-                <div className="flex items-center gap-2 text-amber-400 font-bold text-sm">
+                <div className="flex items-center gap-2 text-amber-300 font-bold text-sm">
                   <ShieldCheck className="w-5 h-5" />
                   <span>Quality Assurance Standards</span>
                 </div>
-                <h2 className="text-xl font-bold font-heading text-white">
+                <h2 className="text-xl sm:text-2xl font-normal font-serif italic text-white">
                   Tier-1 Hardware & Engineering Support
                 </h2>
-                <p className="text-xs text-slate-300 max-w-2xl leading-relaxed">
+                <p className="text-xs text-white/80 max-w-2xl leading-relaxed">
                   All component selections adhere to rigorous efficiency and durability parameters. Engineering and execution standards supported by Virgin Power and Engineering Pvt. Ltd.
                 </p>
               </div>
 
               <Link href="/contact#assessment" className="shrink-0">
-                <Button variant="primary" size="md">
+                <Button variant="primary" size="md" className="bg-white text-slate-900 hover:bg-amber-100 border-none font-bold rounded-xl shadow-lg">
                   <span>Enquire Brand Specs</span>
                   <ArrowRight className="w-4 h-4" />
                 </Button>
@@ -72,7 +72,7 @@ export default function BrandsPage() {
         </section>
 
         {/* Filterable Brand Grid */}
-        <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           {/* Category Filter Tabs */}
           <div className="flex flex-wrap items-center justify-center gap-2">
             {[
@@ -87,10 +87,10 @@ export default function BrandsPage() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveCategory(tab.id)}
-                  className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer border ${
+                  className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${
                     isActive
-                      ? "bg-slate-900 text-white border-slate-900 shadow-md"
-                      : "bg-white text-slate-700 border-slate-200 hover:border-slate-400"
+                      ? "bg-white text-slate-900 shadow-md font-bold"
+                      : "nestive-card text-white hover:bg-white/20"
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -105,43 +105,38 @@ export default function BrandsPage() {
             {filteredBrands.map((brand, idx) => (
               <div
                 key={idx}
-                className="p-8 rounded-3xl bg-white border border-slate-200 shadow-md hover:shadow-xl hover:border-amber-400 transition-all duration-300 flex flex-col justify-between space-y-6"
+                className="p-8 rounded-3xl nestive-card shadow-md flex flex-col justify-between space-y-6"
               >
                 <div className="space-y-4">
                   {/* Top Category Badge */}
                   <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-amber-300">
                       {brand.categoryLabel}
                     </span>
-                    <Badge variant="green" className="text-[10px]">
+                    <Badge variant="gold" className="text-[10px] nestive-pill text-amber-300">
                       {brand.origin}
                     </Badge>
                   </div>
 
                   {/* Brand Name */}
-                  <h2 className="text-2xl font-extrabold text-slate-900 font-heading">
+                  <h2 className="text-2xl font-normal font-serif italic text-white">
                     {brand.name}
                   </h2>
 
-                  <p className="text-sm text-slate-600 leading-relaxed">
+                  <p className="text-sm text-white/80 leading-relaxed">
                     {brand.description}
                   </p>
 
-                  <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 text-xs text-emerald-900 font-semibold flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <div className="p-3.5 rounded-xl bg-black/20 border border-white/10 text-xs text-white/90 font-semibold flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-300 shrink-0" />
                     <span>{brand.keyHighlight}</span>
                   </div>
                 </div>
 
-                {/* Ready Action Link Placeholders */}
-                <div className="pt-4 border-t border-slate-100 flex flex-col gap-2">
-                  <div className="flex items-center justify-between text-xs font-medium text-slate-400">
-                    <span>Official Logo: Pending</span>
-                    <span>Datasheet: On Request</span>
-                  </div>
-
+                {/* Action Link */}
+                <div className="pt-4 border-t border-white/15 flex flex-col gap-3">
                   <Link href={`/contact#assessment?brand=${encodeURIComponent(brand.name)}`}>
-                    <Button variant="outline" size="sm" className="w-full justify-between text-xs">
+                    <Button variant="primary" size="sm" className="w-full justify-between text-xs bg-white text-slate-900 hover:bg-amber-100 font-bold border-none rounded-xl">
                       <span>Enquire System With {brand.name}</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Button>
