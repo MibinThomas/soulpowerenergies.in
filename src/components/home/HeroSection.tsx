@@ -51,8 +51,8 @@ export function HeroSection() {
             animate="visible"
             className="lg:col-span-6 space-y-5 sm:space-y-7 text-left"
           >
-            {/* Social Proof Trust Badge */}
-            <motion.div variants={itemVariants} className="inline-flex items-center gap-2.5 px-3 sm:px-3.5 py-1.5 rounded-full nestive-pill text-[11px] sm:text-xs text-white/90 max-w-full">
+            {/* Social Proof Trust Badge (Hidden on Mobile) */}
+            <motion.div variants={itemVariants} className="hidden sm:inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full nestive-pill text-xs text-white/90 max-w-full">
               <div className="flex -space-x-2 shrink-0">
                 <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-amber-400 border-2 border-[#888D83] flex items-center justify-center text-[9px] sm:text-[10px] font-bold text-slate-950">
                   SP
