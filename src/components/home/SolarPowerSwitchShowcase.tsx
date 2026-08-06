@@ -13,52 +13,43 @@ export function SolarPowerSwitchShowcase() {
     {
       id: "rooftop",
       title: "Rooftop Solar Panel Array",
-      top: "10%",
+      top: "14%",
       left: "52%",
       icon: Sun,
       stat: "5.8 kW Peak Output",
       desc: "Tier-1 Mono PERC panels capturing maximum daily solar irradiance on high-angle rooftop mounts.",
     },
     {
-      id: "bedroom",
+      id: "suite",
       title: "Upper Master Suite",
-      top: "30%",
-      left: "56%",
+      top: "32%",
+      left: "58%",
       icon: Lightbulb,
       stat: "Ambient Comfort",
       desc: "Clean solar electricity powering bedroom climate control, smart shading, and soft ambient light.",
     },
     {
-      id: "office",
-      title: "Smart Home Office",
-      top: "30%",
-      left: "72%",
-      icon: Sparkles,
-      stat: "Uninterrupted Power",
-      desc: "Zero-latency continuous solar power for workstation computers, networking, and home automation.",
-    },
-    {
       id: "living",
       title: "Grand Living Room",
-      top: "58%",
-      left: "56%",
+      top: "60%",
+      left: "58%",
       icon: Lightbulb,
       stat: "100% Clean Energy",
-      desc: "Brilliant chandelier lighting and entertainment systems running entirely on zero-cost solar power.",
+      desc: "Brilliant lighting and entertainment systems running entirely on zero-cost solar power.",
     },
     {
       id: "kitchen",
       title: "Gourmet Open Kitchen",
-      top: "72%",
-      left: "70%",
+      top: "65%",
+      left: "72%",
       icon: Sparkles,
-      stat: "High Power Efficiency",
+      stat: "High Efficiency",
       desc: "Induction ranges, refrigeration, and under-cabinet lighting powered seamlessly from solar energy.",
     },
     {
       id: "garage",
-      title: "EV Fast Charging Hub",
-      top: "68%",
+      title: "EV Fast Charging Station",
+      top: "72%",
       left: "32%",
       icon: Zap,
       stat: "Free EV Miles",
@@ -68,38 +59,38 @@ export function SolarPowerSwitchShowcase() {
 
   return (
     <div className="w-full relative">
-      {/* Outer Container with Glassmorphism Elevation */}
-      <div className="relative rounded-3xl overflow-hidden glass-card border border-white/90 shadow-2xl p-6 sm:p-8 lg:p-10 transition-all duration-500">
+      {/* Outer Container with Nestive Glass Elevation */}
+      <div className="relative rounded-3xl overflow-hidden nestive-card p-6 sm:p-8 transition-all duration-500">
         
         {/* Top Control Bar Header */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-8 pb-6 border-b border-slate-200/80">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-6 pb-6 border-b border-white/15">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200/80 text-amber-900 text-xs font-bold mb-2">
-              <Sparkles className="w-3.5 h-3.5 text-amber-500 animate-spin" style={{ animationDuration: "6s" }} />
-              <span>Interactive Storytelling Experience</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full nestive-pill text-amber-300 text-xs font-bold mb-2">
+              <Sparkles className="w-3.5 h-3.5 animate-spin" style={{ animationDuration: "6s" }} />
+              <span>3D Smart Home Energy Showcase</span>
             </div>
-            <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 font-heading">
-              Flip the Switch to Power Your Home
+            <h3 className="text-xl sm:text-2xl font-normal font-serif italic text-white">
+              Flip the Switch to Power Your Space
             </h3>
-            <p className="text-xs sm:text-sm text-slate-600">
+            <p className="text-xs text-white/70">
               {isPowered
-                ? "Solar Energy Active: Warm ambient light illuminating every room with zero grid bill."
-                : "Grid Dependent: Dim unpowered state, fossil fuel dependence, higher monthly costs."}
+                ? "Solar Energy Active: Warm golden light illuminating every room with zero grid bill."
+                : "Traditional Grid: Dim unpowered state, grid dependence, higher monthly costs."}
             </p>
           </div>
 
           {/* Interactive Toggle Switch */}
           <div className="flex items-center gap-3 shrink-0">
-            <span className={`text-xs font-bold transition-colors ${!isPowered ? "text-amber-600 font-black" : "text-slate-400"}`}>
+            <span className={`text-xs font-bold transition-colors ${!isPowered ? "text-amber-300 font-black" : "text-white/50"}`}>
               Traditional Grid
             </span>
             
             <button
               onClick={() => setIsPowered(!isPowered)}
-              className={`relative w-22 h-11 rounded-full p-1.5 transition-colors duration-500 focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer shadow-inner ${
+              className={`relative w-22 h-11 rounded-full p-1.5 transition-colors duration-500 focus:outline-none cursor-pointer ${
                 isPowered
-                  ? "bg-gradient-to-r from-amber-400 via-amber-500 to-emerald-500 solar-glow"
-                  : "bg-slate-300"
+                  ? "bg-gradient-to-r from-amber-400 via-amber-500 to-emerald-400"
+                  : "bg-white/20"
               }`}
               aria-label="Toggle Solar Power Switch"
             >
@@ -107,59 +98,56 @@ export function SolarPowerSwitchShowcase() {
                 layout
                 transition={{ type: "spring", stiffness: 500, damping: 30 }}
                 className={`w-8 h-8 rounded-full bg-white shadow-lg flex items-center justify-center ${
-                  isPowered ? "translate-x-11 text-amber-500" : "translate-x-0 text-slate-500"
+                  isPowered ? "translate-x-11 text-amber-600" : "translate-x-0 text-slate-700"
                 }`}
               >
                 {isPowered ? <Sun className="w-5 h-5 fill-amber-400" /> : <Zap className="w-4 h-4" />}
               </motion.div>
             </button>
 
-            <span className={`text-xs font-bold transition-colors ${isPowered ? "text-emerald-700 font-black" : "text-slate-400"}`}>
+            <span className={`text-xs font-bold transition-colors ${isPowered ? "text-emerald-300 font-black" : "text-white/50"}`}>
               Solar Energized
             </span>
           </div>
         </div>
 
-        {/* Photorealistic Modern Home Interactive Showcase Stage */}
-        <div className="relative rounded-3xl overflow-hidden min-h-[550px] sm:min-h-[680px] lg:min-h-[780px] bg-slate-950 shadow-2xl flex flex-col justify-between p-6 sm:p-8">
+        {/* 3D Modern Solar Home Stage */}
+        <div className="relative rounded-2xl overflow-hidden min-h-[440px] sm:min-h-[540px] bg-[#6F746A] shadow-2xl flex flex-col justify-between p-6 sm:p-8">
           
-          {/* Base Unpowered Image Layer (Without Solar) */}
-          <div className="absolute inset-0 z-0 bg-slate-950">
+          {/* Base Unpowered Image Layer */}
+          <div className="absolute inset-0 z-0 bg-[#6F746A]">
             <Image
-              src="/images/without-solar.png"
-              alt="Unpowered Modern Home Without Solar"
+              src="/images/nestive-solar-home-off.png"
+              alt="Unpowered 3D Solar Home"
               fill
               priority
-              className="object-contain sm:object-cover object-center"
+              className="object-contain object-center"
             />
           </div>
 
-          {/* Illuminated Powered Image Layer (With Solar - Crossfades smoothly on switch) */}
+          {/* Illuminated Powered Image Layer */}
           <motion.div
             initial={{ opacity: 1 }}
             animate={{ opacity: isPowered ? 1 : 0 }}
             transition={{ duration: 0.9, ease: "easeInOut" }}
-            className="absolute inset-0 z-1 bg-slate-950"
+            className="absolute inset-0 z-1 bg-[#6F746A]"
           >
             <Image
-              src="/images/with-solar.png"
-              alt="Illuminated Modern Home Powered With Solar"
+              src="/images/nestive-solar-home-on.png"
+              alt="Illuminated 3D Solar Home"
               fill
               priority
-              className="object-contain sm:object-cover object-center"
+              className="object-contain object-center"
             />
           </motion.div>
 
-          {/* Gradient Lighting Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent z-2 pointer-events-none" />
-
-          {/* Sunbeams and Glow effect when powered */}
+          {/* Sunbeams and Warm Glow effect */}
           {isPowered && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
-              className="absolute top-0 right-0 w-96 h-96 bg-amber-400/25 rounded-full blur-3xl z-2 pointer-events-none animate-pulse-glow"
+              className="absolute top-0 right-0 w-96 h-96 bg-amber-400/20 rounded-full blur-3xl z-2 pointer-events-none"
             />
           )}
 

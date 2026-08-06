@@ -40,7 +40,7 @@ export function WhyUsSection() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white via-amber-50/20 to-white relative">
+    <section className="py-20 bg-[#888D83] text-white relative border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Heading & Highlight Card */}
@@ -51,27 +51,27 @@ export function WhyUsSection() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-5 space-y-6"
           >
-            <Badge variant="green" className="px-3.5 py-1">Why Choose Soul Power</Badge>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading leading-tight">
+            <Badge variant="green" className="px-3.5 py-1 nestive-pill text-emerald-300">Why Choose Soul Power</Badge>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal font-serif italic text-white tracking-tight leading-tight">
               Local Service Excellence, Supported by Proven Engineering
             </h2>
-            <p className="text-base text-slate-600 leading-relaxed">
+            <p className="text-base text-white/80 leading-relaxed">
               We combine the technical capabilities of {siteConfig.partner.fullName} with dedicated, responsive local service right here in northern Kerala.
             </p>
 
             {/* Featured Callout Card */}
-            <div className="p-6 rounded-3xl dark-glass-card text-white space-y-4 shadow-2xl">
-              <div className="flex items-center gap-3 text-amber-400 font-bold text-sm">
+            <div className="p-6 rounded-3xl nestive-card border border-white/30 text-white space-y-4 shadow-2xl">
+              <div className="flex items-center gap-3 text-amber-300 font-bold text-sm">
                 <Sparkles className="w-5 h-5" />
                 <span>Authorized Virgin Power Partnership</span>
               </div>
-              <p className="text-xs text-slate-300 leading-relaxed">
+              <p className="text-xs text-white/80 leading-relaxed">
                 {siteConfig.partner.wording}
               </p>
               <div className="pt-2 flex flex-wrap gap-2 text-[11px] text-amber-300 font-semibold">
-                <span className="px-3 py-1 rounded-full bg-slate-900/80 border border-slate-700">KSEB Compliant</span>
-                <span className="px-3 py-1 rounded-full bg-slate-900/80 border border-slate-700">ANERT Guidelines</span>
-                <span className="px-3 py-1 rounded-full bg-slate-900/80 border border-slate-700">MNRE Certified</span>
+                <span className="px-3 py-1 rounded-full nestive-pill">KSEB Compliant</span>
+                <span className="px-3 py-1 rounded-full nestive-pill">ANERT Guidelines</span>
+                <span className="px-3 py-1 rounded-full nestive-pill">MNRE Certified</span>
               </div>
             </div>
           </motion.div>
@@ -87,15 +87,15 @@ export function WhyUsSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: idx * 0.08 }}
-                  className="p-6 rounded-3xl glass-card glass-card-hover border border-white/90 shadow-md group"
+                  className="p-6 rounded-3xl nestive-card nestive-card-hover border border-white/25 shadow-md group"
                 >
-                  <div className="w-11 h-11 rounded-2xl bg-amber-500/10 text-amber-600 flex items-center justify-center border border-amber-500/20 mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-11 h-11 rounded-2xl bg-white/15 text-amber-300 flex items-center justify-center border border-white/25 mb-4 group-hover:scale-110 transition-transform duration-300">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h3 className="text-base font-bold text-slate-900 mb-1.5 font-heading group-hover:text-amber-600 transition-colors">
+                  <h3 className="text-base font-bold text-white mb-1.5 font-heading group-hover:text-amber-300 transition-colors">
                     {pt.title}
                   </h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">
+                  <p className="text-xs text-white/75 leading-relaxed">
                     {pt.description}
                   </p>
                 </motion.div>

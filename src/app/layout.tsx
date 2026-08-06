@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
+import { Outfit, Plus_Jakarta_Sans, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
 const fontHeading = Outfit({
@@ -12,6 +12,13 @@ const fontBody = Plus_Jakarta_Sans({
   variable: "--font-body",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+});
+
+const fontSerif = Instrument_Serif({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -28,9 +35,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fontHeading.variable} ${fontBody.variable} h-full antialiased`}
+      className={`${fontHeading.variable} ${fontBody.variable} ${fontSerif.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-white text-slate-900 selection:bg-amber-100 selection:text-amber-900">
+      <body className="min-h-full flex flex-col bg-[#868B80] text-white selection:bg-amber-300 selection:text-slate-950 font-sans">
         {children}
       </body>
     </html>

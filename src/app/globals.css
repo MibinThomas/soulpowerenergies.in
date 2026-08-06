@@ -40,6 +40,7 @@
 
   --font-heading: var(--font-heading), system-ui, sans-serif;
   --font-body: var(--font-body), system-ui, sans-serif;
+  --font-serif: var(--font-serif), Georgia, serif;
 }
 
 html {
@@ -48,14 +49,51 @@ html {
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: #888D83;
+  color: #FFFFFF;
   font-family: var(--font-body), system-ui, sans-serif;
   overflow-x: hidden;
   background-image: 
-    radial-gradient(at 0% 0%, rgba(224, 242, 254, 0.4) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(254, 243, 199, 0.3) 0px, transparent 50%);
+    radial-gradient(at 20% 0%, rgba(255, 255, 255, 0.08) 0px, transparent 60%),
+    radial-gradient(at 80% 100%, rgba(0, 0, 0, 0.12) 0px, transparent 60%);
   background-attachment: fixed;
+}
+
+/* Nestive Studio Aesthetic Utilities */
+.font-serif {
+  font-family: var(--font-serif), Georgia, serif;
+}
+
+.nestive-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15);
+}
+
+.nestive-card-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nestive-card-hover:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.25);
+}
+
+.nestive-pill {
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.nestive-nav {
+  background: rgba(136, 141, 131, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 /* Custom focus ring for WCAG compliance */

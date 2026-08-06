@@ -9,25 +9,25 @@ export function TrustHighlights() {
       icon: Award,
       title: "Quality Tier-1 Brands",
       description: "Proven solar panels & hybrid inverters from Waaree, Premier Energies & Sungrow.",
-      color: "from-amber-500/20 to-amber-500/5 text-amber-600 border-amber-500/30",
+      color: "text-amber-300 bg-white/15 border-white/20",
     },
     {
       icon: Wrench,
       title: "Full EPC Engineering",
       description: "End-to-end design, KSEB approvals & synchronization powered by Virgin Power.",
-      color: "from-emerald-500/20 to-emerald-500/5 text-emerald-600 border-emerald-500/30",
+      color: "text-emerald-300 bg-white/15 border-white/20",
     },
     {
       icon: Headset,
       title: "On-Ground Support",
       description: "Local technical team based directly in Thiruvambady for quick field response.",
-      color: "from-sky-500/20 to-sky-500/5 text-sky-600 border-sky-500/30",
+      color: "text-sky-300 bg-white/15 border-white/20",
     },
     {
       icon: Building2,
       title: "Home & Commercial",
       description: "Custom power arrays for residential roofs, schools, resorts & factories.",
-      color: "from-amber-500/20 to-emerald-500/10 text-emerald-700 border-emerald-500/30",
+      color: "text-amber-300 bg-white/15 border-white/20",
     },
   ];
 
@@ -43,19 +43,19 @@ export function TrustHighlights() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="p-6 rounded-3xl glass-card glass-card-hover border border-white/80 shadow-xl flex flex-col justify-between group"
+              className="p-6 rounded-3xl nestive-card nestive-card-hover border border-white/25 shadow-xl flex flex-col justify-between group"
             >
               <div className="space-y-4">
                 <div
-                  className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center border shadow-xs group-hover:scale-110 transition-transform duration-300`}
+                  className={`w-12 h-12 rounded-2xl ${item.color} flex items-center justify-center border shadow-xs group-hover:scale-110 transition-transform duration-300`}
                 >
                   <Icon className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-slate-900 font-heading group-hover:text-amber-600 transition-colors">
+                  <h3 className="text-base font-bold text-white font-heading group-hover:text-amber-300 transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-slate-600 leading-relaxed mt-1.5">{item.description}</p>
+                  <p className="text-xs text-white/70 leading-relaxed mt-1.5">{item.description}</p>
                 </div>
               </div>
             </motion.div>

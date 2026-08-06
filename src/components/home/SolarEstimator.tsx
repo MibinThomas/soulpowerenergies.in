@@ -21,15 +21,15 @@ export function SolarEstimator() {
   });
 
   return (
-    <section className="py-20 bg-gradient-to-b from-sky-50/50 via-white to-amber-50/40 relative" id="estimator">
+    <section className="py-20 bg-[#888D83] text-white relative border-b border-white/10" id="estimator">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Title */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <Badge variant="gold" className="px-3.5 py-1">Interactive Solar Calculator</Badge>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading">
+          <Badge variant="gold" className="px-3.5 py-1 nestive-pill text-amber-300">Interactive Solar Calculator</Badge>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal font-serif italic text-white tracking-tight">
             Calculate Your Solar Savings & System Size
           </h2>
-          <p className="text-base text-slate-600 leading-relaxed">
+          <p className="text-base text-white/80 leading-relaxed">
             Estimate your property&apos;s solar power system capacity, annual green energy generation, and expected financial savings instantly.
           </p>
         </div>
@@ -41,22 +41,22 @@ export function SolarEstimator() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-6 p-6 sm:p-8 rounded-3xl glass-card border border-white/90 shadow-xl space-y-6 flex flex-col justify-between"
+            className="lg:col-span-6 p-6 sm:p-8 rounded-3xl nestive-card border border-white/25 shadow-xl space-y-6 flex flex-col justify-between"
           >
             <div>
-              <div className="flex items-center gap-3 pb-4 border-b border-slate-200/80">
-                <div className="p-3 rounded-2xl bg-amber-500/10 text-amber-600 border border-amber-500/20">
+              <div className="flex items-center gap-3 pb-4 border-b border-white/15">
+                <div className="p-3 rounded-2xl bg-white/15 text-amber-300 border border-white/20">
                   <Calculator className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-slate-900 font-heading">1. Property & Power Inputs</h3>
-                  <p className="text-xs text-slate-500">Adjust sliders to calculate recommended system size</p>
+                  <h3 className="text-lg font-bold text-white font-heading">1. Property & Power Inputs</h3>
+                  <p className="text-xs text-white/70">Adjust sliders to calculate recommended system size</p>
                 </div>
               </div>
 
               {/* Property Type Selector */}
               <div className="space-y-2 mt-6">
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-700">Property Category</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-white/80">Property Category</label>
                 <div className="grid grid-cols-3 gap-2">
                   {(["residential", "commercial", "industrial"] as const).map((type) => (
                     <button
@@ -65,8 +65,8 @@ export function SolarEstimator() {
                       onClick={() => setPropertyType(type)}
                       className={`py-2.5 px-3 rounded-xl text-xs font-bold capitalize transition-all duration-200 border ${
                         propertyType === type
-                          ? "bg-slate-900 text-white border-slate-900 shadow-md shadow-slate-900/10"
-                          : "bg-white/80 text-slate-600 border-slate-200 hover:bg-slate-100"
+                          ? "bg-white text-slate-900 border-white shadow-md"
+                          : "bg-white/10 text-white border-white/20 hover:bg-white/20"
                       }`}
                     >
                       {type}
@@ -78,8 +78,8 @@ export function SolarEstimator() {
               {/* Monthly Electricity Bill Slider & Input */}
               <div className="space-y-3 mt-6">
                 <div className="flex items-center justify-between text-xs font-bold">
-                  <span className="uppercase tracking-wider text-slate-700">Avg. Monthly Electricity Bill</span>
-                  <span className="text-base text-amber-600 font-black">{formatCurrency(monthlyBill)}</span>
+                  <span className="uppercase tracking-wider text-white/80">Avg. Monthly Electricity Bill</span>
+                  <span className="text-base text-amber-300 font-black">{formatCurrency(monthlyBill)}</span>
                 </div>
                 <input
                   type="range"
@@ -88,9 +88,9 @@ export function SolarEstimator() {
                   step={500}
                   value={monthlyBill}
                   onChange={(e) => setMonthlyBill(Number(e.target.value))}
-                  className="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-amber-500"
+                  className="w-full h-3 bg-white/20 rounded-lg appearance-none cursor-pointer accent-amber-400"
                 />
-                <div className="flex justify-between text-[11px] text-slate-400 font-semibold">
+                <div className="flex justify-between text-[11px] text-white/60 font-semibold">
                   <span>₹1,000</span>
                   <span>₹25,000</span>
                   <span>₹50,000+</span>
@@ -100,8 +100,8 @@ export function SolarEstimator() {
               {/* Rooftop Area Slider & Input */}
               <div className="space-y-3 mt-6">
                 <div className="flex items-center justify-between text-xs font-bold">
-                  <span className="uppercase tracking-wider text-slate-700">Available Rooftop Area</span>
-                  <span className="text-base text-sky-600 font-black">{roofAreaSqFt} Sq. Ft.</span>
+                  <span className="uppercase tracking-wider text-white/80">Available Rooftop Area</span>
+                  <span className="text-base text-sky-300 font-black">{roofAreaSqFt} Sq. Ft.</span>
                 </div>
                 <input
                   type="range"
@@ -110,9 +110,9 @@ export function SolarEstimator() {
                   step={50}
                   value={roofAreaSqFt}
                   onChange={(e) => setRoofAreaSqFt(Number(e.target.value))}
-                  className="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-sky-500"
+                  className="w-full h-3 bg-white/20 rounded-lg appearance-none cursor-pointer accent-sky-400"
                 />
-                <div className="flex justify-between text-[11px] text-slate-400 font-semibold">
+                <div className="flex justify-between text-[11px] text-white/60 font-semibold">
                   <span>100 sq ft</span>
                   <span>2,500 sq ft</span>
                   <span>5,000 sq ft</span>
@@ -122,8 +122,8 @@ export function SolarEstimator() {
 
             {/* Area Sufficiency Check */}
             {!result.isAreaSufficient && (
-              <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 text-xs flex items-start gap-3">
-                <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+              <div className="p-4 rounded-2xl bg-amber-500/20 border border-amber-400/30 text-amber-200 text-xs flex items-start gap-3">
+                <AlertTriangle className="w-5 h-5 text-amber-300 shrink-0 mt-0.5" />
                 <div>
                   <span className="font-bold">Roof Space Note: </span>
                   Estimated space required for recommended capacity is ~{Math.round(result.roofAreaRequiredSqFt)} sq. ft. Our technical team can customize module layout upon site audit.
@@ -138,18 +138,18 @@ export function SolarEstimator() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-6 p-6 sm:p-8 rounded-3xl dark-glass-card text-white shadow-2xl space-y-6 flex flex-col justify-between"
+            className="lg:col-span-6 p-6 sm:p-8 rounded-3xl nestive-card border border-white/30 text-white shadow-2xl space-y-6 flex flex-col justify-between"
           >
             <div>
-              <div className="flex items-center justify-between pb-4 border-b border-slate-800">
+              <div className="flex items-center justify-between pb-4 border-b border-white/15">
                 <div>
-                  <div className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-400 uppercase tracking-wider mb-1">
+                  <div className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-300 uppercase tracking-wider mb-1">
                     <Sparkles className="w-3.5 h-3.5" />
                     <span>Estimated Solar Returns</span>
                   </div>
                   <h3 className="text-xl font-extrabold text-white font-heading">Calculated Output Summary</h3>
                 </div>
-                <Badge variant="green" className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
+                <Badge variant="green" className="nestive-pill text-emerald-300">
                   Indicative
                 </Badge>
               </div>
@@ -157,33 +157,33 @@ export function SolarEstimator() {
               {/* Output Metric Cards Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
                 {/* Capacity */}
-                <div className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-1">
-                  <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Suggested Array Capacity</span>
-                  <p className="text-2xl font-black text-amber-400 font-heading">
-                    {result.recommendedKwMin} - {result.recommendedKwMax} <span className="text-sm font-normal text-slate-300">kW</span>
+                <div className="p-4 rounded-2xl bg-white/10 border border-white/15 space-y-1">
+                  <span className="text-[11px] font-semibold text-white/70 uppercase tracking-wider">Suggested Array Capacity</span>
+                  <p className="text-2xl font-black text-amber-300 font-heading">
+                    {result.recommendedKwMin} - {result.recommendedKwMax} <span className="text-sm font-normal text-white/70">kW</span>
                   </p>
-                  <p className="text-[11px] text-slate-400">Optimal Solar PV System</p>
+                  <p className="text-[11px] text-white/60">Optimal Solar PV System</p>
                 </div>
 
                 {/* Annual Generation */}
-                <div className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-1">
-                  <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Est. Annual Power</span>
-                  <p className="text-2xl font-black text-emerald-400 font-heading">
-                    {formatNumber(result.annualGenerationKwhMin)} - {formatNumber(result.annualGenerationKwhMax)} <span className="text-sm font-normal text-slate-300">kWh</span>
+                <div className="p-4 rounded-2xl bg-white/10 border border-white/15 space-y-1">
+                  <span className="text-[11px] font-semibold text-white/70 uppercase tracking-wider">Est. Annual Power</span>
+                  <p className="text-2xl font-black text-emerald-300 font-heading">
+                    {formatNumber(result.annualGenerationKwhMin)} - {formatNumber(result.annualGenerationKwhMax)} <span className="text-sm font-normal text-white/70">kWh</span>
                   </p>
-                  <p className="text-[11px] text-slate-400">Clean Units Generated / Year</p>
+                  <p className="text-[11px] text-white/60">Clean Units Generated / Year</p>
                 </div>
 
                 {/* Annual Savings */}
-                <div className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-2 sm:col-span-2">
+                <div className="p-5 rounded-2xl bg-white/10 border border-white/15 space-y-2 sm:col-span-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Estimated Annual Savings</span>
-                    <TrendingUp className="w-4 h-4 text-amber-400" />
+                    <span className="text-[11px] font-semibold text-white/70 uppercase tracking-wider">Estimated Annual Savings</span>
+                    <TrendingUp className="w-4 h-4 text-amber-300" />
                   </div>
-                  <p className="text-3xl sm:text-4xl font-black text-amber-400 font-heading">
-                    {formatCurrency(result.annualSavingsMin)} - {formatCurrency(result.annualSavingsMax)} <span className="text-xs font-normal text-slate-300">/ year</span>
+                  <p className="text-3xl sm:text-4xl font-black text-amber-300 font-heading">
+                    {formatCurrency(result.annualSavingsMin)} - {formatCurrency(result.annualSavingsMax)} <span className="text-xs font-normal text-white/70">/ year</span>
                   </p>
-                  <p className="text-xs text-emerald-400 font-semibold">
+                  <p className="text-xs text-emerald-300 font-semibold">
                     Estimated payback period: ~{result.paybackYearsMin} to {result.paybackYearsMax} years (25-year panel lifecycle)
                   </p>
                 </div>
@@ -191,17 +191,17 @@ export function SolarEstimator() {
             </div>
 
             {/* Direct CTA */}
-            <div className="space-y-4 pt-4 border-t border-slate-800">
+            <div className="space-y-4 pt-4 border-t border-white/15">
               <Link href={`/contact#assessment?bill=${monthlyBill}&capacity=${result.recommendedKwMin}kw`} className="block">
-                <Button variant="primary" size="lg" className="w-full justify-between shadow-xl shadow-amber-500/20">
+                <Button variant="primary" size="lg" className="w-full justify-between bg-white text-slate-900 hover:bg-amber-100 border-none font-bold rounded-xl shadow-xl">
                   <span>Lock In Accurate Site Assessment</span>
                   <ArrowRight className="w-5 h-5" />
                 </Button>
               </Link>
 
               {/* Disclaimer Notice */}
-              <div className="text-[11px] text-slate-400 leading-relaxed space-y-1">
-                <div className="flex items-center gap-1.5 text-amber-400 font-semibold">
+              <div className="text-[11px] text-white/60 leading-relaxed space-y-1">
+                <div className="flex items-center gap-1.5 text-amber-300 font-semibold">
                   <Info className="w-3.5 h-3.5 shrink-0" />
                   <span>Estimation Notice</span>
                 </div>
