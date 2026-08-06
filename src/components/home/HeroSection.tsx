@@ -1,9 +1,45 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
-import { ArrowRight, CheckCircle2, Sparkles, ShieldCheck, Zap } from "lucide-react";
+import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 import { SolarPowerSwitchShowcase } from "./SolarPowerSwitchShowcase";
+
+function TypewriterSubtitle() {
+  const phrases = ["The Smart Way", "With Clean Solar", "With Zero Grid Cost"];
+  const [textIndex, setTextIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentPhrase = phrases[textIndex];
+    let typingSpeed = isDeleting ? 40 : 85;
+
+    if (!isDeleting && charIndex === currentPhrase.length) {
+      typingSpeed = 2200; // Hold full phrase before deleting
+      const timeout = setTimeout(() => setIsDeleting(true), typingSpeed);
+      return () => clearTimeout(timeout);
+    } else if (isDeleting && charIndex === 0) {
+      setIsDeleting(false);
+      setTextIndex((prev) => (prev + 1) % phrases.length);
+      typingSpeed = 400;
+    }
+
+    const timeout = setTimeout(() => {
+      setCharIndex((prev) => prev + (isDeleting ? -1 : 1));
+    }, typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [charIndex, isDeleting, textIndex]);
+
+  return (
+    <span className="not-italic font-sans text-amber-300 font-bold inline-flex items-center">
+      <span>{phrases[textIndex].substring(0, charIndex)}</span>
+      <span className="animate-pulse ml-1 text-amber-300 font-extralight">|</span>
+    </span>
+  );
+}
 
 export function HeroSection() {
   const steps = [
@@ -67,14 +103,14 @@ export function HeroSection() {
               <span className="font-medium truncate">+10,000 Kerala Homes Powered</span>
             </motion.div>
 
-            {/* SEO-Optimized Headline Hierarchy */}
-            <motion.div variants={itemVariants} className="space-y-2 sm:space-y-3">
-              <h1 className="font-serif text-3.5xl sm:text-5xl lg:text-6xl text-white italic font-normal tracking-tight leading-[1.1]">
+            {/* SEO-Optimized Headline Hierarchy with Larger Font & Typewriter Animation */}
+            <motion.div variants={itemVariants} className="space-y-3">
+              <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl text-white italic font-normal tracking-tight leading-[1.08]">
                 Power Your Home <br className="hidden sm:inline" />
-                <span className="not-italic font-sans text-amber-300 font-bold block sm:inline">The Smart Way</span>
+                <TypewriterSubtitle />
               </h1>
               
-              {/* Short & Impactful Value Prop for Mobile */}
+              {/* Short & Impactful Value Prop */}
               <p className="text-sm sm:text-lg text-white/85 max-w-xl leading-relaxed">
                 Zero grid dependence. Custom rooftop solar & EV charging systems engineered for Kozhikode & Wayanad.
               </p>
