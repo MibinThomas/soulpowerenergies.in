@@ -194,41 +194,6 @@ export function SolarPowerSwitchShowcase() {
               );
             })}
           </div>
-
-          {/* Bottom Metric Dashboard Bar */}
-          <div className="relative z-10 grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-800/80">
-            {/* Metric 1 */}
-            <div className="p-3.5 rounded-2xl bg-slate-900/90 backdrop-blur-md border border-slate-800 text-center space-y-0.5">
-              <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Solar Generation</span>
-              <p className={`text-base sm:text-xl font-black font-heading ${isPowered ? "text-amber-400" : "text-slate-500"}`}>
-                {isPowered ? "5.8 kW Peak" : "0.0 kW (Off)"}
-              </p>
-            </div>
-
-            {/* Metric 2 */}
-            <div className="p-3.5 rounded-2xl bg-slate-900/90 backdrop-blur-md border border-slate-800 text-center space-y-0.5">
-              <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">KSEB Grid Bill</span>
-              <p className={`text-base sm:text-xl font-black font-heading ${isPowered ? "text-emerald-400" : "text-rose-400"}`}>
-                {isPowered ? "₹0 / Month" : "₹6,500 / Month"}
-              </p>
-            </div>
-
-            {/* Metric 3 */}
-            <div className="p-3.5 rounded-2xl bg-slate-900/90 backdrop-blur-md border border-slate-800 text-center space-y-0.5">
-              <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">EV Range Added</span>
-              <p className={`text-base sm:text-xl font-black font-heading ${isPowered ? "text-sky-400" : "text-slate-500"}`}>
-                {isPowered ? "+180 km / day" : "Grid Charged"}
-              </p>
-            </div>
-
-            {/* Metric 4 */}
-            <div className="p-3.5 rounded-2xl bg-slate-900/90 backdrop-blur-md border border-slate-800 text-center space-y-0.5">
-              <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Energy Status</span>
-              <p className={`text-base sm:text-xl font-black font-heading ${isPowered ? "text-emerald-400" : "text-amber-500"}`}>
-                {isPowered ? "100% Clean Solar" : "Grid Fossil"}
-              </p>
-            </div>
-          </div>
         </div>
 
         {/* Hotspot Popup Modal / Tooltip Details */}
