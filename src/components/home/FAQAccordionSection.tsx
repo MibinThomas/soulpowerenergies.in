@@ -30,7 +30,6 @@ export function FAQAccordionSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: idx * 0.05 }}
-              className="nestive-card rounded-2xl overflow-hidden shadow-xs border border-white/25 text-white"
             >
               <AccordionItem
                 id={faq.id}

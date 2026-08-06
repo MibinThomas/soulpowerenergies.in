@@ -22,10 +22,10 @@ export function Logo({ className = "", variant = "dark", showTagline = false }: 
         <Image
           src="/logo/horizontal-logo.png"
           alt="Soul Power Energies - Powered By The Sun"
-          width={360}
-          height={90}
+          width={260}
+          height={108}
           priority
-          className="h-14 sm:h-16 lg:h-20 w-auto object-contain transition-transform group-hover:scale-[1.02] -my-2"
+          className="h-12 sm:h-14 lg:h-16 w-auto object-contain transition-transform group-hover:scale-105"
         />
       </div>
 
