@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { mainNav } from "@/config/navigation";
@@ -15,6 +15,14 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const pathname = usePathname();
+
+  const handleClose = useCallback(() => {
+    setMobileNavOpen(false);
+  }, []);
+
+  const handleOpen = useCallback(() => {
+    setMobileNavOpen(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,7 +84,7 @@ export function Header() {
 
             {/* Mobile Drawer Trigger */}
             <button
-              onClick={() => setMobileNavOpen(true)}
+              onClick={handleOpen}
               className="md:hidden p-2 rounded-xl border border-white/25 bg-white/15 text-white hover:bg-white/25 focus:outline-none cursor-pointer"
               aria-label="Open navigation menu"
             >
@@ -87,7 +95,7 @@ export function Header() {
       </div>
 
       {/* Mobile Navigation Drawer */}
-      <MobileNav isOpen={mobileNavOpen} onClose={() => setMobileNavOpen(false)} />
+      <MobileNav isOpen={mobileNavOpen} onClose={handleClose} />
     </header>
   );
 }

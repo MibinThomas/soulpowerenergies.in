@@ -20,7 +20,8 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
   // Close nav on route change
   useEffect(() => {
     onClose();
-  }, [pathname, onClose]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
 
   // Lock scroll when drawer open
   useEffect(() => {
