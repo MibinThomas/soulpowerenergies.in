@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/Badge";
 import { MessageSquare, ClipboardCheck, Compass, ShieldCheck, HeartHandshake } from "lucide-react";
 
@@ -38,38 +39,48 @@ export function ProcessTimeline() {
   ];
 
   return (
-    <section className="py-20 bg-slate-900 text-white overflow-hidden" id="process">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-gradient-to-b from-white via-sky-50/50 to-white relative overflow-hidden" id="process">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Title */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <Badge variant="navy">How It Works</Badge>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight font-heading text-white">
-            Our Simple 5-Step Process
+          <Badge variant="gold" className="px-3.5 py-1">Step-by-Step Journey</Badge>
+          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight font-heading text-slate-900">
+            Our Streamlined 5-Step Execution Process
           </h2>
-          <p className="text-base text-slate-300">
-            From initial consultation to clean power generation, we coordinate every detail of your renewable transition.
+          <p className="text-base text-slate-600">
+            From initial consultation to grid sync, we coordinate every detail of your clean energy transition.
           </p>
         </div>
 
         {/* Desktop Process Timeline */}
-        <div className="hidden lg:block relative my-8">
+        <div className="hidden lg:block relative my-12">
           {/* Connector Line */}
-          <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 via-emerald-500 to-amber-500 -translate-y-1/2 z-0" />
+          <div className="absolute top-1/2 left-10 right-10 h-1 bg-gradient-to-r from-amber-400 via-sky-400 to-emerald-400 -translate-y-1/2 z-0 opacity-70" />
 
           <div className="grid grid-cols-5 gap-4 relative z-10">
             {steps.map((step, idx) => {
               const Icon = step.icon;
               return (
-                <div key={idx} className="flex flex-col items-center text-center group">
-                  <div className="w-16 h-16 rounded-2xl bg-slate-900 border-2 border-amber-400/80 text-amber-400 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-slate-950 transition-all duration-300 mb-6">
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  className="flex flex-col items-center text-center group"
+                >
+                  <div className="w-16 h-16 rounded-2xl glass-card border border-white/90 shadow-lg text-amber-600 flex items-center justify-center group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-white transition-all duration-300 mb-6 relative">
                     <Icon className="w-7 h-7" />
+                    <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-slate-900 text-white text-[10px] font-bold flex items-center justify-center">
+                      {step.number}
+                    </span>
                   </div>
-                  <span className="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-1">
-                    Step {step.number}
-                  </span>
-                  <h3 className="text-base font-bold text-white mb-2 font-heading">{step.title}</h3>
-                  <p className="text-xs text-slate-300 leading-relaxed max-w-[200px]">{step.desc}</p>
-                </div>
+
+                  <h3 className="text-base font-bold text-slate-900 mb-2 font-heading group-hover:text-amber-600 transition-colors">
+                    {step.title}
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed max-w-[200px]">{step.desc}</p>
+                </motion.div>
               );
             })}
           </div>
@@ -80,21 +91,25 @@ export function ProcessTimeline() {
           {steps.map((step, idx) => {
             const Icon = step.icon;
             return (
-              <div
+              <motion.div
                 key={idx}
-                className="p-6 rounded-2xl bg-slate-800/80 border border-slate-700/80 flex items-start gap-4"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.08 }}
+                className="p-6 rounded-3xl glass-card border border-white/90 shadow-md flex items-start gap-4"
               >
-                <div className="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 font-bold border border-amber-400/40">
+                <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-600 flex items-center justify-center shrink-0 font-bold border border-amber-500/20">
                   <Icon className="w-6 h-6" />
                 </div>
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">
+                  <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
                     Step {step.number}
                   </span>
-                  <h3 className="text-lg font-bold text-white font-heading">{step.title}</h3>
-                  <p className="text-xs text-slate-300 mt-1 leading-relaxed">{step.desc}</p>
+                  <h3 className="text-lg font-bold text-slate-900 font-heading">{step.title}</h3>
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">{step.desc}</p>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
@@ -102,3 +117,4 @@ export function ProcessTimeline() {
     </section>
   );
 }
+

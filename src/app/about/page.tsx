@@ -63,28 +63,28 @@ export default function AboutPage() {
   return (
     <>
       <Header />
-      <main id="main-content" className="flex-1 bg-slate-50">
+      <main id="main-content" className="flex-1 bg-white">
         {/* Hero Section */}
-        <section className="bg-slate-900 text-white py-16 lg:py-24 border-b border-slate-800 relative overflow-hidden">
+        <section className="bg-gradient-to-b from-sky-50/60 via-white to-amber-50/30 py-16 lg:py-24 border-b border-slate-200/60 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4 text-center">
-            <Badge variant="navy" className="text-amber-400 border-slate-700">
+            <Badge variant="navy" className="bg-white/80 border-slate-200 text-slate-900 shadow-2xs">
               About Soul Power Energies
             </Badge>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight font-heading text-white">
-              Local Renewable Service, Proven Engineering Backing
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight font-heading text-slate-900">
+              Local Renewable Service, <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-amber-600 to-sky-600">Proven Engineering Backing</span>
             </h1>
-            <p className="text-base sm:text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
               Based in Thiruvambady, Kozhikode, delivering customized rooftop solar and EV charging infrastructure across Kozhikode and Wayanad.
             </p>
           </div>
         </section>
 
         {/* Company Background */}
-        <section className="py-20 bg-white border-b border-slate-200">
+        <section className="py-20 bg-white border-b border-slate-200/60">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-6 space-y-6">
-                <Badge variant="green">Company Overview</Badge>
+                <Badge variant="green" className="px-3.5 py-1">Company Overview</Badge>
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading leading-tight">
                   Empowering Northern Kerala With Clean Energy Solutions
                 </h2>
@@ -95,7 +95,7 @@ export default function AboutPage() {
                   We believe that adopting solar power should be simple, transparent, and dependable. By combining Tier-1 equipment selection with responsive on-ground engineering support, we help local property owners take control of their electricity costs.
                 </p>
 
-                <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 text-xs flex items-start gap-3">
+                <div className="p-4 rounded-2xl bg-amber-50/80 border border-amber-200/80 text-amber-950 text-xs flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                   <div>
                     <span className="font-bold">Regional Commitment: </span>
@@ -105,7 +105,7 @@ export default function AboutPage() {
               </div>
 
               <div className="lg:col-span-6">
-                <div className="relative rounded-3xl overflow-hidden border border-slate-200 shadow-xl bg-slate-900">
+                <div className="relative rounded-3xl overflow-hidden glass-card border border-white/90 shadow-2xl">
                   <Image
                     src={siteImages.keralaLandscape.src}
                     alt={siteImages.keralaLandscape.alt}
@@ -114,7 +114,7 @@ export default function AboutPage() {
                     className="w-full h-[400px] object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
-                  <div className="absolute bottom-6 inset-x-6 p-4 rounded-2xl bg-slate-900/90 backdrop-blur-md border border-slate-800 text-white space-y-1">
+                  <div className="absolute bottom-6 inset-x-6 p-4 rounded-2xl bg-slate-900/90 backdrop-blur-md border border-slate-700 text-white space-y-1">
                     <p className="text-xs font-bold text-amber-400">Northern Kerala Environment</p>
                     <p className="text-xs text-slate-300">Customized solar structural mounting for local tropical climate</p>
                   </div>
@@ -125,27 +125,27 @@ export default function AboutPage() {
         </section>
 
         {/* Mission & Vision Cards */}
-        <section className="py-20 bg-slate-900 text-white border-b border-slate-800">
+        <section className="py-20 bg-gradient-to-b from-sky-50/40 via-white to-amber-50/30 border-b border-slate-200/60">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Mission */}
-              <div className="p-8 sm:p-10 rounded-3xl bg-slate-950 border border-slate-800 space-y-4 shadow-xl">
-                <div className="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center border border-amber-500/30">
+              <div className="p-8 sm:p-10 rounded-3xl glass-card border border-white/90 space-y-4 shadow-xl">
+                <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-600 flex items-center justify-center border border-amber-500/20">
                   <Target className="w-6 h-6" />
                 </div>
-                <span className="text-xs font-bold uppercase tracking-wider text-amber-400 font-heading block">Our Mission</span>
-                <h3 className="text-xl sm:text-2xl font-bold text-white font-heading leading-snug">
+                <span className="text-xs font-bold uppercase tracking-wider text-amber-600 font-heading block">Our Mission</span>
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 font-heading leading-snug">
                   &ldquo;To make clean, reliable and affordable solar energy accessible to homes and businesses while helping customers reduce energy costs and contribute to a more sustainable future.&rdquo;
                 </h3>
               </div>
 
               {/* Vision */}
-              <div className="p-8 sm:p-10 rounded-3xl bg-slate-950 border border-slate-800 space-y-4 shadow-xl">
-                <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center border border-emerald-500/30">
+              <div className="p-8 sm:p-10 rounded-3xl glass-card border border-white/90 space-y-4 shadow-xl">
+                <div className="w-12 h-12 rounded-2xl bg-sky-500/10 text-sky-600 flex items-center justify-center border border-sky-500/20">
                   <Eye className="w-6 h-6" />
                 </div>
-                <span className="text-xs font-bold uppercase tracking-wider text-emerald-400 font-heading block">Our Vision</span>
-                <h3 className="text-xl sm:text-2xl font-bold text-white font-heading leading-snug">
+                <span className="text-xs font-bold uppercase tracking-wider text-sky-600 font-heading block">Our Vision</span>
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 font-heading leading-snug">
                   &ldquo;To become the most trusted renewable-energy solutions provider across northern Kerala, recognized for technical excellence, customer care, and sustainable innovation.&rdquo;
                 </h3>
               </div>
@@ -154,10 +154,10 @@ export default function AboutPage() {
         </section>
 
         {/* Core Values Grid */}
-        <section className="py-20 bg-white border-b border-slate-200">
+        <section className="py-20 bg-white border-b border-slate-200/60">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
             <div className="text-center max-w-2xl mx-auto space-y-3">
-              <Badge variant="gold">Our Core Principles</Badge>
+              <Badge variant="gold" className="px-3.5 py-1">Our Core Principles</Badge>
               <h2 className="text-3xl font-extrabold text-slate-900 font-heading">
                 The Values That Drive Us
               </h2>
@@ -169,9 +169,9 @@ export default function AboutPage() {
                 return (
                   <div
                     key={idx}
-                    className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-emerald-300 transition-all duration-300 space-y-3"
+                    className="p-6 rounded-3xl glass-card glass-card-hover border border-white/90 shadow-md space-y-3"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-white text-emerald-800 flex items-center justify-center border border-slate-200 shadow-xs">
+                    <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center border border-amber-500/20">
                       <Icon className="w-5 h-5" />
                     </div>
                     <h3 className="text-lg font-bold text-slate-900 font-heading">{v.title}</h3>
@@ -184,31 +184,31 @@ export default function AboutPage() {
         </section>
 
         {/* Partnership & Engineering Backing */}
-        <section className="py-20 bg-emerald-950 text-white" id="partnership">
+        <section className="py-20 bg-gradient-to-b from-sky-50/50 to-white" id="partnership">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
             <div className="max-w-3xl space-y-4">
-              <Badge variant="navy" className="text-amber-400 border-amber-400/40 bg-slate-900">
+              <Badge variant="navy" className="text-amber-600 bg-amber-50 border-amber-200">
                 Authorized Engineering Partnership
               </Badge>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-heading">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-heading">
                 Supported by Virgin Power and Engineering Pvt. Ltd.
               </h2>
-              <p className="text-base text-slate-200 leading-relaxed">
+              <p className="text-base text-slate-600 leading-relaxed">
                 As an authorized partner of Virgin Power and Engineering Pvt. Ltd., Soul Power Energies operates with access to seasoned engineering workflows, proven technical benchmarks, and complete EPC execution standards.
               </p>
             </div>
 
-            <div className="p-6 rounded-3xl bg-emerald-900/60 border border-emerald-800 text-xs text-slate-300 space-y-3">
+            <div className="p-6 rounded-3xl dark-glass-card text-white text-xs space-y-3 shadow-xl">
               <div className="flex items-center gap-2 text-amber-400 font-bold">
                 <ShieldCheck className="w-4 h-4" />
                 <span>Accreditation Notice</span>
               </div>
-              <p>{siteConfig.partner.wording}</p>
+              <p className="text-slate-300">{siteConfig.partner.wording}</p>
             </div>
 
             <div className="pt-4">
               <Link href="/contact#assessment">
-                <Button variant="primary" size="lg">
+                <Button variant="primary" size="lg" className="shadow-xl shadow-amber-500/20">
                   <span>Speak to Our Engineering Team</span>
                   <ArrowRight className="w-5 h-5" />
                 </Button>
@@ -222,3 +222,4 @@ export default function AboutPage() {
     </>
   );
 }
+

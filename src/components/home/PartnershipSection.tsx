@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { siteConfig } from "@/config/site";
 import { siteImages } from "@/config/images";
 import { Badge } from "@/components/ui/Badge";
@@ -6,12 +9,18 @@ import { ShieldCheck, CheckCircle2, Award } from "lucide-react";
 
 export function PartnershipSection() {
   return (
-    <section className="py-20 bg-emerald-950 text-white border-b border-emerald-900" id="partnership">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-gradient-to-b from-white via-amber-50/20 to-white relative border-b border-slate-200/60" id="partnership">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Visual Image */}
-          <div className="lg:col-span-5">
-            <div className="relative rounded-3xl overflow-hidden border border-emerald-800/80 shadow-2xl bg-emerald-900 group">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-5"
+          >
+            <div className="relative rounded-3xl overflow-hidden glass-card border border-white/90 shadow-2xl group">
               <Image
                 src={siteImages.virginPowerPartner.src}
                 alt={siteImages.virginPowerPartner.alt}
@@ -19,35 +28,41 @@ export function PartnershipSection() {
                 height={siteImages.virginPowerPartner.height}
                 className="w-full h-[360px] sm:h-[420px] object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-emerald-950 via-emerald-950/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
 
-              <div className="absolute bottom-6 inset-x-6 p-4 rounded-2xl bg-emerald-950/90 backdrop-blur-md border border-emerald-800 space-y-1">
+              <div className="absolute bottom-6 inset-x-6 p-4 rounded-2xl bg-slate-900/90 backdrop-blur-md border border-slate-700/80 space-y-1 text-white">
                 <div className="flex items-center gap-2 text-amber-400 font-bold text-sm">
                   <ShieldCheck className="w-4 h-4" />
-                  <span>Virgin Power Engineering Network</span>
+                  <span>Virgin Power EPC Network</span>
                 </div>
-                <p className="text-xs text-slate-300">EPC capabilities & quality assurance standards</p>
+                <p className="text-xs text-slate-300">Engineering capabilities & quality assurance</p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Copy & Compliant Wording */}
-          <div className="lg:col-span-7 space-y-6">
-            <Badge variant="navy" className="border-amber-400/40 text-amber-400 bg-slate-900">
-              <Award className="w-4 h-4 text-amber-400" />
-              <span>Engineering Authorization</span>
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-7 space-y-6"
+          >
+            <Badge variant="navy" className="border-amber-400/40 text-amber-600 bg-amber-50">
+              <Award className="w-4 h-4 text-amber-500" />
+              <span>Authorized Engineering Partnership</span>
             </Badge>
 
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-heading leading-tight">
-              Local Service, Backed by Proven Engineering Expertise
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading leading-tight">
+              Local Service Excellence, Backed by Proven EPC Engineering
             </h2>
 
-            <p className="text-base text-slate-200 leading-relaxed">
+            <p className="text-base text-slate-600 leading-relaxed">
               As an authorized partner of {siteConfig.partner.fullName}, Soul Power Energies combines established renewable-energy expertise with responsive, on-ground support across Kozhikode and Wayanad.
             </p>
 
             {/* Official Compliance Box */}
-            <div className="p-6 rounded-2xl bg-emerald-900/60 border border-emerald-800 space-y-3">
+            <div className="p-6 rounded-3xl dark-glass-card text-white space-y-3 shadow-xl">
               <h3 className="text-sm font-bold text-amber-400 uppercase tracking-wider font-heading">
                 Capabilities & Standards Attribution
               </h3>
@@ -57,27 +72,28 @@ export function PartnershipSection() {
             </div>
 
             {/* Supporting Highlights */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs sm:text-sm text-slate-300 font-medium">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs sm:text-sm text-slate-700 font-semibold">
+              <div className="flex items-center gap-2.5 p-2 rounded-xl bg-white/80 border border-slate-200/80 shadow-2xs">
+                <CheckCircle2 className="w-4 h-4 text-amber-500 shrink-0" />
                 <span>On-ground local technical response</span>
               </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
+              <div className="flex items-center gap-2.5 p-2 rounded-xl bg-white/80 border border-slate-200/80 shadow-2xs">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                 <span>Proven EPC design standards</span>
               </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
+              <div className="flex items-center gap-2.5 p-2 rounded-xl bg-white/80 border border-slate-200/80 shadow-2xs">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                 <span>Net-metering coordination support</span>
               </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
+              <div className="flex items-center gap-2.5 p-2 rounded-xl bg-white/80 border border-slate-200/80 shadow-2xs">
+                <CheckCircle2 className="w-4 h-4 text-amber-500 shrink-0" />
                 <span>Certified equipment selection</span>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
   );
 }
+

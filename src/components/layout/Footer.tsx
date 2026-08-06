@@ -9,8 +9,8 @@ export function Footer() {
   const hasEmail = Boolean(siteConfig.contact.email);
 
   return (
-    <footer className="bg-slate-950 text-slate-300 pt-16 pb-12 border-t border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-slate-950 text-slate-300 pt-16 pb-12 border-t border-slate-800 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-b border-slate-800">
           {/* Col 1 & 2: Brand & Partnership */}
           <div className="lg:col-span-2 space-y-5">
@@ -20,8 +20,8 @@ export function Footer() {
             </p>
 
             {/* Partnership Disclaimer Box */}
-            <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
-              <div className="flex items-center gap-2 text-amber-400 font-semibold text-xs">
+            <div className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-2">
+              <div className="flex items-center gap-2 text-amber-400 font-bold text-xs">
                 <ShieldCheck className="w-4 h-4 shrink-0" />
                 <span>Authorized Partner of Virgin Power</span>
               </div>
@@ -33,7 +33,7 @@ export function Footer() {
 
           {/* Col 3: Solutions */}
           <div className="space-y-4">
-            <h3 className="text-white text-sm font-bold tracking-wider uppercase">Our Solutions</h3>
+            <h3 className="text-white text-xs font-bold tracking-widest uppercase font-heading">Our Solutions</h3>
             <ul className="space-y-2.5 text-sm">
               {footerNav.solutions.map((item) => (
                 <li key={item.href}>
@@ -50,7 +50,7 @@ export function Footer() {
 
           {/* Col 4: Company Links */}
           <div className="space-y-4">
-            <h3 className="text-white text-sm font-bold tracking-wider uppercase">Company</h3>
+            <h3 className="text-white text-xs font-bold tracking-widest uppercase font-heading">Company</h3>
             <ul className="space-y-2.5 text-sm">
               {footerNav.company.map((item) => (
                 <li key={item.href}>
@@ -67,7 +67,7 @@ export function Footer() {
 
           {/* Col 5: Contact & Location */}
           <div className="space-y-4">
-            <h3 className="text-white text-sm font-bold tracking-wider uppercase">Local Office</h3>
+            <h3 className="text-white text-xs font-bold tracking-widest uppercase font-heading">Local Office</h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2.5 text-slate-400">
                 <MapPin className="w-4 h-4 text-emerald-400 shrink-0 mt-1" />
@@ -104,7 +104,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Legal & Copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>© {new Date().getFullYear()} Soul Power Energies. All rights reserved.</p>
 
           <div className="flex items-center gap-6">
@@ -123,3 +123,4 @@ export function Footer() {
     </footer>
   );
 }
+
