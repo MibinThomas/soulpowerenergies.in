@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Zap, Lightbulb, BatteryCharging, Sparkles, Eye, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { Sun, Zap, Lightbulb, Sparkles, Eye, Plus, X } from "lucide-react";
 
 export function SolarPowerSwitchShowcase() {
   const [isPowered, setIsPowered] = useState(true);
@@ -13,45 +13,32 @@ export function SolarPowerSwitchShowcase() {
     {
       id: "rooftop",
       title: "Rooftop Solar Panel Array",
-      top: "14%",
-      left: "52%",
-      icon: Sun,
+      top: "28%",
+      left: "50%",
       stat: "5.8 kW Peak Output",
       desc: "Tier-1 Mono PERC panels capturing maximum daily solar irradiance on high-angle rooftop mounts.",
     },
     {
       id: "suite",
       title: "Upper Master Suite",
-      top: "32%",
-      left: "58%",
-      icon: Lightbulb,
+      top: "44%",
+      left: "55%",
       stat: "Ambient Comfort",
       desc: "Clean solar electricity powering bedroom climate control, smart shading, and soft ambient light.",
     },
     {
       id: "living",
       title: "Grand Living Room",
-      top: "60%",
+      top: "63%",
       left: "58%",
-      icon: Lightbulb,
       stat: "100% Clean Energy",
       desc: "Brilliant lighting and entertainment systems running entirely on zero-cost solar power.",
     },
     {
-      id: "kitchen",
-      title: "Gourmet Open Kitchen",
-      top: "65%",
-      left: "72%",
-      icon: Sparkles,
-      stat: "High Efficiency",
-      desc: "Induction ranges, refrigeration, and under-cabinet lighting powered seamlessly from solar energy.",
-    },
-    {
       id: "garage",
-      title: "EV Fast Charging Station",
-      top: "72%",
+      title: "EV Fast Charging Hub",
+      top: "70%",
       left: "32%",
-      icon: Zap,
       stat: "Free EV Miles",
       desc: "7.4kW AC EV Charger replenishing electric vehicle range daily directly from rooftop generation.",
     },
@@ -159,15 +146,14 @@ export function SolarPowerSwitchShowcase() {
             </div>
 
             <div className="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md border border-slate-700/80 text-xs font-medium text-slate-300">
-              <Eye className="w-3.5 h-3.5 text-amber-400" />
-              <span>Hover hotspot pins to inspect rooms</span>
+              <Plus className="w-3.5 h-3.5 text-amber-400" />
+              <span>Click or hover + tags to inspect feature</span>
             </div>
           </div>
 
-          {/* Interactive Room Hotspot Pins on Home Canvas */}
+          {/* Interactive Room Hotspot + Pins on Home Canvas */}
           <div className="absolute inset-0 z-10 pointer-events-none">
             {hotspots.map((hs) => {
-              const IconComp = hs.icon;
               const isActive = activeHotspot === hs.id;
               return (
                 <div
@@ -178,16 +164,18 @@ export function SolarPowerSwitchShowcase() {
                   <button
                     onClick={() => setActiveHotspot(isActive ? null : hs.id)}
                     onMouseEnter={() => setActiveHotspot(hs.id)}
-                    className={`relative flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full transition-all duration-300 cursor-pointer ${
-                      isPowered
-                        ? "bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/40 hover:scale-125"
-                        : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+                    className={`relative flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full transition-all duration-300 cursor-pointer ${
+                      isActive
+                        ? "bg-white text-slate-900 scale-110 shadow-xl"
+                        : isPowered
+                        ? "bg-amber-400/90 text-slate-950 shadow-lg shadow-amber-400/50 hover:scale-125"
+                        : "bg-white/30 text-white backdrop-blur-md hover:bg-white/50"
                     }`}
                     aria-label={`Inspect ${hs.title}`}
                   >
-                    <IconComp className="w-4 h-4 sm:w-5 sm:h-5" />
-                    {isPowered && (
-                      <span className="absolute inset-0 rounded-full border-2 border-amber-400 animate-ping" style={{ animationDuration: "3s" }} />
+                    {isActive ? <X className="w-4 h-4" /> : <Plus className="w-4 h-4 font-black stroke-[3]" />}
+                    {isPowered && !isActive && (
+                      <span className="absolute inset-0 rounded-full border-2 border-amber-300 animate-ping" style={{ animationDuration: "3s" }} />
                     )}
                   </button>
                 </div>
@@ -208,20 +196,19 @@ export function SolarPowerSwitchShowcase() {
               {(() => {
                 const hs = hotspots.find((h) => h.id === activeHotspot);
                 if (!hs) return null;
-                const IconComp = hs.icon;
                 return (
                   <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-2xl bg-amber-500 text-slate-950 shrink-0 mt-0.5 shadow-md">
-                      <IconComp className="w-6 h-6" />
+                    <div className="p-3 rounded-2xl bg-amber-400 text-slate-950 shrink-0 mt-0.5 shadow-md">
+                      <Plus className="w-5 h-5 font-black stroke-[3]" />
                     </div>
                     <div>
                       <div className="flex items-center gap-3">
-                        <h4 className="text-base font-extrabold text-slate-900 font-heading">{hs.title}</h4>
-                        <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">
+                        <h4 className="text-base font-bold text-white font-heading">{hs.title}</h4>
+                        <span className="px-2.5 py-0.5 rounded-full nestive-pill text-amber-300 text-xs font-bold">
                           {hs.stat}
                         </span>
                       </div>
-                      <p className="text-xs sm:text-sm text-slate-600 mt-1">{hs.desc}</p>
+                      <p className="text-xs sm:text-sm text-white/80 mt-1">{hs.desc}</p>
                     </div>
                   </div>
                 );
