@@ -102,7 +102,7 @@ export function ProcessTimeline() {
       chapterTitle: "Lifetime Care",
       title: "After-Sales Monitoring & Operation",
       desc: "Continuous local operational support from our Thiruvambady headquarters, periodic de-ionized panel cleaning, performance monitoring, and rapid technical servicing.",
-      image: "/images/partnerships.png",
+      image: "/images/maintenance.png",
       icon: HeartHandshake,
       deliverables: [
         "25-Year linear performance warranty backing",
