@@ -32,7 +32,7 @@ export function PopUpContactModal() {
     },
   });
 
-  // Auto Pop-up Timer: Triggers every 20 seconds
+  // Auto Pop-up Timer: Triggers every 45 seconds
   useEffect(() => {
     const timer = setInterval(() => {
       setIsOpen((prev) => {
@@ -40,7 +40,7 @@ export function PopUpContactModal() {
         if (!prev) return true;
         return prev;
       });
-    }, 20000);
+    }, 45000);
 
     return () => clearInterval(timer);
   }, []);
@@ -79,19 +79,6 @@ export function PopUpContactModal() {
 
   return (
     <>
-      {/* Floating Manual Trigger Badge in Bottom Corner */}
-      {!isOpen && (
-        <motion.button
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          onClick={() => setIsOpen(true)}
-          className="fixed bottom-20 right-6 sm:bottom-24 sm:right-8 z-40 px-4 py-2.5 rounded-full bg-gradient-to-r from-[#E5BA73] via-[#F0C987] to-[#EADBC8] text-[#0C0E12] font-black text-xs sm:text-sm shadow-[0_0_25px_rgba(229,186,115,0.5)] flex items-center gap-2 cursor-pointer hover:scale-105 transition-all"
-        >
-          <Sparkles className="w-4 h-4 fill-current animate-pulse" />
-          <span>Request Free Solar Assessment</span>
-        </motion.button>
-      )}
-
       {/* Pop-Up Modal Container */}
       <AnimatePresence>
         {isOpen && (
