@@ -18,10 +18,13 @@ import {
   Maximize2,
   X,
   Info,
+  Layers,
 } from "lucide-react";
 
 export function ProcessTimeline() {
   const [activeStep, setActiveStep] = useState(0);
+  const [direction, setDirection] = useState<"next" | "prev">("next");
+  const [isFlipping, setIsFlipping] = useState(false);
   const [isImageExpanded, setIsImageExpanded] = useState(false);
   const [activeHotspot, setActiveHotspot] = useState<string | null>(null);
 
@@ -116,244 +119,278 @@ export function ProcessTimeline() {
   const current = steps[activeStep];
 
   const handleNext = () => {
+    if (isFlipping) return;
+    setIsFlipping(true);
+    setDirection("next");
     setActiveStep((prev) => (prev < steps.length - 1 ? prev + 1 : 0));
     setActiveHotspot(null);
+    setTimeout(() => setIsFlipping(false), 700);
   };
 
   const handlePrev = () => {
+    if (isFlipping) return;
+    setIsFlipping(true);
+    setDirection("prev");
     setActiveStep((prev) => (prev > 0 ? prev - 1 : steps.length - 1));
     setActiveHotspot(null);
+    setTimeout(() => setIsFlipping(false), 700);
+  };
+
+  const goToStep = (idx: number) => {
+    if (isFlipping || idx === activeStep) return;
+    setIsFlipping(true);
+    setDirection(idx > activeStep ? "next" : "prev");
+    setActiveStep(idx);
+    setActiveHotspot(null);
+    setTimeout(() => setIsFlipping(false), 700);
   };
 
   return (
     <section className="py-20 bg-[#0C0E12] text-[#F5EFE6] relative overflow-hidden" id="process">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10">
+        
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <Badge variant="gold" className="px-3.5 py-1 nestive-pill text-[#E5BA73]">
             Step-by-Step Journey
           </Badge>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal font-serif italic tracking-tight text-[#F5EFE6]">
-            Interactive Execution Booklet
+            3D Interactive Execution Booklet
           </h2>
           <p className="text-sm sm:text-base text-[#EADBC8]/80 leading-relaxed">
-            Flip through our engineering protocol portfolio detailing every milestone from feasibility to grid synchronization.
+            Turn through our engineering protocol portfolio with realistic 3D rolling page transitions detailing every milestone.
           </p>
         </div>
 
-        {/* Booklet Booklet Container */}
-        <div className="relative rounded-3xl nestive-card border border-[#EADBC8]/20 bg-[#131722]/95 backdrop-blur-2xl shadow-[0_0_60px_rgba(0,0,0,0.8)] overflow-hidden">
+        {/* Outer 3D Perspective Book Viewport */}
+        <div className="relative max-w-6xl mx-auto [perspective:1600px]">
           
-          {/* Top Chapter Tabs Navigation Bar */}
-          <div className="flex items-center overflow-x-auto scrollbar-none border-b border-[#EADBC8]/15 bg-[#0C0E12]/80 px-2 sm:px-6 pt-3">
-            <div className="flex items-center gap-1 sm:gap-2 shrink-0">
-              <BookOpen className="w-4 h-4 text-[#E5BA73] hidden sm:block mr-2" />
-              {steps.map((s, idx) => {
-                const isActive = activeStep === idx;
-                return (
-                  <button
-                    key={s.number}
-                    onClick={() => {
-                      setActiveStep(idx);
-                      setActiveHotspot(null);
-                    }}
-                    className={`px-3.5 py-2.5 rounded-t-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-2 border-t border-x ${
-                      isActive
-                        ? "bg-[#131722] text-[#E5BA73] border-[#E5BA73]/40 border-b-transparent shadow-lg"
-                        : "bg-transparent text-[#EADBC8]/60 border-transparent hover:text-[#F5EFE6] hover:bg-[#EADBC8]/5"
-                    }`}
-                  >
-                    <span className="w-5 h-5 rounded-full bg-[#EADBC8]/10 text-[10px] flex items-center justify-center font-mono">
-                      {s.number}
-                    </span>
-                    <span>{s.chapterTitle}</span>
-                  </button>
-                );
-              })}
-            </div>
+          {/* Top Chapter Tabs (Ribbon Index Markers) */}
+          <div className="flex items-center justify-center overflow-x-auto scrollbar-none gap-2 mb-3 px-2">
+            {steps.map((s, idx) => {
+              const isActive = activeStep === idx;
+              return (
+                <button
+                  key={s.number}
+                  onClick={() => goToStep(idx)}
+                  className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-2 border ${
+                    isActive
+                      ? "bg-[#E5BA73] text-[#0C0E12] border-[#E5BA73] shadow-[0_0_20px_rgba(229,186,115,0.4)] scale-105"
+                      : "bg-[#131722]/80 text-[#EADBC8]/70 border-[#EADBC8]/20 hover:text-[#F5EFE6] hover:bg-[#EADBC8]/10"
+                  }`}
+                >
+                  <span className={`w-4 h-4 rounded-full text-[10px] font-mono flex items-center justify-center ${isActive ? "bg-[#0C0E12] text-[#E5BA73]" : "bg-[#EADBC8]/20 text-[#EADBC8]"}`}>
+                    {s.number}
+                  </span>
+                  <span>{s.chapterTitle}</span>
+                </button>
+              );
+            })}
           </div>
 
-          {/* Open Booklet Two-Page Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 relative min-h-[500px]">
+          {/* Hardcover Book Spine & Page Stacks Container */}
+          <div className="relative rounded-3xl bg-[#0C0E12] border-2 border-[#EADBC8]/25 shadow-[0_30px_70px_rgba(0,0,0,0.95)] p-2 sm:p-4 [transform-style:preserve-3d]">
             
-            {/* Center Spine Shadow Divider (Desktop Only) */}
-            <div className="hidden lg:block absolute inset-y-0 left-1/2 -translate-x-1/2 w-12 bg-gradient-to-r from-black/50 via-transparent to-black/50 pointer-events-none z-20" />
+            {/* Paper Edges Stack Effect (Bottom & Right) */}
+            <div className="absolute -bottom-2 right-6 left-6 h-3 bg-gradient-to-b from-[#EADBC8]/20 to-[#EADBC8]/5 rounded-b-xl border-b border-[#EADBC8]/10 pointer-events-none" />
+            <div className="absolute -right-2 top-6 bottom-6 w-3 bg-gradient-to-r from-[#EADBC8]/20 to-[#EADBC8]/5 rounded-r-xl border-r border-[#EADBC8]/10 pointer-events-none" />
 
-            {/* ======================================================== */}
-            {/* LEFT PAGE: Interactive Image Visual Canvas              */}
-            {/* ======================================================== */}
-            <div className="relative p-6 sm:p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-[#EADBC8]/15 bg-[#0C0E12]/60 overflow-hidden group">
+            {/* Book Body (Open 2-Page Spread) */}
+            <div className="relative rounded-2xl bg-[#131722] border border-[#EADBC8]/15 overflow-hidden grid grid-cols-1 lg:grid-cols-2 min-h-[540px]">
               
-              {/* Gold Foiled Protocol Watermark */}
-              <div className="flex items-center justify-between text-[11px] font-bold text-[#E5BA73] mb-4">
-                <span className="uppercase tracking-wider flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5" /> Stage {current.number} Visual Proof
-                </span>
-                <span className="font-mono text-[#EADBC8]/50">PROTOCOL // SP-0{current.number}</span>
+              {/* Central Spine Binding Crease Shadow (Desktop) */}
+              <div className="hidden lg:block absolute inset-y-0 left-1/2 -translate-x-1/2 w-16 bg-gradient-to-r from-black/70 via-black/20 to-black/70 pointer-events-none z-30 shadow-inner" />
+
+              {/* ======================================================== */}
+              {/* LEFT PAGE: Visual Proof & Interactive Photo              */}
+              {/* ======================================================== */}
+              <div className="p-6 sm:p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-[#EADBC8]/15 bg-[#0C0E12]/80 relative z-10">
+                
+                {/* Header Watermark */}
+                <div className="flex items-center justify-between text-[11px] font-bold text-[#E5BA73] mb-4">
+                  <span className="uppercase tracking-wider flex items-center gap-1.5 font-heading">
+                    <Sparkles className="w-3.5 h-3.5" /> Stage {current.number} Field Visual
+                  </span>
+                  <span className="font-mono text-[#EADBC8]/50">PROTOCOL // SP-0{current.number}</span>
+                </div>
+
+                {/* Photo Frame Container */}
+                <div className="relative w-full h-64 sm:h-80 lg:h-96 rounded-2xl overflow-hidden border border-[#EADBC8]/25 shadow-2xl bg-[#0C0E12]">
+                  <Image
+                    src={current.image}
+                    alt={current.title}
+                    fill
+                    priority
+                    className="object-cover filter brightness-90 group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0C0E12] via-transparent to-transparent opacity-60" />
+
+                  {/* Hotspot Pins overlaid on Image */}
+                  {current.hotspots.map((hs) => {
+                    const isActive = activeHotspot === hs.id;
+                    return (
+                      <div
+                        key={hs.id}
+                        style={{ top: hs.top, left: hs.left }}
+                        className="absolute -translate-x-1/2 -translate-y-1/2 z-20"
+                      >
+                        <button
+                          onClick={() => setActiveHotspot(isActive ? null : hs.id)}
+                          className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-bold text-xs shadow-lg transition-all cursor-pointer ${
+                            isActive
+                              ? "bg-[#F5EFE6] text-[#0C0E12] scale-125"
+                              : "bg-[#E5BA73] text-[#0C0E12] hover:scale-110 shadow-[#E5BA73]/50"
+                          }`}
+                        >
+                          <Info className="w-4 h-4" />
+                        </button>
+
+                        {/* Hotspot Popover Tooltip */}
+                        <AnimatePresence>
+                          {isActive && (
+                            <motion.div
+                              initial={{ opacity: 0, y: 10, scale: 0.9 }}
+                              animate={{ opacity: 1, y: 0, scale: 1 }}
+                              exit={{ opacity: 0, y: 10, scale: 0.9 }}
+                              className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 sm:w-56 p-3 rounded-2xl bg-[#131722] border border-[#E5BA73]/40 text-[#F5EFE6] shadow-2xl text-xs z-30"
+                            >
+                              <div className="flex items-center justify-between font-bold text-[#E5BA73] mb-1">
+                                <span>{hs.title}</span>
+                                <X className="w-3.5 h-3.5 cursor-pointer" onClick={() => setActiveHotspot(null)} />
+                              </div>
+                              <p className="text-[11px] text-[#EADBC8]/80 leading-snug">{hs.desc}</p>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  })}
+
+                  {/* Expand Image Button */}
+                  <button
+                    onClick={() => setIsImageExpanded(true)}
+                    className="absolute bottom-3 right-3 p-2 rounded-xl bg-[#0C0E12]/80 backdrop-blur-md border border-[#EADBC8]/20 text-[#E5BA73] hover:bg-[#E5BA73] hover:text-[#0C0E12] transition-all cursor-pointer z-10"
+                    aria-label="Expand step image"
+                  >
+                    <Maximize2 className="w-4 h-4" />
+                  </button>
+                </div>
+
+                <div className="mt-4 flex items-center justify-between text-xs text-[#EADBC8]/60 font-mono">
+                  <span>PLATE 0{current.number} — SITE PHOTO</span>
+                  <span className="text-[#E5BA73] font-bold">CLICK PINS TO INSPECT</span>
+                </div>
               </div>
 
-              {/* Interactive Image Box with Page-Turn Animation */}
-              <div className="relative w-full h-64 sm:h-80 lg:h-96 rounded-2xl overflow-hidden border border-[#EADBC8]/20 shadow-2xl bg-[#0C0E12]">
+              {/* ======================================================== */}
+              {/* RIGHT PAGE: Detailed Chapter Specs & Deliverables        */}
+              {/* ======================================================== */}
+              <div className="p-6 sm:p-8 flex flex-col justify-between space-y-6 relative z-10 bg-[#131722] overflow-hidden">
+                
+                {/* 3D Flipping Rolling Page Overlay Animation Layer */}
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeStep}
-                    initial={{ opacity: 0, rotateY: 15, scale: 0.95 }}
-                    animate={{ opacity: 1, rotateY: 0, scale: 1 }}
-                    exit={{ opacity: 0, rotateY: -15, scale: 0.95 }}
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                    className="absolute inset-0"
+                    initial={{
+                      rotateY: direction === "next" ? 90 : -90,
+                      opacity: 0,
+                      transformOrigin: direction === "next" ? "left center" : "right center",
+                    }}
+                    animate={{
+                      rotateY: 0,
+                      opacity: 1,
+                      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+                    }}
+                    exit={{
+                      rotateY: direction === "next" ? -90 : 90,
+                      opacity: 0,
+                      transition: { duration: 0.5, ease: "easeInOut" },
+                    }}
+                    className="h-full flex flex-col justify-between space-y-6 [transform-style:preserve-3d]"
                   >
-                    <Image
-                      src={current.image}
-                      alt={current.title}
-                      fill
-                      priority
-                      className="object-cover object-center filter brightness-90 group-hover:scale-105 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0C0E12] via-transparent to-transparent opacity-60" />
+                    {/* Chapter Header */}
+                    <div>
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-12 h-12 rounded-2xl bg-[#EADBC8]/10 text-[#E5BA73] flex items-center justify-center border border-[#EADBC8]/20 shadow-md">
+                            {(() => {
+                              const StepIcon = current.icon;
+                              return <StepIcon className="w-6 h-6" />;
+                            })()}
+                          </div>
+                          <div>
+                            <span className="text-xs font-bold text-[#E5BA73] uppercase tracking-wider block font-heading">
+                              CHAPTER 0{current.number}
+                            </span>
+                            <h3 className="text-xl sm:text-2xl font-bold text-[#F5EFE6] font-heading leading-tight">
+                              {current.title}
+                            </h3>
+                          </div>
+                        </div>
+
+                        <Badge variant="gold" className="nestive-pill text-xs font-mono shrink-0">
+                          PAGE 0{current.number} / 05
+                        </Badge>
+                      </div>
+
+                      {/* Step Execution Description */}
+                      <p className="text-xs sm:text-sm text-[#EADBC8]/85 leading-relaxed border-l-2 border-[#E5BA73] pl-4 py-1 mb-6">
+                        {current.desc}
+                      </p>
+
+                      {/* Key Technical Deliverables Checklist */}
+                      <div className="space-y-3 bg-[#0C0E12]/60 p-4 rounded-2xl border border-[#EADBC8]/15">
+                        <span className="text-xs font-bold text-[#E5BA73] uppercase tracking-wider block font-heading mb-2">
+                          Key Technical Deliverables:
+                        </span>
+                        {current.deliverables.map((item, i) => (
+                          <div key={i} className="flex items-start gap-2.5 text-xs text-[#F5EFE6]">
+                            <CheckCircle2 className="w-4 h-4 text-[#E5BA73] shrink-0 mt-0.5" />
+                            <span className="leading-snug">{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Bottom Page Turner Controls */}
+                    <div className="pt-4 border-t border-[#EADBC8]/15 flex items-center justify-between">
+                      <button
+                        onClick={handlePrev}
+                        disabled={isFlipping}
+                        className="px-4 py-2.5 rounded-xl border border-[#EADBC8]/20 bg-[#0C0E12] text-[#F5EFE6] hover:border-[#E5BA73] hover:text-[#E5BA73] text-xs font-bold transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50"
+                      >
+                        <ChevronLeft className="w-4 h-4" />
+                        <span>Previous Page</span>
+                      </button>
+
+                      <span className="text-xs font-bold text-[#EADBC8]/60 font-mono hidden sm:inline">
+                        PAGE {activeStep + 1} OF 5
+                      </span>
+
+                      <button
+                        onClick={handleNext}
+                        disabled={isFlipping}
+                        className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#E5BA73] via-[#F0C987] to-[#EADBC8] text-[#0C0E12] font-black text-xs transition-all hover:scale-105 flex items-center gap-2 cursor-pointer shadow-lg disabled:opacity-50"
+                      >
+                        <span>Next Page</span>
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
+                    </div>
                   </motion.div>
                 </AnimatePresence>
 
-                {/* Hotspot Pins overlaid on Image */}
-                {current.hotspots.map((hs) => {
-                  const isActive = activeHotspot === hs.id;
-                  return (
-                    <div
-                      key={hs.id}
-                      style={{ top: hs.top, left: hs.left }}
-                      className="absolute -translate-x-1/2 -translate-y-1/2 z-20"
-                    >
-                      <button
-                        onClick={() => setActiveHotspot(isActive ? null : hs.id)}
-                        className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-bold text-xs shadow-lg transition-all cursor-pointer ${
-                          isActive
-                            ? "bg-[#F5EFE6] text-[#0C0E12] scale-125"
-                            : "bg-[#E5BA73] text-[#0C0E12] hover:scale-110 shadow-[#E5BA73]/50"
-                        }`}
-                      >
-                        <Info className="w-4 h-4" />
-                      </button>
-
-                      {/* Hotspot Popover Tooltip */}
-                      <AnimatePresence>
-                        {isActive && (
-                          <motion.div
-                            initial={{ opacity: 0, y: 10, scale: 0.9 }}
-                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: 10, scale: 0.9 }}
-                            className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 sm:w-56 p-3 rounded-2xl bg-[#131722] border border-[#E5BA73]/40 text-[#F5EFE6] shadow-2xl text-xs z-30"
-                          >
-                            <div className="flex items-center justify-between font-bold text-[#E5BA73] mb-1">
-                              <span>{hs.title}</span>
-                              <X className="w-3.5 h-3.5 cursor-pointer" onClick={() => setActiveHotspot(null)} />
-                            </div>
-                            <p className="text-[11px] text-[#EADBC8]/80 leading-snug">{hs.desc}</p>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  );
-                })}
-
-                {/* Image Expand Button */}
-                <button
-                  onClick={() => setIsImageExpanded(true)}
-                  className="absolute bottom-3 right-3 p-2 rounded-xl bg-[#0C0E12]/80 backdrop-blur-md border border-[#EADBC8]/20 text-[#E5BA73] hover:bg-[#E5BA73] hover:text-[#0C0E12] transition-all cursor-pointer z-10"
-                  aria-label="Expand step image"
+                {/* 3D Realistic Corner Curl Hit-Zone (Click Corner to Turn Page) */}
+                <div
+                  onClick={handleNext}
+                  className="absolute bottom-0 right-0 w-16 h-16 cursor-pointer group z-30"
+                  title="Click corner to flip to next page"
                 >
-                  <Maximize2 className="w-4 h-4" />
-                </button>
+                  <div className="absolute bottom-0 right-0 w-0 h-0 border-b-[40px] border-b-[#E5BA73]/80 border-l-[40px] border-l-transparent group-hover:border-b-[#F5EFE6] transition-all filter drop-shadow-md" />
+                  <span className="absolute bottom-1 right-1 text-[8px] font-bold text-[#0C0E12] uppercase tracking-tighter pointer-events-none">
+                    FLIP
+                  </span>
+                </div>
               </div>
-
-              {/* Bottom Left Page Note */}
-              <div className="mt-4 flex items-center justify-between text-xs text-[#EADBC8]/60 font-mono">
-                <span>FIGURE {current.number}.1 — FIELD EXECUTION</span>
-                <span className="text-[#E5BA73] font-bold">CLICK PINS TO INSPECT</span>
-              </div>
-            </div>
-
-            {/* ======================================================== */}
-            {/* RIGHT PAGE: Detailed Engineering Booklet Specs          */}
-            {/* ======================================================== */}
-            <div className="p-6 sm:p-8 flex flex-col justify-between space-y-6 relative z-10 bg-[#131722]/80">
-              
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeStep}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.4 }}
-                  className="space-y-6 flex-1 flex flex-col justify-between"
-                >
-                  <div>
-                    {/* Page Header Badge */}
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 rounded-2xl bg-[#EADBC8]/10 text-[#E5BA73] flex items-center justify-center border border-[#EADBC8]/20 shadow-md">
-                          {(() => {
-                            const StepIcon = current.icon;
-                            return <StepIcon className="w-6 h-6" />;
-                          })()}
-                        </div>
-                        <div>
-                          <span className="text-xs font-bold text-[#E5BA73] uppercase tracking-wider block font-heading">
-                            CHAPTER 0{current.number}
-                          </span>
-                          <h3 className="text-xl sm:text-2xl font-bold text-[#F5EFE6] font-heading leading-tight">
-                            {current.title}
-                          </h3>
-                        </div>
-                      </div>
-
-                      <Badge variant="gold" className="nestive-pill text-xs font-mono shrink-0">
-                        PAGE 0{current.number} / 05
-                      </Badge>
-                    </div>
-
-                    {/* Step Execution Description */}
-                    <p className="text-xs sm:text-sm text-[#EADBC8]/85 leading-relaxed border-l-2 border-[#E5BA73] pl-4 py-1 mb-6">
-                      {current.desc}
-                    </p>
-
-                    {/* Key Technical Deliverables Checklist */}
-                    <div className="space-y-3 bg-[#0C0E12]/50 p-4 rounded-2xl border border-[#EADBC8]/15">
-                      <span className="text-xs font-bold text-[#E5BA73] uppercase tracking-wider block font-heading mb-2">
-                        Key Engineering Deliverables:
-                      </span>
-                      {current.deliverables.map((item, i) => (
-                        <div key={i} className="flex items-start gap-2.5 text-xs text-[#F5EFE6]">
-                          <CheckCircle2 className="w-4 h-4 text-[#E5BA73] shrink-0 mt-0.5" />
-                          <span className="leading-snug">{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Booklet Page Turner Navigation Bar */}
-                  <div className="pt-4 border-t border-[#EADBC8]/15 flex items-center justify-between">
-                    <button
-                      onClick={handlePrev}
-                      className="px-4 py-2.5 rounded-xl border border-[#EADBC8]/20 bg-[#0C0E12] text-[#F5EFE6] hover:border-[#E5BA73] hover:text-[#E5BA73] text-xs font-bold transition-all flex items-center gap-2 cursor-pointer"
-                    >
-                      <ChevronLeft className="w-4 h-4" />
-                      <span>Previous Chapter</span>
-                    </button>
-
-                    <span className="text-xs font-bold text-[#EADBC8]/60 font-mono hidden sm:inline">
-                      {activeStep + 1} OF 5
-                    </span>
-
-                    <button
-                      onClick={handleNext}
-                      className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#E5BA73] via-[#F0C987] to-[#EADBC8] text-[#0C0E12] font-black text-xs transition-all hover:scale-105 flex items-center gap-2 cursor-pointer shadow-lg"
-                    >
-                      <span>Next Chapter</span>
-                      <ChevronRight className="w-4 h-4" />
-                    </button>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
             </div>
           </div>
         </div>
