@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Zap, Lightbulb, Sparkles, Eye, Plus, X } from "lucide-react";
 
 export function SolarPowerSwitchShowcase() {
-  const [isPowered, setIsPowered] = useState(true);
+  const [isPowered, setIsPowered] = useState(false);
   const [activeHotspot, setActiveHotspot] = useState<string | null>(null);
 
   const hotspots = [
