@@ -8,6 +8,7 @@ import { TrustHighlights } from "@/components/home/TrustHighlights";
 import { ServicesOverview } from "@/components/home/ServicesOverview";
 import { WhyUsSection } from "@/components/home/WhyUsSection";
 import { ProcessTimeline } from "@/components/home/ProcessTimeline";
+import { SolarInstallationVideoSection } from "@/components/home/SolarInstallationVideoSection";
 import { SolarEstimator } from "@/components/home/SolarEstimator";
 import { BrandsSection } from "@/components/home/BrandsSection";
 import { ResidentialCommercialPanels } from "@/components/home/ResidentialCommercialPanels";
@@ -64,6 +65,7 @@ export default function HomePage() {
         <ServicesOverview />
         <WhyUsSection />
         <ProcessTimeline />
+        <SolarInstallationVideoSection />
         <SolarEstimator />
         <BrandsSection />
         <ResidentialCommercialPanels />

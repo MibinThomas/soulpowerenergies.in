@@ -58,20 +58,20 @@ export function ContactForm() {
   };
 
   return (
-    <div className="p-6 sm:p-10 rounded-3xl nestive-card shadow-2xl space-y-6" id="assessment">
-      <div className="space-y-1 pb-4 border-b border-white/15">
-        <h2 className="text-2xl sm:text-3xl font-normal font-serif italic text-white">
+    <div className="p-6 sm:p-10 rounded-3xl nestive-card border border-[#EADBC8]/20 shadow-2xl space-y-6" id="assessment">
+      <div className="space-y-1 pb-4 border-b border-[#EADBC8]/15">
+        <h2 className="text-2xl sm:text-3xl font-normal font-serif italic text-[#F5EFE6]">
           Request a Free Site Assessment
         </h2>
-        <p className="text-xs text-white/70">
+        <p className="text-xs text-[#EADBC8]/70">
           Fill out the form below to receive a personalized solar or EV feasibility evaluation for your property.
         </p>
       </div>
 
       {/* Success Notification */}
       {submitSuccess && (
-        <div className="p-4 rounded-2xl bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 text-sm flex items-start gap-3">
-          <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+        <div className="p-4 rounded-2xl bg-[#E5BA73]/15 border border-[#E5BA73]/40 text-[#E5BA73] text-sm flex items-start gap-3">
+          <CheckCircle2 className="w-5 h-5 text-[#E5BA73] shrink-0 mt-0.5" />
           <div className="space-y-1">
             <span className="font-bold">Request Submitted Successfully!</span>
             <p className="text-xs">{submitSuccess}</p>
@@ -97,60 +97,60 @@ export function ContactForm() {
         {/* Full Name & Phone */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1.5">
-            <label className="text-xs font-bold uppercase tracking-wider text-amber-300">
-              Full Name <span className="text-amber-300">*</span>
+            <label className="text-xs font-bold uppercase tracking-wider text-[#E5BA73]">
+              Full Name <span className="text-[#E5BA73]">*</span>
             </label>
             <input
               type="text"
               placeholder="e.g. Anjali Nair"
               {...register("fullName")}
-              className={`w-full px-4 py-2.5 rounded-xl border text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-amber-300 ${
-                errors.fullName ? "border-red-400 bg-red-950/20" : "border-white/20 bg-black/20"
+              className={`w-full px-4 py-2.5 rounded-xl border text-sm text-[#F5EFE6] placeholder:text-[#EADBC8]/40 focus:outline-none focus:ring-2 focus:ring-[#E5BA73] ${
+                errors.fullName ? "border-red-400 bg-red-950/20" : "border-[#EADBC8]/20 bg-[#0C0E12]/60"
               }`}
             />
-            {errors.fullName && <p className="text-[11px] text-amber-300 font-semibold">{errors.fullName.message}</p>}
+            {errors.fullName && <p className="text-[11px] text-[#E5BA73] font-semibold">{errors.fullName.message}</p>}
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-xs font-bold uppercase tracking-wider text-amber-300">
-              Phone Number <span className="text-amber-300">*</span>
+            <label className="text-xs font-bold uppercase tracking-wider text-[#E5BA73]">
+              Phone Number <span className="text-[#E5BA73]">*</span>
             </label>
             <input
               type="tel"
               placeholder="e.g. +91 98765 43210"
               {...register("phone")}
-              className={`w-full px-4 py-2.5 rounded-xl border text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-amber-300 ${
-                errors.phone ? "border-red-400 bg-red-950/20" : "border-white/20 bg-black/20"
+              className={`w-full px-4 py-2.5 rounded-xl border text-sm text-[#F5EFE6] placeholder:text-[#EADBC8]/40 focus:outline-none focus:ring-2 focus:ring-[#E5BA73] ${
+                errors.phone ? "border-red-400 bg-red-950/20" : "border-[#EADBC8]/20 bg-[#0C0E12]/60"
               }`}
             />
-            {errors.phone && <p className="text-[11px] text-amber-300 font-semibold">{errors.phone.message}</p>}
+            {errors.phone && <p className="text-[11px] text-[#E5BA73] font-semibold">{errors.phone.message}</p>}
           </div>
         </div>
 
         {/* Email & Customer Type */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1.5">
-            <label className="text-xs font-bold uppercase tracking-wider text-amber-300">
-              Email Address <span className="text-amber-300">*</span>
+            <label className="text-xs font-bold uppercase tracking-wider text-[#E5BA73]">
+              Email Address <span className="text-[#E5BA73]">*</span>
             </label>
             <input
               type="email"
               placeholder="e.g. name@example.com"
               {...register("email")}
-              className={`w-full px-4 py-2.5 rounded-xl border text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-amber-300 ${
-                errors.email ? "border-red-400 bg-red-950/20" : "border-white/20 bg-black/20"
+              className={`w-full px-4 py-2.5 rounded-xl border text-sm text-[#F5EFE6] placeholder:text-[#EADBC8]/40 focus:outline-none focus:ring-2 focus:ring-[#E5BA73] ${
+                errors.email ? "border-red-400 bg-red-950/20" : "border-[#EADBC8]/20 bg-[#0C0E12]/60"
               }`}
             />
-            {errors.email && <p className="text-[11px] text-amber-300 font-semibold">{errors.email.message}</p>}
+            {errors.email && <p className="text-[11px] text-[#E5BA73] font-semibold">{errors.email.message}</p>}
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-xs font-bold uppercase tracking-wider text-amber-300">
-              Customer Type <span className="text-amber-300">*</span>
+            <label className="text-xs font-bold uppercase tracking-wider text-[#E5BA73]">
+              Customer Type <span className="text-[#E5BA73]">*</span>
             </label>
             <select
               {...register("customerType")}
-              className="w-full px-4 py-2.5 rounded-xl border border-white/20 bg-[#6F746A] text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-300"
+              className="w-full px-4 py-2.5 rounded-xl border border-[#EADBC8]/20 bg-[#131722] text-[#F5EFE6] text-sm focus:outline-none focus:ring-2 focus:ring-[#E5BA73]"
             >
               <option value="residential">Residential Homeowner</option>
               <option value="commercial">Commercial Business / Office</option>
@@ -162,12 +162,12 @@ export function ContactForm() {
         {/* Required Service & Property Location */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1.5">
-            <label className="text-xs font-bold uppercase tracking-wider text-amber-300">
-              Required Service <span className="text-amber-300">*</span>
+            <label className="text-xs font-bold uppercase tracking-wider text-[#E5BA73]">
+              Required Service <span className="text-[#E5BA73]">*</span>
             </label>
             <select
               {...register("requiredService")}
-              className="w-full px-4 py-2.5 rounded-xl border border-white/20 bg-[#6F746A] text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-300"
+              className="w-full px-4 py-2.5 rounded-xl border border-[#EADBC8]/20 bg-[#131722] text-[#F5EFE6] text-sm focus:outline-none focus:ring-2 focus:ring-[#E5BA73]"
             >
               {servicesData.map((s) => (
                 <option key={s.id} value={s.title}>
@@ -178,42 +178,42 @@ export function ContactForm() {
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-xs font-bold uppercase tracking-wider text-amber-300">
-              Property Location <span className="text-amber-300">*</span>
+            <label className="text-xs font-bold uppercase tracking-wider text-[#E5BA73]">
+              Property Location <span className="text-[#E5BA73]">*</span>
             </label>
             <input
               type="text"
               placeholder="e.g. Thiruvambady, Kozhikode"
               {...register("propertyLocation")}
-              className={`w-full px-4 py-2.5 rounded-xl border text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-amber-300 ${
-                errors.propertyLocation ? "border-red-400 bg-red-950/20" : "border-white/20 bg-black/20"
+              className={`w-full px-4 py-2.5 rounded-xl border text-sm text-[#F5EFE6] placeholder:text-[#EADBC8]/40 focus:outline-none focus:ring-2 focus:ring-[#E5BA73] ${
+                errors.propertyLocation ? "border-red-400 bg-red-950/20" : "border-[#EADBC8]/20 bg-[#0C0E12]/60"
               }`}
             />
-            {errors.propertyLocation && <p className="text-[11px] text-amber-300 font-semibold">{errors.propertyLocation.message}</p>}
+            {errors.propertyLocation && <p className="text-[11px] text-[#E5BA73] font-semibold">{errors.propertyLocation.message}</p>}
           </div>
         </div>
 
         {/* Monthly Bill & Preferred Contact Method */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1.5">
-            <label className="text-xs font-bold uppercase tracking-wider text-amber-300">
+            <label className="text-xs font-bold uppercase tracking-wider text-[#E5BA73]">
               Avg. Monthly Bill (₹)
             </label>
             <input
               type="number"
               placeholder="e.g. 4500"
               {...register("monthlyBill")}
-              className="w-full px-4 py-2.5 rounded-xl border border-white/20 bg-black/20 text-white placeholder:text-white/40 text-sm focus:outline-none focus:ring-2 focus:ring-amber-300"
+              className="w-full px-4 py-2.5 rounded-xl border border-[#EADBC8]/20 bg-[#0C0E12]/60 text-[#F5EFE6] placeholder:text-[#EADBC8]/40 text-sm focus:outline-none focus:ring-2 focus:ring-[#E5BA73]"
             />
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-xs font-bold uppercase tracking-wider text-amber-300">
-              Preferred Contact Method <span className="text-amber-300">*</span>
+            <label className="text-xs font-bold uppercase tracking-wider text-[#E5BA73]">
+              Preferred Contact Method <span className="text-[#E5BA73]">*</span>
             </label>
             <select
               {...register("preferredContact")}
-              className="w-full px-4 py-2.5 rounded-xl border border-white/20 bg-[#6F746A] text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-300"
+              className="w-full px-4 py-2.5 rounded-xl border border-[#EADBC8]/20 bg-[#131722] text-[#F5EFE6] text-sm focus:outline-none focus:ring-2 focus:ring-[#E5BA73]"
             >
               <option value="phone">Phone Call</option>
               <option value="whatsapp">WhatsApp Message</option>
@@ -224,14 +224,14 @@ export function ContactForm() {
 
         {/* Message */}
         <div className="space-y-1.5">
-          <label className="text-xs font-bold uppercase tracking-wider text-amber-300">
+          <label className="text-xs font-bold uppercase tracking-wider text-[#E5BA73]">
             Additional Message / Project Details
           </label>
           <textarea
             rows={3}
             placeholder="Tell us about your rooftop area, specific energy needs, or preferred site visit timing..."
             {...register("message")}
-            className="w-full px-4 py-2.5 rounded-xl border border-white/20 bg-black/20 text-white placeholder:text-white/40 text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 resize-none"
+            className="w-full px-4 py-2.5 rounded-xl border border-[#EADBC8]/20 bg-[#0C0E12]/60 text-[#F5EFE6] placeholder:text-[#EADBC8]/40 text-sm focus:outline-none focus:ring-2 focus:ring-[#E5BA73] resize-none"
           />
         </div>
 
@@ -241,18 +241,18 @@ export function ContactForm() {
             <input
               type="checkbox"
               {...register("consent")}
-              className="mt-1 w-4 h-4 text-amber-300 rounded border-white/30 accent-amber-300"
+              className="mt-1 w-4 h-4 text-[#E5BA73] rounded border-[#EADBC8]/30 accent-[#E5BA73]"
             />
-            <span className="text-xs text-white/80 leading-normal">
+            <span className="text-xs text-[#EADBC8]/80 leading-normal">
               I consent to Soul Power Energies contacting me regarding this site assessment request.
             </span>
           </label>
-          {errors.consent && <p className="text-[11px] text-amber-300 font-semibold">{errors.consent.message}</p>}
+          {errors.consent && <p className="text-[11px] text-[#E5BA73] font-semibold">{errors.consent.message}</p>}
         </div>
 
         {/* Submit Button */}
         <div className="pt-2">
-          <Button variant="primary" size="lg" type="submit" disabled={isSubmitting} className="w-full justify-center bg-white text-slate-900 hover:bg-amber-100 font-bold border-none rounded-xl shadow-xl py-3.5">
+          <Button variant="primary" size="lg" type="submit" disabled={isSubmitting} className="w-full justify-center font-bold rounded-xl shadow-xl py-3.5">
             {isSubmitting ? (
               <>
                 <Loader2 className="w-5 h-5 animate-spin" />
@@ -260,7 +260,7 @@ export function ContactForm() {
               </>
             ) : (
               <>
-                <Send className="w-5 h-5 text-slate-900" />
+                <Send className="w-5 h-5 text-[#0C0E12]" />
                 <span>Submit Site Assessment Request</span>
               </>
             )}

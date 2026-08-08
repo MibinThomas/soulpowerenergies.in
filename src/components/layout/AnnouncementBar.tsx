@@ -6,10 +6,10 @@ export function AnnouncementBar() {
   const hasWhatsapp = Boolean(siteConfig.contact.whatsapp);
 
   return (
-    <div className="hidden sm:block bg-[#6F746A] text-white text-xs py-1.5 px-4 border-b border-white/10">
+    <div className="hidden sm:block bg-[#131722] text-[#EADBC8] text-xs py-1.5 px-4 border-b border-[#EADBC8]/12">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 text-center sm:text-left">
         <div className="flex items-center gap-2 truncate">
-          <ShieldCheck className="w-3.5 h-3.5 text-amber-300 shrink-0" />
+          <ShieldCheck className="w-3.5 h-3.5 text-[#E5BA73] shrink-0" />
           <span className="truncate">
             Authorized Partner of Virgin Power & Engineering <span className="hidden sm:inline">| Kozhikode & Wayanad</span>
           </span>
@@ -19,9 +19,9 @@ export function AnnouncementBar() {
           {hasPhone && (
             <a
               href={`tel:${siteConfig.contact.phone}`}
-              className="flex items-center gap-1 hover:text-amber-300 transition-colors"
+              className="flex items-center gap-1 hover:text-[#E5BA73] transition-colors"
             >
-              <Phone className="w-3 h-3 text-amber-300" />
+              <Phone className="w-3 h-3 text-[#E5BA73]" />
               <span>{siteConfig.contact.phone}</span>
             </a>
           )}
@@ -30,9 +30,9 @@ export function AnnouncementBar() {
               href={`https://wa.me/${siteConfig.contact.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 hover:text-emerald-300 transition-colors"
+              className="flex items-center gap-1 hover:text-[#E5BA73] transition-colors"
             >
-              <MessageCircle className="w-3 h-3 text-emerald-300" />
+              <MessageCircle className="w-3 h-3 text-[#E5BA73]" />
               <span>WhatsApp</span>
             </a>
           )}

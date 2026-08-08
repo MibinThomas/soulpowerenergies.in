@@ -13,25 +13,25 @@ export default function PrivacyPolicyPage() {
   return (
     <>
       <Header />
-      <main id="main-content" className="flex-1 bg-[#888D83] text-white py-16">
+      <main id="main-content" className="flex-1 bg-[#0C0E12] text-[#F5EFE6] py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-          <div className="border-b border-white/15 pb-6 space-y-2">
-            <h1 className="text-3xl sm:text-5xl font-normal font-serif italic text-white">
+          <div className="border-b border-[#EADBC8]/15 pb-6 space-y-2">
+            <h1 className="text-3xl sm:text-5xl font-normal font-serif italic text-[#F5EFE6]">
               Privacy Policy
             </h1>
-            <p className="text-xs text-amber-300">Last updated: August 2026</p>
+            <p className="text-xs text-[#E5BA73]">Last updated: August 2026</p>
           </div>
 
-          <div className="p-8 sm:p-10 rounded-3xl nestive-card space-y-6 text-sm text-white/90 leading-relaxed shadow-2xl">
+          <div className="p-8 sm:p-10 rounded-3xl nestive-card border border-[#EADBC8]/15 space-y-6 text-sm text-[#F5EFE6]/90 leading-relaxed shadow-2xl">
             <p>
               At <strong>Soul Power Energies</strong> (&ldquo;we&rdquo;, &ldquo;our&rdquo;, &ldquo;us&rdquo;), we are committed to respecting your privacy and protecting the personal data shared with us. This Privacy Policy outlines how we collect, use, and safeguard your information when you visit our website or submit an enquiry for solar or EV charging services.
             </p>
 
-            <h2 className="text-xl font-normal font-serif italic text-amber-300 pt-2">1. Information We Collect</h2>
+            <h2 className="text-xl font-normal font-serif italic text-[#E5BA73] pt-2">1. Information We Collect</h2>
             <p>
               When you fill out our contact or site assessment enquiry form, we may collect:
             </p>
-            <ul className="list-disc pl-6 space-y-1 text-white/80">
+            <ul className="list-disc pl-6 space-y-1 text-[#EADBC8]/80">
               <li>Full Name</li>
               <li>Phone Number & WhatsApp contact details</li>
               <li>Email Address</li>
@@ -39,25 +39,25 @@ export default function PrivacyPolicyPage() {
               <li>Services requested and preferred contact methods</li>
             </ul>
 
-            <h2 className="text-xl font-normal font-serif italic text-amber-300 pt-2">2. How We Use Your Information</h2>
+            <h2 className="text-xl font-normal font-serif italic text-[#E5BA73] pt-2">2. How We Use Your Information</h2>
             <p>We collect and process your information solely for legitimate business purposes:</p>
-            <ul className="list-disc pl-6 space-y-1 text-white/80">
+            <ul className="list-disc pl-6 space-y-1 text-[#EADBC8]/80">
               <li>To evaluate rooftop solar feasibility and schedule requested on-ground site assessments</li>
               <li>To contact you via phone, WhatsApp, or email regarding your enquiry</li>
               <li>To provide customer support and service updates in Kozhikode and Wayanad</li>
             </ul>
 
-            <h2 className="text-xl font-normal font-serif italic text-amber-300 pt-2">3. Partnership & Data Protection</h2>
+            <h2 className="text-xl font-normal font-serif italic text-[#E5BA73] pt-2">3. Partnership & Data Protection</h2>
             <p>
               As an authorized partner of {siteConfig.partner.fullName}, technical site assessment data may be reviewed internally with our engineering team for component sizing and system design. We do not sell, rent, or lease your personal information to third-party marketers.
             </p>
 
-            <h2 className="text-xl font-normal font-serif italic text-amber-300 pt-2">4. Data Security</h2>
+            <h2 className="text-xl font-normal font-serif italic text-[#E5BA73] pt-2">4. Data Security</h2>
             <p>
               We implement appropriate technical security measures to protect your submitted payload against unauthorized access, alteration, or disclosure.
             </p>
 
-            <h2 className="text-xl font-normal font-serif italic text-amber-300 pt-2">5. Contact Us</h2>
+            <h2 className="text-xl font-normal font-serif italic text-[#E5BA73] pt-2">5. Contact Us</h2>
             <p>
               If you have any questions regarding this Privacy Policy, please contact our team at <strong>Thiruvambady, Kozhikode, Kerala</strong>.
             </p>

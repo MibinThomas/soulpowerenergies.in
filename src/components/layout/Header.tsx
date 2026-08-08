@@ -44,7 +44,7 @@ export function Header() {
         className={`w-full transition-all duration-300 ${
           isScrolled
             ? "nestive-nav py-3 shadow-xl"
-            : "bg-[#888D83]/90 backdrop-blur-md py-4"
+            : "bg-[#0C0E12]/90 backdrop-blur-md py-4 border-b border-[#EADBC8]/10"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -52,18 +52,18 @@ export function Header() {
           <Logo variant="dark" showTagline={!isScrolled} />
 
           {/* Desktop Nestive Dot Navigation */}
-          <nav className="hidden md:flex items-center gap-2 text-xs sm:text-sm font-medium text-white/80" aria-label="Main Navigation">
+          <nav className="hidden md:flex items-center gap-2 text-xs sm:text-sm font-medium text-[#EADBC8]/90" aria-label="Main Navigation">
             {mainNav.map((item, idx) => {
               const isActive = pathname === item.href;
               return (
                 <div key={item.href} className="flex items-center gap-2">
-                  {idx > 0 && <span className="text-white/40 font-bold">•</span>}
+                  {idx > 0 && <span className="text-[#E5BA73]/50 font-bold">•</span>}
                   <Link
                     href={item.href}
-                    className={`transition-colors py-1 px-2 rounded-lg ${
+                    className={`transition-colors py-1 px-2.5 rounded-lg ${
                       isActive
-                        ? "text-white font-bold underline underline-offset-4 decoration-amber-400"
-                        : "hover:text-white hover:bg-white/10"
+                        ? "text-[#F5EFE6] font-bold underline underline-offset-4 decoration-[#E5BA73]"
+                        : "hover:text-[#F5EFE6] hover:bg-[#EADBC8]/10"
                     }`}
                   >
                     {item.title}
@@ -76,7 +76,7 @@ export function Header() {
           {/* Right Action Actions */}
           <div className="flex items-center gap-2 sm:gap-3">
             <Link href="/contact#assessment" className="hidden sm:inline-block">
-              <Button variant="primary" size="md" className="shadow-lg bg-white text-slate-900 hover:bg-amber-100 border-none font-bold rounded-xl px-5 text-sm py-2">
+              <Button variant="primary" size="md" className="shadow-lg font-bold rounded-xl px-5 text-sm py-2">
                 Site Assessment
               </Button>
             </Link>
@@ -84,7 +84,7 @@ export function Header() {
             {/* Mobile Drawer Trigger */}
             <button
               onClick={handleOpen}
-              className="md:hidden p-2 rounded-xl border border-white/25 bg-white/15 text-white hover:bg-white/25 focus:outline-none cursor-pointer"
+              className="md:hidden p-2 rounded-xl border border-[#EADBC8]/25 bg-[#EADBC8]/10 text-[#F5EFE6] hover:bg-[#EADBC8]/20 focus:outline-none cursor-pointer"
               aria-label="Open navigation menu"
             >
               <Menu className="w-5 h-5" />

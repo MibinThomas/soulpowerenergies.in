@@ -55,18 +55,18 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-y-0 right-0 z-50 w-full max-w-xs sm:max-w-sm bg-[#888D83] text-white shadow-2xl flex flex-col justify-between p-6 overflow-y-auto border-l border-white/20"
+            className="fixed inset-y-0 right-0 z-50 w-full max-w-xs sm:max-w-sm bg-[#0C0E12] text-[#F5EFE6] shadow-2xl flex flex-col justify-between p-6 overflow-y-auto border-l border-[#EADBC8]/20"
             role="dialog"
             aria-modal="true"
             aria-label="Navigation Menu"
           >
             <div>
               {/* Header inside drawer */}
-              <div className="flex items-center justify-between pb-6 border-b border-white/15">
+              <div className="flex items-center justify-between pb-6 border-b border-[#EADBC8]/15">
                 <Logo variant="dark" />
                 <button
                   onClick={onClose}
-                  className="p-2.5 rounded-xl border border-white/20 bg-white/15 text-white hover:bg-white/25 focus:outline-none cursor-pointer"
+                  className="p-2.5 rounded-xl border border-[#EADBC8]/20 bg-[#EADBC8]/10 text-[#F5EFE6] hover:bg-[#EADBC8]/20 focus:outline-none cursor-pointer"
                   aria-label="Close menu"
                 >
                   <X className="w-5 h-5" />
@@ -83,8 +83,8 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
                       href={item.href}
                       className={`flex items-center justify-between p-3.5 rounded-2xl text-base font-semibold transition-all ${
                         isActive
-                          ? "bg-white text-slate-900 shadow-md font-bold"
-                          : "text-white hover:bg-white/15 nestive-card"
+                          ? "bg-[#E5BA73] text-[#0C0E12] shadow-md font-bold"
+                          : "text-[#F5EFE6] hover:bg-[#EADBC8]/10 nestive-card border border-[#EADBC8]/12"
                       }`}
                     >
                       <span className="font-heading">{item.title}</span>
@@ -95,28 +95,28 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
               </nav>
 
               {/* Trust Badge */}
-              <div className="mt-8 p-4 rounded-2xl nestive-card border border-white/25 text-xs text-white space-y-2">
-                <div className="flex items-center gap-2 text-amber-300 font-bold">
+              <div className="mt-8 p-4 rounded-2xl nestive-card border border-[#EADBC8]/20 text-xs text-[#F5EFE6] space-y-2">
+                <div className="flex items-center gap-2 text-[#E5BA73] font-bold">
                   <ShieldCheck className="w-4 h-4" />
                   <span>Authorized Virgin Power Partner</span>
                 </div>
-                <div className="flex items-center gap-2 text-white/80">
-                  <MapPin className="w-3.5 h-3.5 text-emerald-300" />
+                <div className="flex items-center gap-2 text-[#EADBC8]/80">
+                  <MapPin className="w-3.5 h-3.5 text-[#E5BA73]" />
                   <span>Serving Kozhikode & Wayanad</span>
                 </div>
               </div>
             </div>
 
             {/* CTA in Mobile Drawer */}
-            <div className="mt-8 pt-6 border-t border-white/15 space-y-3">
+            <div className="mt-8 pt-6 border-t border-[#EADBC8]/15 space-y-3">
               <Link href="/contact#assessment" onClick={onClose} className="block w-full">
-                <Button variant="primary" size="lg" className="w-full justify-between bg-white text-slate-900 hover:bg-amber-100 font-bold border-none rounded-xl shadow-xl">
+                <Button variant="primary" size="lg" className="w-full justify-between font-bold rounded-xl shadow-xl">
                   <span>Request Site Assessment</span>
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
 
-              <p className="text-center text-[11px] text-white/70">
+              <p className="text-center text-[11px] text-[#EADBC8]/70">
                 Thiruvambady, Kozhikode, Kerala
               </p>
             </div>

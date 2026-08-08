@@ -15,18 +15,18 @@ export function AccordionItem({ id, question, answer, defaultOpen = false }: Acc
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <div className="border border-white/20 rounded-2xl nestive-card overflow-hidden shadow-lg transition-all hover:border-white/40">
+    <div className="border border-[#EADBC8]/15 rounded-2xl nestive-card overflow-hidden shadow-xl transition-all hover:border-[#E5BA73]/40">
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         aria-controls={`accordion-content-${id}`}
         id={`accordion-button-${id}`}
-        className="w-full flex items-center justify-between p-5 text-left font-medium text-white text-base sm:text-lg focus:outline-none rounded-2xl cursor-pointer hover:text-amber-300 transition-colors group"
+        className="w-full flex items-center justify-between p-5 text-left font-medium text-[#F5EFE6] text-base sm:text-lg focus:outline-none rounded-2xl cursor-pointer hover:text-[#E5BA73] transition-colors group"
       >
         <span className="pr-4 font-heading">{question}</span>
         <ChevronDown
-          className={`w-5 h-5 text-amber-300 shrink-0 transition-transform duration-300 ${
-            isOpen ? "rotate-180 text-amber-400" : ""
+          className={`w-5 h-5 text-[#E5BA73] shrink-0 transition-transform duration-300 ${
+            isOpen ? "rotate-180 text-[#F0C987]" : ""
           }`}
         />
       </button>
@@ -43,7 +43,7 @@ export function AccordionItem({ id, question, answer, defaultOpen = false }: Acc
             transition={{ duration: 0.25, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="px-5 pb-5 pt-3 text-white/80 text-sm sm:text-base leading-relaxed border-t border-white/15">
+            <div className="px-5 pb-5 pt-3 text-[#EADBC8]/90 text-sm sm:text-base leading-relaxed border-t border-[#EADBC8]/15">
               {answer}
             </div>
           </motion.div>

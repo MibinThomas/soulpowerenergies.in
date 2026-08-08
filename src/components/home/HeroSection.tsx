@@ -34,9 +34,9 @@ function TypewriterSubtitle() {
   }, [charIndex, isDeleting, textIndex]);
 
   return (
-    <span className="not-italic font-sans text-amber-300 font-bold inline-flex items-center">
+    <span className="not-italic font-sans text-[#E5BA73] font-bold inline-flex items-center">
       <span>{phrases[textIndex].substring(0, charIndex)}</span>
-      <span className="animate-pulse ml-1 text-amber-300 font-extralight">|</span>
+      <span className="animate-pulse ml-1 text-[#E5BA73] font-extralight">|</span>
     </span>
   );
 }
@@ -71,10 +71,10 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#888D83] text-white pt-4 sm:pt-10 pb-10 sm:pb-20">
+    <section className="relative overflow-hidden bg-[#0C0E12] text-[#F5EFE6] pt-4 sm:pt-10 pb-10 sm:pb-20">
       {/* Background Soft Ambient Studio Glows */}
-      <div className="absolute top-1/4 right-5 sm:right-10 w-[280px] sm:w-[520px] h-[280px] sm:h-[520px] bg-amber-400/15 rounded-full blur-[90px] sm:blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-5 left-5 sm:left-10 w-[220px] sm:w-[420px] h-[220px] sm:h-[420px] bg-white/5 rounded-full blur-[80px] sm:blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/4 right-5 sm:right-10 w-[280px] sm:w-[520px] h-[280px] sm:h-[520px] bg-[#E5BA73]/10 rounded-full blur-[90px] sm:blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-5 left-5 sm:left-10 w-[220px] sm:w-[420px] h-[220px] sm:h-[420px] bg-[#F5EFE6]/5 rounded-full blur-[80px] sm:blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8 sm:space-y-14">
         {/* Main Hero Grid */}
@@ -88,15 +88,15 @@ export function HeroSection() {
             className="lg:col-span-6 space-y-5 sm:space-y-7 text-left"
           >
             {/* Social Proof Trust Badge (Hidden on Mobile) */}
-            <motion.div variants={itemVariants} className="hidden sm:inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full nestive-pill text-xs text-white/90 max-w-full">
+            <motion.div variants={itemVariants} className="hidden sm:inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full nestive-pill text-xs text-[#EADBC8] border border-[#EADBC8]/20 max-w-full">
               <div className="flex -space-x-2 shrink-0">
-                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-amber-400 border-2 border-[#888D83] flex items-center justify-center text-[9px] sm:text-[10px] font-bold text-slate-950">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#E5BA73] border-2 border-[#0C0E12] flex items-center justify-center text-[9px] sm:text-[10px] font-bold text-[#0C0E12]">
                   SP
                 </div>
-                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-sky-400 border-2 border-[#888D83] flex items-center justify-center text-[9px] sm:text-[10px] font-bold text-slate-950">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#EADBC8] border-2 border-[#0C0E12] flex items-center justify-center text-[9px] sm:text-[10px] font-bold text-[#0C0E12]">
                   VP
                 </div>
-                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-emerald-400 border-2 border-[#888D83] flex items-center justify-center text-[9px] sm:text-[10px] font-bold text-slate-950">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#D4A860] border-2 border-[#0C0E12] flex items-center justify-center text-[9px] sm:text-[10px] font-bold text-[#0C0E12]">
                   ★
                 </div>
               </div>
@@ -105,13 +105,13 @@ export function HeroSection() {
 
             {/* SEO-Optimized Headline Hierarchy with Larger Font & Typewriter Animation */}
             <motion.div variants={itemVariants} className="space-y-3">
-              <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl text-white italic font-normal tracking-tight leading-[1.08]">
+              <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl text-[#F5EFE6] italic font-normal tracking-tight leading-[1.08]">
                 Power Your Home <br className="hidden sm:inline" />
                 <TypewriterSubtitle />
               </h1>
               
               {/* Short & Impactful Value Prop */}
-              <p className="text-sm sm:text-lg text-white/85 max-w-xl leading-relaxed">
+              <p className="text-sm sm:text-lg text-[#EADBC8]/90 max-w-xl leading-relaxed">
                 Zero grid dependence. Custom rooftop solar & EV charging systems engineered for Kozhikode & Wayanad.
               </p>
             </motion.div>
@@ -119,32 +119,32 @@ export function HeroSection() {
             {/* Conversion CTA Pill Button */}
             <motion.div variants={itemVariants} className="pt-1 sm:pt-2">
               <Link href="/contact#assessment" className="inline-block">
-                <button className="inline-flex items-center gap-3 p-1.5 pr-6 rounded-full nestive-pill bg-white/15 hover:bg-white/25 border border-white/30 transition-all group cursor-pointer shadow-lg shadow-black/10">
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white text-slate-900 flex items-center justify-center font-bold shadow-md group-hover:scale-105 transition-transform">
-                    <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500 fill-amber-400" />
+                <button className="inline-flex items-center gap-3 p-1.5 pr-6 rounded-full nestive-pill bg-[#E5BA73]/15 hover:bg-[#E5BA73]/25 border border-[#E5BA73]/40 transition-all group cursor-pointer shadow-lg shadow-black/20">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#E5BA73] text-[#0C0E12] flex items-center justify-center font-bold shadow-md group-hover:scale-105 transition-transform">
+                    <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-[#0C0E12] fill-[#0C0E12]" />
                   </div>
-                  <span className="text-xs sm:text-sm font-bold tracking-wider uppercase text-white">
+                  <span className="text-xs sm:text-sm font-bold tracking-wider uppercase text-[#F5EFE6]">
                     CONNECT YOUR SPACE
                   </span>
-                  <ArrowRight className="w-4 h-4 text-white/80 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 text-[#EADBC8] group-hover:translate-x-1 transition-transform" />
                 </button>
               </Link>
             </motion.div>
 
             {/* Desktop Step Cards (01 - 04) */}
-            <motion.div variants={itemVariants} className="hidden sm:grid grid-cols-4 gap-3 pt-4 border-t border-white/15">
+            <motion.div variants={itemVariants} className="hidden sm:grid grid-cols-4 gap-3 pt-4 border-t border-[#EADBC8]/15">
               {steps.map((step) => (
                 <div
                   key={step.num}
-                  className="p-3 rounded-2xl nestive-card space-y-1.5 hover:border-white/40 transition-colors"
+                  className="p-3 rounded-2xl nestive-card space-y-1.5 hover:border-[#E5BA73]/40 transition-colors"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-amber-300 font-mono">{step.num}</span>
-                    <CheckCircle2 className="w-3.5 h-3.5 text-white/50" />
+                    <span className="text-xs font-bold text-[#E5BA73] font-mono">{step.num}</span>
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#EADBC8]/60" />
                   </div>
                   <div>
-                    <h2 className="text-xs font-bold text-white font-heading">{step.label}</h2>
-                    <p className="text-[10px] text-white/60">{step.desc}</p>
+                    <h2 className="text-xs font-bold text-[#F5EFE6] font-heading">{step.label}</h2>
+                    <p className="text-[10px] text-[#EADBC8]/60">{step.desc}</p>
                   </div>
                 </div>
               ))}
@@ -168,12 +168,12 @@ export function HeroSection() {
             {steps.map((step) => (
               <div
                 key={step.num}
-                className="p-2.5 rounded-xl nestive-card flex items-center gap-2 border border-white/20"
+                className="p-2.5 rounded-xl nestive-card flex items-center gap-2 border border-[#EADBC8]/20"
               >
-                <span className="text-[11px] font-bold text-amber-300 font-mono shrink-0">{step.num}</span>
+                <span className="text-[11px] font-bold text-[#E5BA73] font-mono shrink-0">{step.num}</span>
                 <div className="truncate">
-                  <span className="text-xs font-bold text-white block truncate">{step.label}</span>
-                  <span className="text-[10px] text-white/60 block truncate">{step.desc}</span>
+                  <span className="text-xs font-bold text-[#F5EFE6] block truncate">{step.label}</span>
+                  <span className="text-[10px] text-[#EADBC8]/60 block truncate">{step.desc}</span>
                 </div>
               </div>
             ))}

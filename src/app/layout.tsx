@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit, Plus_Jakarta_Sans, Instrument_Serif } from "next/font/google";
 import "./globals.css";
+import { PopUpContactModal } from "@/components/modals/PopUpContactModal";
 
 const fontHeading = Outfit({
   variable: "--font-heading",
@@ -39,10 +40,11 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className="min-h-full flex flex-col bg-[#868B80] text-white selection:bg-amber-300 selection:text-slate-950 font-sans"
+        className="min-h-full flex flex-col bg-[#0C0E12] text-[#F5EFE6] selection:bg-[#E5BA73] selection:text-[#0C0E12] font-sans"
         suppressHydrationWarning
       >
         {children}
+        <PopUpContactModal />
       </body>
     </html>
   );
