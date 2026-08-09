@@ -11,6 +11,7 @@ export interface ServiceItem {
   customerProblem: string;
   solutionOverview: string;
   iconName: string;
+  bgImage: string;
   suitableFor: string[];
   keyFeatures: string[];
   processSteps: { title: string; desc: string }[];
@@ -33,6 +34,7 @@ export const servicesData: ServiceItem[] = [
     solutionOverview:
       "We design efficient grid-tied solar rooftop systems using high-tier solar panels and reliable inverters, converting abundant sunlight into clean, free power for your household appliances.",
     iconName: "Sun",
+    bgImage: "/images/residential-solar.png",
     suitableFor: [
       "Independent Villas & Bungalows",
       "Residential Independent Homes",
@@ -74,6 +76,7 @@ export const servicesData: ServiceItem[] = [
     solutionOverview:
       "Engineering high-capacity commercial solar systems that directly power day-to-day operations, lower daytime peak power charges, and provide predictable energy economics.",
     iconName: "Building2",
+    bgImage: "/images/commercial-solar.png",
     suitableFor: [
       "Commercial Office Buildings",
       "Factories & Manufacturing Plants",
@@ -116,6 +119,7 @@ export const servicesData: ServiceItem[] = [
     solutionOverview:
       "We deliver safe, certified EV charger installations with proper earthing, protective breakers, and load management for seamless daily charging.",
     iconName: "Zap",
+    bgImage: "/images/ev-charging.png",
     suitableFor: [
       "Private Residential Garages",
       "Apartment Complexes & Gated Communities",
@@ -158,6 +162,7 @@ export const servicesData: ServiceItem[] = [
     solutionOverview:
       "Routine professional cleaning and preventive technical check-ups that restore clean light absorption and catch issues early.",
     iconName: "Sparkles",
+    bgImage: "/images/maintenance.png",
     suitableFor: [
       "Existing Residential Solar Systems",
       "Commercial Rooftop Solar Arrays",
@@ -199,6 +204,7 @@ export const servicesData: ServiceItem[] = [
     solutionOverview:
       "A specialized renewable solution leveraging direct solar power supplementation for HVAC equipment to flatten cooling-driven peak power spikes.",
     iconName: "Wind",
+    bgImage: "/images/hero.png",
     suitableFor: [
       "Commercial Offices & Corporate Workspaces",
       "Hospitality Suites & Resorts",
@@ -239,6 +245,7 @@ export const servicesData: ServiceItem[] = [
     solutionOverview:
       "Upcoming Lithium-ion battery storage architectures integrated with hybrid inverters for uninterruptible backup power.",
     iconName: "BatteryCharging",
+    bgImage: "/images/virgin-power-partner.png",
     suitableFor: [
       "Homes needing emergency night backup",
       "Commercial premises with critical load continuity needs",

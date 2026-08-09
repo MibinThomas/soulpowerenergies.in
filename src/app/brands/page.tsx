@@ -28,17 +28,17 @@ export default function BrandsPage() {
   return (
     <>
       <Header />
-      <main id="main-content" className="flex-1 bg-[#0C0E12] text-[#F5EFE6]">
+      <main id="main-content" className="flex-1 bg-[#000000] text-[#F5EFE6]">
         {/* Page Hero */}
         <section className="py-16 lg:py-24 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4 text-center">
-            <Badge variant="gold" className="px-3.5 py-1 nestive-pill text-[#E5BA73]">
+            <Badge variant="gold" className="px-3.5 py-1 nestive-pill bg-[#0C0E12] text-[#E5BA73] border border-white/10">
               Technology Directory
             </Badge>
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-normal font-serif italic tracking-tight text-[#F5EFE6]">
               Brands & Solar Technology Selection
             </h1>
-            <p className="text-base sm:text-lg text-[#EADBC8]/80 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-[#EADBC8] max-w-3xl mx-auto leading-relaxed font-medium">
               We install Tier-1 solar photovoltaic panels, string inverters, and certified EV charging hardware engineered for optimal climate performance in Kerala.
             </p>
           </div>
@@ -47,7 +47,7 @@ export default function BrandsPage() {
         {/* Quality Standards Banner */}
         <section className="py-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="p-8 rounded-3xl nestive-card border border-[#EADBC8]/15 text-[#F5EFE6] flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+            <div className="p-8 rounded-3xl nestive-card bg-[#0C0E12] border border-white/10 text-[#F5EFE6] flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-[#E5BA73] font-bold text-sm">
                   <ShieldCheck className="w-5 h-5" />
@@ -56,13 +56,13 @@ export default function BrandsPage() {
                 <h2 className="text-xl sm:text-2xl font-normal font-serif italic text-[#F5EFE6]">
                   Tier-1 Hardware & Engineering Support
                 </h2>
-                <p className="text-xs text-[#EADBC8]/80 max-w-2xl leading-relaxed">
+                <p className="text-xs text-[#EADBC8] max-w-2xl leading-relaxed font-medium">
                   All component selections adhere to rigorous efficiency and durability parameters. Engineering and execution standards supported by Virgin Power and Engineering Pvt. Ltd.
                 </p>
               </div>
 
               <Link href="/contact#assessment" className="shrink-0">
-                <Button variant="primary" size="md" className="font-bold rounded-xl shadow-lg">
+                <Button variant="primary" size="md" className="font-black rounded-xl shadow-lg bg-gradient-to-r from-[#D97706] via-[#B45309] to-[#D97706] text-white">
                   <span>Enquire Brand Specs</span>
                   <ArrowRight className="w-4 h-4" />
                 </Button>
@@ -89,11 +89,11 @@ export default function BrandsPage() {
                   onClick={() => setActiveCategory(tab.id)}
                   className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${
                     isActive
-                      ? "bg-[#E5BA73] text-[#0C0E12] shadow-md font-bold"
-                      : "nestive-card text-[#F5EFE6] hover:bg-[#EADBC8]/20 border border-[#EADBC8]/15"
+                      ? "bg-gradient-to-r from-[#D97706] to-[#B45309] text-white shadow-md font-black"
+                      : "nestive-card bg-[#0C0E12] text-[#F5EFE6] hover:bg-[#131722] border border-white/10"
                   }`}
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="w-4 h-4 text-[#E5BA73]" />
                   <span>{tab.label}</span>
                 </button>
               );
@@ -105,7 +105,7 @@ export default function BrandsPage() {
             {filteredBrands.map((brand, idx) => (
               <div
                 key={idx}
-                className="p-8 rounded-3xl nestive-card border border-[#EADBC8]/15 shadow-md flex flex-col justify-between space-y-6"
+                className="p-8 rounded-3xl nestive-card bg-[#0C0E12] border border-white/10 shadow-xl flex flex-col justify-between space-y-6"
               >
                 <div className="space-y-4">
                   {/* Top Category Badge */}
@@ -113,7 +113,7 @@ export default function BrandsPage() {
                     <span className="text-[11px] font-bold uppercase tracking-wider text-[#E5BA73]">
                       {brand.categoryLabel}
                     </span>
-                    <Badge variant="gold" className="text-[10px] nestive-pill text-[#E5BA73]">
+                    <Badge variant="gold" className="text-[10px] nestive-pill bg-[#131722] text-[#E5BA73] border border-white/10">
                       {brand.origin}
                     </Badge>
                   </div>
@@ -123,20 +123,20 @@ export default function BrandsPage() {
                     {brand.name}
                   </h2>
 
-                  <p className="text-sm text-[#EADBC8]/80 leading-relaxed">
+                  <p className="text-sm text-[#EADBC8] leading-relaxed font-medium">
                     {brand.description}
                   </p>
 
-                  <div className="p-3.5 rounded-xl bg-[#0C0E12]/60 border border-[#EADBC8]/15 text-xs text-[#F5EFE6] font-semibold flex items-center gap-2">
+                  <div className="p-3.5 rounded-xl bg-[#131722] border border-white/10 text-xs text-[#F5EFE6] font-semibold flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[#E5BA73] shrink-0" />
                     <span>{brand.keyHighlight}</span>
                   </div>
                 </div>
 
                 {/* Action Link */}
-                <div className="pt-4 border-t border-[#EADBC8]/15 flex flex-col gap-3">
+                <div className="pt-4 border-t border-white/10 flex flex-col gap-3">
                   <Link href={`/contact#assessment?brand=${encodeURIComponent(brand.name)}`}>
-                    <Button variant="primary" size="sm" className="w-full justify-between text-xs font-bold rounded-xl">
+                    <Button variant="primary" size="sm" className="w-full justify-between text-xs font-black rounded-xl bg-gradient-to-r from-[#D97706] via-[#B45309] to-[#D97706] text-white">
                       <span>Enquire System With {brand.name}</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Button>

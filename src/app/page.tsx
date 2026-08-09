@@ -7,7 +7,6 @@ import { HeroSection } from "@/components/home/HeroSection";
 import { TrustHighlights } from "@/components/home/TrustHighlights";
 import { ServicesOverview } from "@/components/home/ServicesOverview";
 import { WhyUsSection } from "@/components/home/WhyUsSection";
-import { ProcessTimeline } from "@/components/home/ProcessTimeline";
 import { SolarInstallationVideoSection } from "@/components/home/SolarInstallationVideoSection";
 import { SolarEstimator } from "@/components/home/SolarEstimator";
 import { BrandsSection } from "@/components/home/BrandsSection";
@@ -64,7 +63,6 @@ export default function HomePage() {
         <TrustHighlights />
         <ServicesOverview />
         <WhyUsSection />
-        <ProcessTimeline />
         <SolarInstallationVideoSection />
         <SolarEstimator />
         <BrandsSection />

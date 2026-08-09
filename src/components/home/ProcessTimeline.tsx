@@ -12,14 +12,57 @@ import {
   HeartHandshake,
   ChevronLeft,
   ChevronRight,
-  BookOpen,
   CheckCircle2,
   Sparkles,
   Maximize2,
   X,
   Info,
-  Layers,
+  Volume2,
 } from "lucide-react";
+
+function playPageFlipSound() {
+  try {
+    const AudioCtx =
+      window.AudioContext ||
+      (window as unknown as { webkitAudioContext: typeof window.AudioContext }).webkitAudioContext;
+    if (!AudioCtx) return;
+    const ctx = new AudioCtx();
+
+    // Synthesize realistic paper page flip audio using filtered noise & gain envelope
+    const bufferSize = Math.floor(ctx.sampleRate * 0.35); // 350ms flip
+    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < bufferSize; i++) {
+      data[i] = Math.random() * 2 - 1; // White noise
+    }
+
+    const noise = ctx.createBufferSource();
+    noise.buffer = buffer;
+
+    // Filter to simulate crisp paper texture sweep
+    const filter = ctx.createBiquadFilter();
+    filter.type = "bandpass";
+    filter.frequency.setValueAtTime(550, ctx.currentTime);
+    filter.frequency.exponentialRampToValueAtTime(3200, ctx.currentTime + 0.15);
+    filter.frequency.exponentialRampToValueAtTime(380, ctx.currentTime + 0.35);
+    filter.Q.setValueAtTime(1.6, ctx.currentTime);
+
+    // Gain envelope (soft attack, paper rustle, release)
+    const gain = ctx.createGain();
+    gain.gain.setValueAtTime(0.01, ctx.currentTime);
+    gain.gain.linearRampToValueAtTime(0.35, ctx.currentTime + 0.08);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+
+    noise.connect(filter);
+    filter.connect(gain);
+    gain.connect(ctx.destination);
+
+    noise.start();
+    noise.stop(ctx.currentTime + 0.35);
+  } catch {
+    // Ignore audio policy restrictions
+  }
+}
 
 export function ProcessTimeline() {
   const [activeStep, setActiveStep] = useState(0);
@@ -120,6 +163,7 @@ export function ProcessTimeline() {
 
   const handleNext = () => {
     if (isFlipping) return;
+    playPageFlipSound();
     setIsFlipping(true);
     setDirection("next");
     setActiveStep((prev) => (prev < steps.length - 1 ? prev + 1 : 0));
@@ -129,6 +173,7 @@ export function ProcessTimeline() {
 
   const handlePrev = () => {
     if (isFlipping) return;
+    playPageFlipSound();
     setIsFlipping(true);
     setDirection("prev");
     setActiveStep((prev) => (prev > 0 ? prev - 1 : steps.length - 1));
@@ -138,6 +183,7 @@ export function ProcessTimeline() {
 
   const goToStep = (idx: number) => {
     if (isFlipping || idx === activeStep) return;
+    playPageFlipSound();
     setIsFlipping(true);
     setDirection(idx > activeStep ? "next" : "prev");
     setActiveStep(idx);
@@ -146,40 +192,40 @@ export function ProcessTimeline() {
   };
 
   return (
-    <section className="py-20 bg-[#0C0E12] text-[#F5EFE6] relative overflow-hidden" id="process">
+    <section className="py-20 bg-[#FBF9F5] text-[#1C1917] relative overflow-hidden" id="process">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <Badge variant="gold" className="px-3.5 py-1 nestive-pill text-[#E5BA73]">
+          <Badge variant="gold" className="px-3.5 py-1 nestive-pill bg-[#F5EFE6] text-[#D97706] border border-[#E6DEC8]">
             Step-by-Step Journey
           </Badge>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal font-serif italic tracking-tight text-[#F5EFE6]">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal font-serif italic tracking-tight text-[#1C1917]">
             3D Interactive Execution Booklet
           </h2>
-          <p className="text-sm sm:text-base text-[#EADBC8]/80 leading-relaxed">
-            Turn through our engineering protocol portfolio with realistic 3D rolling page transitions detailing every milestone.
+          <p className="text-sm sm:text-base text-[#44403C] leading-relaxed font-medium">
+            Turn through our engineering protocol portfolio with realistic 3D rolling page transitions and audio page flip sound detailing every milestone.
           </p>
         </div>
 
         {/* Outer 3D Perspective Book Viewport */}
-        <div className="relative max-w-6xl mx-auto [perspective:1600px]">
+        <div className="relative max-w-6xl mx-auto [perspective:1800px]">
           
           {/* Top Chapter Tabs (Ribbon Index Markers) */}
-          <div className="flex items-center justify-center overflow-x-auto scrollbar-none gap-2 mb-3 px-2">
+          <div className="flex items-center justify-center overflow-x-auto scrollbar-none gap-2 mb-4 px-2">
             {steps.map((s, idx) => {
               const isActive = activeStep === idx;
               return (
                 <button
                   key={s.number}
                   onClick={() => goToStep(idx)}
-                  className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-2 border ${
+                  className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-2.5 border ${
                     isActive
-                      ? "bg-[#E5BA73] text-[#0C0E12] border-[#E5BA73] shadow-[0_0_20px_rgba(229,186,115,0.4)] scale-105"
-                      : "bg-[#131722]/80 text-[#EADBC8]/70 border-[#EADBC8]/20 hover:text-[#F5EFE6] hover:bg-[#EADBC8]/10"
+                      ? "bg-[#D97706] text-white border-[#D97706] shadow-lg scale-105 font-black"
+                      : "bg-[#FFFFFF] text-[#44403C] border-[#E6DEC8] hover:text-[#1C1917] hover:bg-[#F5EFE6]"
                   }`}
                 >
-                  <span className={`w-4 h-4 rounded-full text-[10px] font-mono flex items-center justify-center ${isActive ? "bg-[#0C0E12] text-[#E5BA73]" : "bg-[#EADBC8]/20 text-[#EADBC8]"}`}>
+                  <span className={`w-4 h-4 rounded-full text-[10px] font-mono flex items-center justify-center font-bold ${isActive ? "bg-white text-[#D97706]" : "bg-[#F5EFE6] text-[#44403C]"}`}>
                     {s.number}
                   </span>
                   <span>{s.chapterTitle}</span>
@@ -188,23 +234,23 @@ export function ProcessTimeline() {
             })}
           </div>
 
-          {/* Hardcover Book Spine & Page Stacks Container */}
-          <div className="relative rounded-3xl bg-[#0C0E12] border-2 border-[#EADBC8]/25 shadow-[0_30px_70px_rgba(0,0,0,0.95)] p-2 sm:p-4 [transform-style:preserve-3d]">
+          {/* Luxury Hardcover Book Spine & Page Stacks Container */}
+          <div className="relative rounded-3xl bg-[#0D1117] border-2 border-[#D97706]/40 shadow-[0_35px_90px_rgba(0,0,0,0.35)] p-2 sm:p-4 [transform-style:preserve-3d]">
             
             {/* Paper Edges Stack Effect (Bottom & Right) */}
-            <div className="absolute -bottom-2 right-6 left-6 h-3 bg-gradient-to-b from-[#EADBC8]/20 to-[#EADBC8]/5 rounded-b-xl border-b border-[#EADBC8]/10 pointer-events-none" />
-            <div className="absolute -right-2 top-6 bottom-6 w-3 bg-gradient-to-r from-[#EADBC8]/20 to-[#EADBC8]/5 rounded-r-xl border-r border-[#EADBC8]/10 pointer-events-none" />
+            <div className="absolute -bottom-2 right-6 left-6 h-3 bg-gradient-to-b from-[#EADBC8]/30 via-[#F5EFE6]/20 to-[#EADBC8]/10 rounded-b-xl border-b border-[#EADBC8]/20 pointer-events-none" />
+            <div className="absolute -right-2 top-6 bottom-6 w-3 bg-gradient-to-r from-[#EADBC8]/30 via-[#F5EFE6]/20 to-[#EADBC8]/10 rounded-r-xl border-r border-[#EADBC8]/20 pointer-events-none" />
 
             {/* Book Body (Open 2-Page Spread) */}
-            <div className="relative rounded-2xl bg-[#131722] border border-[#EADBC8]/15 overflow-hidden grid grid-cols-1 lg:grid-cols-2 min-h-[540px]">
+            <div className="relative rounded-2xl bg-[#131722] border border-[#EADBC8]/20 overflow-hidden grid grid-cols-1 lg:grid-cols-2 min-h-[550px] [transform-style:preserve-3d]">
               
               {/* Central Spine Binding Crease Shadow (Desktop) */}
-              <div className="hidden lg:block absolute inset-y-0 left-1/2 -translate-x-1/2 w-16 bg-gradient-to-r from-black/70 via-black/20 to-black/70 pointer-events-none z-30 shadow-inner" />
+              <div className="hidden lg:block absolute inset-y-0 left-1/2 -translate-x-1/2 w-16 bg-gradient-to-r from-black/60 via-black/20 to-black/60 pointer-events-none z-40 shadow-inner" />
 
               {/* ======================================================== */}
               {/* LEFT PAGE: Visual Proof & Interactive Photo              */}
               {/* ======================================================== */}
-              <div className="p-6 sm:p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-[#EADBC8]/15 bg-[#0C0E12]/80 relative z-10">
+              <div className="p-6 sm:p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-[#EADBC8]/15 bg-[#0A0D14]/90 relative z-10">
                 
                 {/* Header Watermark */}
                 <div className="flex items-center justify-between text-[11px] font-bold text-[#E5BA73] mb-4">
@@ -215,15 +261,15 @@ export function ProcessTimeline() {
                 </div>
 
                 {/* Photo Frame Container */}
-                <div className="relative w-full h-64 sm:h-80 lg:h-96 rounded-2xl overflow-hidden border border-[#EADBC8]/25 shadow-2xl bg-[#0C0E12]">
+                <div className="relative w-full h-64 sm:h-80 lg:h-96 rounded-2xl overflow-hidden border border-[#EADBC8]/25 shadow-2xl bg-[#080A0E]">
                   <Image
                     src={current.image}
                     alt={current.title}
                     fill
                     priority
-                    className="object-cover filter brightness-90 group-hover:scale-105 transition-transform duration-700"
+                    className="object-cover filter brightness-100 group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0C0E12] via-transparent to-transparent opacity-60" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#080A0E]/30 via-transparent to-transparent opacity-35" />
 
                   {/* Hotspot Pins overlaid on Image */}
                   {current.hotspots.map((hs) => {
@@ -256,7 +302,7 @@ export function ProcessTimeline() {
                             >
                               <div className="flex items-center justify-between font-bold text-[#E5BA73] mb-1">
                                 <span>{hs.title}</span>
-                                <X className="w-3.5 h-3.5 cursor-pointer" onClick={() => setActiveHotspot(null)} />
+                                <X className="w-3.5 h-3.5 cursor-pointer text-[#EADBC8]" onClick={() => setActiveHotspot(null)} />
                               </div>
                               <p className="text-[11px] text-[#EADBC8]/80 leading-snug">{hs.desc}</p>
                             </motion.div>
@@ -269,14 +315,14 @@ export function ProcessTimeline() {
                   {/* Expand Image Button */}
                   <button
                     onClick={() => setIsImageExpanded(true)}
-                    className="absolute bottom-3 right-3 p-2 rounded-xl bg-[#0C0E12]/80 backdrop-blur-md border border-[#EADBC8]/20 text-[#E5BA73] hover:bg-[#E5BA73] hover:text-[#0C0E12] transition-all cursor-pointer z-10"
+                    className="absolute bottom-3 right-3 p-2 rounded-xl bg-[#080A0E]/80 backdrop-blur-md border border-[#EADBC8]/20 text-[#E5BA73] hover:bg-[#E5BA73] hover:text-[#0C0E12] transition-all cursor-pointer z-10 shadow-md"
                     aria-label="Expand step image"
                   >
                     <Maximize2 className="w-4 h-4" />
                   </button>
                 </div>
 
-                <div className="mt-4 flex items-center justify-between text-xs text-[#EADBC8]/60 font-mono">
+                <div className="mt-4 flex items-center justify-between text-xs text-[#EADBC8]/60 font-mono font-semibold">
                   <span>PLATE 0{current.number} — SITE PHOTO</span>
                   <span className="text-[#E5BA73] font-bold">CLICK PINS TO INSPECT</span>
                 </div>
@@ -287,24 +333,25 @@ export function ProcessTimeline() {
               {/* ======================================================== */}
               <div className="p-6 sm:p-8 flex flex-col justify-between space-y-6 relative z-10 bg-[#131722] overflow-hidden">
                 
-                {/* 3D Flipping Rolling Page Overlay Animation Layer */}
+                {/* 3D Realistic Rolling Page Turn Motion */}
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeStep}
                     initial={{
-                      rotateY: direction === "next" ? 90 : -90,
+                      rotateY: direction === "next" ? 95 : -95,
                       opacity: 0,
                       transformOrigin: direction === "next" ? "left center" : "right center",
+                      boxShadow: "0 25px 50px rgba(0,0,0,0.6)",
                     }}
                     animate={{
                       rotateY: 0,
                       opacity: 1,
-                      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+                      transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
                     }}
                     exit={{
-                      rotateY: direction === "next" ? -90 : 90,
+                      rotateY: direction === "next" ? -95 : 95,
                       opacity: 0,
-                      transition: { duration: 0.5, ease: "easeInOut" },
+                      transition: { duration: 0.55, ease: [0.55, 0, 1, 0.45] },
                     }}
                     className="h-full flex flex-col justify-between space-y-6 [transform-style:preserve-3d]"
                   >
@@ -328,7 +375,7 @@ export function ProcessTimeline() {
                           </div>
                         </div>
 
-                        <Badge variant="gold" className="nestive-pill text-xs font-mono shrink-0">
+                        <Badge variant="gold" className="nestive-pill text-xs font-mono shrink-0 text-[#E5BA73]">
                           PAGE 0{current.number} / 05
                         </Badge>
                       </div>
@@ -339,7 +386,7 @@ export function ProcessTimeline() {
                       </p>
 
                       {/* Key Technical Deliverables Checklist */}
-                      <div className="space-y-3 bg-[#0C0E12]/60 p-4 rounded-2xl border border-[#EADBC8]/15">
+                      <div className="space-y-3 bg-[#080A0E]/70 p-4 rounded-2xl border border-[#EADBC8]/15">
                         <span className="text-xs font-bold text-[#E5BA73] uppercase tracking-wider block font-heading mb-2">
                           Key Technical Deliverables:
                         </span>
@@ -357,37 +404,38 @@ export function ProcessTimeline() {
                       <button
                         onClick={handlePrev}
                         disabled={isFlipping}
-                        className="px-4 py-2.5 rounded-xl border border-[#EADBC8]/20 bg-[#0C0E12] text-[#F5EFE6] hover:border-[#E5BA73] hover:text-[#E5BA73] text-xs font-bold transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50"
+                        className="px-4 py-2.5 rounded-xl border border-[#EADBC8]/20 bg-[#080A0E] text-[#F5EFE6] hover:border-[#E5BA73] hover:text-[#E5BA73] text-xs font-bold transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50"
                       >
                         <ChevronLeft className="w-4 h-4" />
                         <span>Previous Page</span>
                       </button>
 
-                      <span className="text-xs font-bold text-[#EADBC8]/60 font-mono hidden sm:inline">
-                        PAGE {activeStep + 1} OF 5
+                      <span className="text-xs font-bold text-[#EADBC8]/70 font-mono hidden sm:flex items-center gap-1.5">
+                        <Volume2 className="w-3.5 h-3.5 text-[#E5BA73]" />
+                        <span>PAGE {activeStep + 1} OF 5</span>
                       </span>
 
                       <button
                         onClick={handleNext}
                         disabled={isFlipping}
-                        className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#E5BA73] via-[#F0C987] to-[#EADBC8] text-[#0C0E12] font-black text-xs transition-all hover:scale-105 flex items-center gap-2 cursor-pointer shadow-lg disabled:opacity-50"
+                        className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#D97706] via-[#B45309] to-[#D97706] text-white font-black text-xs transition-all hover:scale-105 flex items-center gap-2 cursor-pointer shadow-lg disabled:opacity-50"
                       >
                         <span>Next Page</span>
-                        <ChevronRight className="w-4 h-4" />
+                        <ChevronRight className="w-4 h-4 text-white" />
                       </button>
                     </div>
                   </motion.div>
                 </AnimatePresence>
 
-                {/* 3D Realistic Corner Curl Hit-Zone (Click Corner to Turn Page) */}
+                {/* 3D Realistic Corner Curl Hit-Zone with Page Turn Sound */}
                 <div
                   onClick={handleNext}
-                  className="absolute bottom-0 right-0 w-16 h-16 cursor-pointer group z-30"
+                  className="absolute bottom-0 right-0 w-16 h-16 cursor-pointer group z-40"
                   title="Click corner to flip to next page"
                 >
-                  <div className="absolute bottom-0 right-0 w-0 h-0 border-b-[40px] border-b-[#E5BA73]/80 border-l-[40px] border-l-transparent group-hover:border-b-[#F5EFE6] transition-all filter drop-shadow-md" />
-                  <span className="absolute bottom-1 right-1 text-[8px] font-bold text-[#0C0E12] uppercase tracking-tighter pointer-events-none">
-                    FLIP
+                  <div className="absolute bottom-0 right-0 w-0 h-0 border-b-[44px] border-b-[#E5BA73] border-l-[44px] border-l-transparent group-hover:border-b-[#F5EFE6] group-hover:scale-110 transition-all filter drop-shadow-xl" />
+                  <span className="absolute bottom-1 right-1 text-[8px] font-black text-[#0C0E12] uppercase tracking-tighter pointer-events-none">
+                    FLIP 📄
                   </span>
                 </div>
               </div>
@@ -399,23 +447,23 @@ export function ProcessTimeline() {
       {/* Expanded Image Fullscreen Modal */}
       <AnimatePresence>
         {isImageExpanded && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0C0E12]/90 backdrop-blur-2xl">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#080A0E]/90 backdrop-blur-2xl">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              className="relative w-full max-w-4xl h-[70vh] rounded-3xl overflow-hidden border border-[#E5BA73]/40 shadow-2xl bg-[#0C0E12]"
+              className="relative w-full max-w-4xl h-[70vh] rounded-3xl overflow-hidden border border-[#E5BA73]/40 shadow-2xl bg-[#080A0E]"
             >
               <button
                 onClick={() => setIsImageExpanded(false)}
-                className="absolute top-4 right-4 p-2.5 rounded-full bg-[#0C0E12]/80 border border-[#EADBC8]/30 text-[#F5EFE6] hover:bg-[#E5BA73] hover:text-[#0C0E12] transition-all z-20 cursor-pointer"
+                className="absolute top-4 right-4 p-2.5 rounded-full bg-[#080A0E]/80 border border-[#EADBC8]/30 text-[#F5EFE6] hover:bg-[#E5BA73] hover:text-[#0C0E12] transition-all z-20 cursor-pointer shadow-md"
               >
                 <X className="w-6 h-6" />
               </button>
 
               <Image src={current.image} alt={current.title} fill className="object-contain p-4" />
 
-              <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-[#131722]/90 backdrop-blur-md border border-[#EADBC8]/20 text-[#F5EFE6] text-xs font-bold flex items-center justify-between">
+              <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-[#131722]/90 backdrop-blur-md border border-[#EADBC8]/20 text-[#F5EFE6] text-xs font-bold flex items-center justify-between shadow-lg">
                 <span>{current.title} — Detailed Inspection View</span>
                 <span className="text-[#E5BA73]">STEP 0{current.number}</span>
               </div>

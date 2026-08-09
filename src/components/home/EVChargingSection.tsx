@@ -1,171 +1,140 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { siteImages } from "@/config/images";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { Zap, ShieldCheck, ArrowRight, Home, Building, Car, Sparkles } from "lucide-react";
+import { Zap, ShieldCheck, CheckCircle2, ArrowRight } from "lucide-react";
 
 export function EVChargingSection() {
-  const [activeUseCase, setActiveUseCase] = useState<number>(0);
+  const [activeType, setActiveType] = useState<"home" | "commercial" | "public">("home");
 
-  const useCases = [
-    {
-      icon: Home,
-      title: "Private Residential Garages",
-      desc: "Compact 7.4 kW to 11 kW AC wallbox installations for independent homes, enabling fast overnight charging.",
+  const useCases = {
+    home: {
+      title: "Home Wallbox Chargers (7.4kW - 11kW)",
+      desc: "Compact single-phase & three-phase wallbox chargers installed directly in your garage or carport for safe overnight EV charging.",
+      features: [
+        "Dynamic load balance with household power draw",
+        "Dedicated RCD residual current circuit breaker",
+        "IP65 weather-proof outdoor enclosure rating",
+      ],
     },
-    {
-      icon: Building,
-      title: "Apartments & Gated Communities",
-      desc: "Multi-user charging hubs with individual metering, smart access control, and dedicated safety distribution.",
+    commercial: {
+      title: "Commercial Fleet & Workplace Chargers (11kW - 22kW)",
+      desc: "Multi-port AC charging pedestals for office premises, employee parking, and resort guest charging.",
+      features: [
+        "RFID card & smartphone app access control",
+        "Billing integration for commercial premises",
+        "Dual-socket simultaneous fast AC charging",
+      ],
     },
-    {
-      icon: Car,
-      title: "Workplaces & Corporate Offices",
-      desc: "Provide EV charging amenities for employees and clients during business hours with reliable load management.",
+    public: {
+      title: "DC Fast Charging Infrastructure (30kW - 60kW+)",
+      desc: "Turnkey DC fast charging station setup for highway stops, commercial hubs, and public parking stations.",
+      features: [
+        "CCS2 & CHAdeMO dual-gun fast charging",
+        "Grid transformer & HT panel integration",
+        "24/7 remote monitoring SLA support",
+      ],
     },
-    {
-      icon: Sparkles,
-      title: "Commercial & Retail Outlets",
-      desc: "Attract high-value EV drivers to hotels, resorts, shopping centers, and restaurants with fast charging points.",
-    },
-  ];
+  };
+
+  const currentCase = useCases[activeType];
 
   return (
-    <section className="py-20 bg-[#0C0E12] text-[#F5EFE6] relative overflow-hidden" id="ev-charging">
+    <section className="py-20 bg-[#000000] text-[#F5EFE6] relative" id="ev-charging">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Column: Heading & Use Case Selector */}
-          <motion.div
-            initial={{ opacity: 0, x: -24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-6 space-y-6"
-          >
-            <Badge variant="navy" className="nestive-pill text-[#E5BA73]">
-              <Zap className="w-3.5 h-3.5 text-[#E5BA73]" />
-              <span>Electric Vehicle Infrastructure</span>
-            </Badge>
+        <div className="rounded-3xl nestive-card bg-[#0C0E12] border border-white/10 p-8 sm:p-12 shadow-2xl overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
+            {/* Left Copy Column */}
+            <div className="lg:col-span-6 space-y-6">
+              <Badge variant="gold" className="px-3.5 py-1 nestive-pill bg-[#131722] text-[#E5BA73] border border-white/10">
+                E-Mobility Infrastructure
+              </Badge>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal font-serif italic text-[#F5EFE6] tracking-tight leading-tight">
-              Prepare Your Property For Electric Mobility
-            </h2>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal font-serif italic text-[#F5EFE6] tracking-tight leading-tight">
+                Electric Vehicle Charging Station Solutions
+              </h2>
 
-            <p className="text-base text-[#EADBC8]/80 leading-relaxed">
-              Soul Power Energies installs certified EV charging chargers (including VE Charge systems) for homes, apartments, commercial facilities, and parking premises across Kozhikode and Wayanad.
-            </p>
+              <p className="text-base text-[#EADBC8] leading-relaxed font-medium">
+                Soul Power Energies delivers turnkey AC and DC electric vehicle charger installations for private homes, commercial complexes, and public parking hubs across Kerala.
+              </p>
 
-            {/* Interactive Use Case Tabs */}
-            <div className="space-y-3 pt-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#EADBC8]/80 block">
-                Select Use Case Application:
-              </span>
-              <div className="space-y-2">
-                {useCases.map((uc, idx) => {
-                  const Icon = uc.icon;
-                  const isSelected = activeUseCase === idx;
-                  return (
-                    <button
-                      key={idx}
-                      onClick={() => setActiveUseCase(idx)}
-                      className={`w-full p-4 rounded-2xl text-left transition-all duration-300 border flex items-center justify-between cursor-pointer ${
-                        isSelected
-                          ? "bg-[#E5BA73] text-[#0C0E12] border-[#E5BA73] shadow-xl"
-                          : "nestive-card text-[#F5EFE6] border-[#EADBC8]/20 hover:bg-[#EADBC8]/15"
-                      }`}
-                    >
-                      <div className="flex items-center gap-3">
-                        <div
-                          className={`p-2 rounded-xl border ${
-                            isSelected
-                              ? "bg-[#0C0E12] text-[#E5BA73] border-[#0C0E12]"
-                              : "bg-[#EADBC8]/15 border-[#EADBC8]/20 text-[#F5EFE6]"
-                          }`}
-                        >
-                          <Icon className="w-5 h-5" />
-                        </div>
-                        <span className="font-bold text-sm sm:text-base font-heading">{uc.title}</span>
-                      </div>
-                      <ArrowRight className={`w-4 h-4 transition-transform ${isSelected ? "translate-x-1 text-[#0C0E12]" : "opacity-40"}`} />
-                    </button>
-                  );
-                })}
+              {/* Use Case Tabs */}
+              <div className="flex flex-wrap gap-2 pt-2">
+                {(["home", "commercial", "public"] as const).map((type) => (
+                  <button
+                    key={type}
+                    onClick={() => setActiveType(type)}
+                    className={`px-4 py-2 rounded-xl text-xs font-bold capitalize transition-all cursor-pointer border ${
+                      activeType === type
+                        ? "bg-gradient-to-r from-[#D97706] to-[#B45309] text-white border-[#D97706] shadow-md font-black"
+                        : "bg-[#131722] text-[#F5EFE6] border-white/10 hover:bg-[#1A1F2C]"
+                    }`}
+                  >
+                    {type} Setup
+                  </button>
+                ))}
               </div>
-            </div>
 
-            <div className="pt-4">
-              <Link href="/solutions#ev-charging-station-installation">
-                <Button variant="primary" size="lg" className="w-full sm:w-auto font-bold rounded-xl shadow-xl">
-                  <span>Enquire EV Charger Setup</span>
-                  <ArrowRight className="w-5 h-5" />
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
+              {/* Dynamic Content Panel */}
+              <motion.div
+                key={activeType}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="p-6 rounded-2xl bg-[#131722] border border-white/10 space-y-4"
+              >
+                <h3 className="text-lg font-bold text-[#F5EFE6] font-heading">{currentCase.title}</h3>
+                <p className="text-xs text-[#EADBC8] leading-relaxed">{currentCase.desc}</p>
 
-          {/* Right Column: Interactive Charging Visual Animation Card */}
-          <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-6"
-          >
-            <div className="p-8 sm:p-10 rounded-3xl nestive-card text-[#F5EFE6] shadow-2xl space-y-8 relative overflow-hidden border border-[#EADBC8]/20">
-              {/* Animated Charge Pulse Header */}
-              <div className="flex items-center justify-between pb-6 border-b border-[#EADBC8]/15">
-                <div className="flex items-center gap-3">
-                  <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-[#EADBC8]/10 text-[#E5BA73] border border-[#EADBC8]/25">
-                    <Zap className="w-6 h-6 animate-pulse text-[#E5BA73]" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-[#F5EFE6] font-heading">
-                      {useCases[activeUseCase].title}
-                    </h3>
-                    <p className="text-xs text-[#E5BA73] font-semibold">VE Charge Partner Ecosystem</p>
-                  </div>
+                <div className="space-y-2 pt-2 border-t border-white/10">
+                  {currentCase.features.map((feat, i) => (
+                    <div key={i} className="flex items-center gap-2 text-xs text-[#F5EFE6] font-medium">
+                      <CheckCircle2 className="w-4 h-4 text-[#E5BA73] shrink-0" />
+                      <span>{feat}</span>
+                    </div>
+                  ))}
                 </div>
-                <span className="px-3 py-1 rounded-full nestive-pill text-[#E5BA73] text-xs font-mono font-bold animate-pulse">
-                  Ready to Install
-                </span>
+              </motion.div>
+
+              <div className="pt-2">
+                <Link href="/solutions#ev-charging-station-installation">
+                  <Button variant="primary" size="lg" className="w-full sm:w-auto font-black rounded-xl shadow-xl bg-gradient-to-r from-[#D97706] via-[#B45309] to-[#D97706] text-white">
+                    <span>Explore EV Solutions</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </Link>
               </div>
+            </div>
 
-              {/* Dynamic Description Box */}
-              <div className="p-6 rounded-2xl bg-[#EADBC8]/8 border border-[#EADBC8]/15 space-y-4">
-                <p className="text-sm text-[#EADBC8]/80 leading-relaxed">
-                  {useCases[activeUseCase].desc}
-                </p>
+            {/* Right Image Frame Column */}
+            <div className="lg:col-span-6 relative">
+              <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl h-[380px] sm:h-[460px] bg-[#000000]">
+                <Image
+                  src={siteImages.evCharging.src}
+                  alt={siteImages.evCharging.alt}
+                  fill
+                  className="object-cover filter brightness-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#000000]/80 via-transparent to-transparent" />
 
-                {/* Simulated Charger Status Indicators */}
-                <div className="pt-2 grid grid-cols-2 gap-3 text-xs">
-                  <div className="p-3 rounded-xl bg-[#EADBC8]/8 border border-[#EADBC8]/15 space-y-1">
-                    <span className="text-[#EADBC8]/60 text-[10px] uppercase font-bold">Electrical Safety</span>
-                    <p className="text-[#F5EFE6] font-semibold flex items-center gap-1.5">
-                      <ShieldCheck className="w-4 h-4 text-[#E5BA73]" /> Ground Fault Protected
-                    </p>
+                <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-[#000000]/90 backdrop-blur-md border border-white/15 text-[#F5EFE6] text-xs font-bold flex items-center justify-between shadow-xl">
+                  <div className="flex items-center gap-2 text-[#E5BA73]">
+                    <Zap className="w-4 h-4" />
+                    <span>VE Charge & Certified Wallbox Integration</span>
                   </div>
-                  <div className="p-3 rounded-xl bg-[#EADBC8]/8 border border-[#EADBC8]/15 space-y-1">
-                    <span className="text-[#EADBC8]/60 text-[10px] uppercase font-bold">Supported Output</span>
-                    <p className="text-[#E5BA73] font-bold font-mono">7.4kW / 11kW / 22kW+</p>
-                  </div>
+                  <ShieldCheck className="w-4 h-4 text-[#E5BA73]" />
                 </div>
               </div>
-
-              {/* Solar Integration Note */}
-              <div className="p-4 rounded-xl bg-[#E5BA73]/15 border border-[#E5BA73]/30 text-xs text-[#EADBC8] flex items-start gap-3">
-                <Zap className="w-4 h-4 text-[#E5BA73] shrink-0 mt-0.5" />
-                <span>
-                  <strong className="text-[#E5BA73]">Solar + EV Synergy: </strong> Charge your electric vehicle directly using zero-cost solar power generated from your rooftop solar panels during daytime hours.
-                </span>
-              </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
   );
 }
-

@@ -21,17 +21,17 @@ export default function ContactPage() {
   return (
     <>
       <Header />
-      <main id="main-content" className="flex-1 bg-[#0C0E12] text-[#F5EFE6]">
+      <main id="main-content" className="flex-1 bg-[#000000] text-[#F5EFE6]">
         {/* Page Hero */}
         <section className="py-16 lg:py-24 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4 text-center">
-            <Badge variant="gold" className="px-3.5 py-1 nestive-pill text-[#E5BA73]">
+            <Badge variant="gold" className="px-3.5 py-1 nestive-pill bg-[#0C0E12] text-[#E5BA73] border border-white/10">
               Get In Touch
             </Badge>
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-normal font-serif italic tracking-tight text-[#F5EFE6]">
               Contact Our Local Engineering Team
             </h1>
-            <p className="text-base sm:text-lg text-[#EADBC8]/80 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-[#EADBC8] max-w-3xl mx-auto leading-relaxed font-medium">
               Have questions about solar installation feasibility, EV chargers, or system sizing? We are here to assist you.
             </p>
           </div>
@@ -43,11 +43,11 @@ export default function ContactPage() {
             {/* Left Column: Contact Details & Info Placeholders */}
             <div className="lg:col-span-5 space-y-8">
               <div className="space-y-3">
-                <Badge variant="gold" className="px-3.5 py-1 nestive-pill text-[#E5BA73]">Thiruvambady HQ</Badge>
+                <Badge variant="gold" className="px-3.5 py-1 nestive-pill bg-[#0C0E12] text-[#E5BA73] border border-white/10">Thiruvambady HQ</Badge>
                 <h2 className="text-3xl font-normal font-serif italic text-[#F5EFE6]">
                   Local Office & Service Coverage
                 </h2>
-                <p className="text-sm text-[#EADBC8]/80 leading-relaxed">
+                <p className="text-sm text-[#EADBC8] leading-relaxed font-medium">
                   Our operations team manages site surveys, engineering installations, and after-sales support directly across Kozhikode and Wayanad.
                 </p>
               </div>
@@ -55,8 +55,8 @@ export default function ContactPage() {
               {/* Contact Information Cards */}
               <div className="space-y-4">
                 {/* Office Address */}
-                <div className="p-5 rounded-2xl nestive-card border border-[#EADBC8]/15 shadow-md flex items-start gap-4">
-                  <div className="p-3 rounded-xl bg-[#EADBC8]/10 text-[#E5BA73] border border-[#EADBC8]/20 shrink-0">
+                <div className="p-5 rounded-2xl nestive-card bg-[#0C0E12] border border-white/10 shadow-md flex items-start gap-4">
+                  <div className="p-3 rounded-xl bg-[#131722] text-[#E5BA73] border border-white/10 shrink-0">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div className="space-y-1">
@@ -64,14 +64,14 @@ export default function ContactPage() {
                     <h3 className="text-base font-bold text-[#F5EFE6] font-heading">
                       {siteConfig.contact.address.formatted}
                     </h3>
-                    <p className="text-xs text-[#EADBC8]/70">
+                    <p className="text-xs text-[#9CA3AF]">
                       Serving Kozhikode, Wayanad & surrounding regions
                     </p>
                     <a
                       href={siteConfig.contact.mapUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs text-[#E5BA73] hover:underline font-semibold pt-1"
+                      className="inline-flex items-center gap-1.5 text-xs text-[#E5BA73] hover:underline font-bold pt-1"
                     >
                       <MapPin className="w-3.5 h-3.5" />
                       <span>Open in Google Maps &rarr;</span>
@@ -80,8 +80,8 @@ export default function ContactPage() {
                 </div>
 
                 {/* Phone */}
-                <div className="p-5 rounded-2xl nestive-card border border-[#EADBC8]/15 shadow-md flex items-start gap-4">
-                  <div className="p-3 rounded-xl bg-[#EADBC8]/10 text-[#E5BA73] border border-[#EADBC8]/20 shrink-0">
+                <div className="p-5 rounded-2xl nestive-card bg-[#0C0E12] border border-white/10 shadow-md flex items-start gap-4">
+                  <div className="p-3 rounded-xl bg-[#131722] text-[#E5BA73] border border-white/10 shrink-0">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div className="space-y-1">
@@ -91,7 +91,7 @@ export default function ContactPage() {
                         {siteConfig.contact.phone}
                       </a>
                     ) : (
-                      <p className="text-sm font-semibold text-[#EADBC8]/70 italic">
+                      <p className="text-sm font-semibold text-[#9CA3AF] italic">
                         Phone contact details configuration
                       </p>
                     )}
@@ -99,8 +99,8 @@ export default function ContactPage() {
                 </div>
 
                 {/* Email */}
-                <div className="p-5 rounded-2xl nestive-card border border-[#EADBC8]/15 shadow-md flex items-start gap-4">
-                  <div className="p-3 rounded-xl bg-[#EADBC8]/10 text-[#E5BA73] border border-[#EADBC8]/20 shrink-0">
+                <div className="p-5 rounded-2xl nestive-card bg-[#0C0E12] border border-white/10 shadow-md flex items-start gap-4">
+                  <div className="p-3 rounded-xl bg-[#131722] text-[#E5BA73] border border-white/10 shrink-0">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div className="space-y-1">
@@ -110,7 +110,7 @@ export default function ContactPage() {
                         {siteConfig.contact.email}
                       </a>
                     ) : (
-                      <p className="text-sm font-semibold text-[#EADBC8]/70 italic">
+                      <p className="text-sm font-semibold text-[#9CA3AF] italic">
                         Email address configuration
                       </p>
                     )}
@@ -118,8 +118,8 @@ export default function ContactPage() {
                 </div>
 
                 {/* WhatsApp */}
-                <div className="p-5 rounded-2xl nestive-card border border-[#EADBC8]/15 shadow-md flex items-start gap-4">
-                  <div className="p-3 rounded-xl bg-[#EADBC8]/10 text-[#E5BA73] border border-[#EADBC8]/20 shrink-0">
+                <div className="p-5 rounded-2xl nestive-card bg-[#0C0E12] border border-white/10 shadow-md flex items-start gap-4">
+                  <div className="p-3 rounded-xl bg-[#131722] text-[#E5BA73] border border-white/10 shrink-0">
                     <MessageCircle className="w-5 h-5 text-[#E5BA73]" />
                   </div>
                   <div className="space-y-1">
@@ -134,7 +134,7 @@ export default function ContactPage() {
                         Click to chat on WhatsApp
                       </a>
                     ) : (
-                      <p className="text-sm font-semibold text-[#EADBC8]/70 italic">
+                      <p className="text-sm font-semibold text-[#9CA3AF] italic">
                         WhatsApp number configuration
                       </p>
                     )}
@@ -142,8 +142,8 @@ export default function ContactPage() {
                 </div>
 
                 {/* Business Hours */}
-                <div className="p-5 rounded-2xl nestive-card border border-[#EADBC8]/15 shadow-md flex items-start gap-4">
-                  <div className="p-3 rounded-xl bg-[#EADBC8]/10 text-[#E5BA73] border border-[#EADBC8]/20 shrink-0">
+                <div className="p-5 rounded-2xl nestive-card bg-[#0C0E12] border border-white/10 shadow-md flex items-start gap-4">
+                  <div className="p-3 rounded-xl bg-[#131722] text-[#E5BA73] border border-white/10 shrink-0">
                     <Clock className="w-5 h-5" />
                   </div>
                   <div className="space-y-1">
@@ -156,7 +156,7 @@ export default function ContactPage() {
               </div>
 
               {/* Partnership Banner */}
-              <div className="p-6 rounded-3xl nestive-card border border-[#EADBC8]/20 text-[#F5EFE6] space-y-3 shadow-lg">
+              <div className="p-6 rounded-3xl nestive-card bg-[#0C0E12] border border-white/10 text-[#F5EFE6] space-y-3 shadow-lg">
                 <div className="flex items-center gap-2 text-[#E5BA73] font-bold text-xs">
                   <ShieldCheck className="w-4 h-4" />
                   <span>Authorized Virgin Power Partner</span>

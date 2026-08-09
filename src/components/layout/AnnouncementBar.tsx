@@ -6,8 +6,8 @@ export function AnnouncementBar() {
   const hasWhatsapp = Boolean(siteConfig.contact.whatsapp);
 
   return (
-    <div className="hidden sm:block bg-[#131722] text-[#EADBC8] text-xs py-1.5 px-4 border-b border-[#EADBC8]/12">
-      <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 text-center sm:text-left">
+    <div className="hidden sm:block bg-[#0C0E12] text-[#EADBC8] text-xs py-1.5 px-4 border-b border-white/10">
+      <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 text-center sm:text-left font-medium">
         <div className="flex items-center gap-2 truncate">
           <ShieldCheck className="w-3.5 h-3.5 text-[#E5BA73] shrink-0" />
           <span className="truncate">
@@ -15,7 +15,7 @@ export function AnnouncementBar() {
           </span>
         </div>
 
-        <div className="hidden sm:flex items-center gap-4 text-xs font-medium">
+        <div className="hidden sm:flex items-center gap-4 text-xs font-semibold">
           {hasPhone && (
             <a
               href={`tel:${siteConfig.contact.phone}`}
@@ -37,7 +37,7 @@ export function AnnouncementBar() {
             </a>
           )}
           {!hasPhone && !hasWhatsapp && (
-            <span className="text-white/70 text-[11px]">
+            <span className="text-[#9CA3AF] text-[11px]">
               Thiruvambady, Kozhikode, Kerala
             </span>
           )}

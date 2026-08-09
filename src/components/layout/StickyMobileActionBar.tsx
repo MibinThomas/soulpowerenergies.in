@@ -12,7 +12,6 @@ import {
   FileText,
   X,
   MessageSquare,
-  Sparkles,
 } from "lucide-react";
 
 export function StickyMobileActionBar() {
@@ -82,7 +81,7 @@ export function StickyMobileActionBar() {
               const content = (
                 <div className="flex items-center gap-3 group">
                   {/* Tooltip Label */}
-                  <span className="hidden sm:inline-block px-3 py-1 rounded-full bg-[#0C0E12]/95 text-[#F5EFE6] text-xs font-semibold backdrop-blur-md border border-[#EADBC8]/25 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+                  <span className="hidden sm:inline-block px-3 py-1 rounded-full bg-[#000000] text-[#F5EFE6] text-xs font-semibold backdrop-blur-md border border-white/10 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
                     {item.label}
                   </span>
 
@@ -91,7 +90,7 @@ export function StickyMobileActionBar() {
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: idx * 0.04 }}
-                    className={`w-12 h-12 rounded-full bg-[#131722]/95 backdrop-blur-md border-2 border-[#EADBC8]/30 shadow-2xl flex items-center justify-center group-hover:scale-110 active:scale-95 transition-all duration-200 ${item.color}`}
+                    className={`w-12 h-12 rounded-full bg-[#0C0E12]/95 backdrop-blur-md border-2 border-white/15 shadow-2xl flex items-center justify-center group-hover:scale-110 active:scale-95 transition-all duration-200 ${item.color}`}
                   >
                     <Icon className="w-5 h-5" />
                   </motion.div>
@@ -121,19 +120,19 @@ export function StickyMobileActionBar() {
       {/* Main Floating Trigger Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`relative w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-white transition-all duration-300 focus:outline-none cursor-pointer border-2 ${
+        className={`relative w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 focus:outline-none cursor-pointer border-2 ${
           isOpen
-            ? "bg-[#E5BA73] border-[#F5EFE6] rotate-90 scale-105"
-            : "bg-[#131722]/95 backdrop-blur-md border-[#EADBC8]/40 hover:scale-110 hover:border-[#E5BA73]"
+            ? "bg-[#D97706] border-white rotate-90 scale-105"
+            : "bg-[#0C0E12] backdrop-blur-md border-white/15 hover:scale-110 hover:border-[#E5BA73]"
         }`}
         aria-label={isOpen ? "Close floating contact menu" : "Open floating contact menu"}
       >
         {isOpen ? (
-          <X className="w-6 h-6 text-[#0C0E12] font-bold" />
+          <X className="w-6 h-6 text-white font-bold" />
         ) : (
           <>
             <MessageSquare className="w-6 h-6 text-[#E5BA73]" />
-            <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-[#E5BA73] border-2 border-[#0C0E12] animate-ping" />
+            <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-[#E5BA73] border-2 border-[#000000] animate-ping" />
           </>
         )}
       </button>
