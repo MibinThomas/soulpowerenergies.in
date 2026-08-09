@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none">
+  <rect width="200" height="60" rx="12" fill="#0C0E12"/>
+  <g transform="translate(16, 15)">
+    <polygon points="15,2 28,10 28,24 15,31 2,24 2,10" fill="#131722" stroke="#E5BA73" stroke-width="2"/>
+    <path d="M10 12L20 12M10 17L17 17M10 22L20 22" stroke="#E5BA73" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  <text x="56" y="32" font-family="system-ui, sans-serif" font-weight="900" font-size="19" fill="#F5EFE6" letter-spacing="1">FOXESS</text>
+  <text x="56" y="44" font-family="system-ui, sans-serif" font-weight="800" font-size="8" fill="#E5BA73" letter-spacing="2">INVERTERS</text>
+</svg>

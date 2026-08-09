@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none">
+  <rect width="200" height="60" rx="12" fill="#0C0E12"/>
+  <g transform="translate(16, 14)">
+    <path d="M6 24 C 6 8, 26 8, 26 16 C 26 24, 6 24, 6 32 C 6 40, 26 40, 26 24" fill="none" stroke="#F97316" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="26" cy="10" r="3" fill="#F97316"/>
+  </g>
+  <text x="56" y="32" font-family="system-ui, sans-serif" font-weight="900" font-size="18" fill="#F5EFE6" letter-spacing="1">SUNGROW</text>
+  <text x="56" y="44" font-family="system-ui, sans-serif" font-weight="800" font-size="8" fill="#F97316" letter-spacing="2">POWER SUPPLY</text>
+</svg>

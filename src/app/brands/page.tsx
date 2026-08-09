@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -105,10 +106,10 @@ export default function BrandsPage() {
             {filteredBrands.map((brand, idx) => (
               <div
                 key={idx}
-                className="p-8 rounded-3xl nestive-card bg-[#0C0E12] border border-white/10 shadow-xl flex flex-col justify-between space-y-6"
+                className="p-8 rounded-3xl nestive-card bg-[#0C0E12] border border-white/10 shadow-xl flex flex-col justify-between space-y-6 group hover:border-[#E5BA73] transition-all"
               >
                 <div className="space-y-4">
-                  {/* Top Category Badge */}
+                  {/* Top Category Badge & Origin */}
                   <div className="flex items-center justify-between">
                     <span className="text-[11px] font-bold uppercase tracking-wider text-[#E5BA73]">
                       {brand.categoryLabel}
@@ -116,6 +117,16 @@ export default function BrandsPage() {
                     <Badge variant="gold" className="text-[10px] nestive-pill bg-[#131722] text-[#E5BA73] border border-white/10">
                       {brand.origin}
                     </Badge>
+                  </div>
+
+                  {/* Brand Logo Header Box */}
+                  <div className="relative w-full h-16 rounded-2xl bg-[#000000] border border-white/10 flex items-center justify-center p-2 group-hover:scale-[1.02] transition-transform duration-300 shadow-md">
+                    <Image
+                      src={brand.logoUrl}
+                      alt={`${brand.name} Authorized Partner Logo`}
+                      fill
+                      className="object-contain p-2"
+                    />
                   </div>
 
                   {/* Brand Name */}

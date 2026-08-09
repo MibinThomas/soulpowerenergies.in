@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none">
+  <rect width="200" height="60" rx="12" fill="#0C0E12"/>
+  <g transform="translate(16, 14)">
+    <!-- Adani Curved Arc Ribbon -->
+    <path d="M4 28 C 12 4, 24 4, 32 28" stroke="#3B82F6" stroke-width="4" stroke-linecap="round" />
+    <path d="M8 28 C 14 10, 22 10, 28 28" stroke="#E5BA73" stroke-width="3" stroke-linecap="round" />
+  </g>
+  <text x="56" y="32" font-family="system-ui, sans-serif" font-weight="900" font-size="19" fill="#F5EFE6" letter-spacing="1">adani</text>
+  <text x="56" y="44" font-family="system-ui, sans-serif" font-weight="800" font-size="8" fill="#E5BA73" letter-spacing="2">SOLAR</text>
+</svg>

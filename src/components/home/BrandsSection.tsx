@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { brandsData } from "@/config/brands";
 import { Badge } from "@/components/ui/Badge";
@@ -23,7 +24,7 @@ export function BrandsSection() {
         </div>
 
         {/* Brands Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {brandsData.map((brand, idx) => (
             <motion.div
               key={brand.name}
@@ -31,22 +32,28 @@ export function BrandsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.08 }}
-              className="p-5 rounded-3xl nestive-card bg-[#0C0E12] border border-white/10 shadow-lg flex flex-col justify-between items-center text-center group hover:border-[#E5BA73] transition-all min-h-[180px]"
+              className="p-6 rounded-3xl nestive-card bg-[#0C0E12] border border-white/10 shadow-xl flex flex-col justify-between items-center text-center group hover:border-[#E5BA73] transition-all"
             >
-              <div className="w-12 h-12 rounded-2xl bg-[#131722] text-[#E5BA73] flex items-center justify-center font-bold text-sm font-heading border border-white/10 group-hover:scale-110 transition-transform">
-                {brand.name.substring(0, 2).toUpperCase()}
+              {/* Brand Logo Container */}
+              <div className="relative w-full h-16 rounded-2xl bg-[#000000] border border-white/10 flex items-center justify-center p-2 group-hover:scale-105 transition-transform duration-300 shadow-md">
+                <Image
+                  src={brand.logoUrl}
+                  alt={`${brand.name} Authorized Partner Logo`}
+                  fill
+                  className="object-contain p-2"
+                />
               </div>
 
-              <div>
-                <h3 className="text-sm font-bold text-[#F5EFE6] font-heading group-hover:text-[#E5BA73] transition-colors mt-2">
+              <div className="mt-4 space-y-1">
+                <h3 className="text-base font-bold text-[#F5EFE6] font-heading group-hover:text-[#E5BA73] transition-colors">
                   {brand.name}
                 </h3>
-                <p className="text-[11px] text-[#9CA3AF] mt-1 font-medium line-clamp-1">{brand.categoryLabel}</p>
+                <p className="text-xs text-[#9CA3AF] font-medium">{brand.categoryLabel}</p>
               </div>
 
-              <div className="pt-2 border-t border-white/10 w-full flex items-center justify-center gap-1 text-[10px] text-[#E5BA73] font-bold">
-                <CheckCircle2 className="w-3 h-3" />
-                <span>Tier-1 Rated</span>
+              <div className="pt-3 mt-4 border-t border-white/10 w-full flex items-center justify-center gap-1.5 text-xs text-[#E5BA73] font-bold">
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                <span>Tier-1 Partner</span>
               </div>
             </motion.div>
           ))}

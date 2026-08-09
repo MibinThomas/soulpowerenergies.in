@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none">
+  <rect width="200" height="60" rx="12" fill="#0C0E12"/>
+  <g transform="translate(16, 14)">
+    <rect width="28" height="28" rx="7" fill="#E5BA73"/>
+    <text x="14" y="20" font-family="system-ui, sans-serif" font-weight="900" font-size="16" fill="#000000" text-anchor="middle">P1</text>
+  </g>
+  <text x="56" y="32" font-family="system-ui, sans-serif" font-weight="900" font-size="16" fill="#F5EFE6" letter-spacing="1">POWER ONE</text>
+  <text x="56" y="44" font-family="system-ui, sans-serif" font-weight="800" font-size="8" fill="#E5BA73" letter-spacing="2">MICRO SYSTEMS</text>
+</svg>
