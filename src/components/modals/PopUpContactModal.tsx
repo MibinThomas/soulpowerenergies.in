@@ -1,15 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, AnimatePresence } from "framer-motion";
 import { contactFormSchema, ContactFormData } from "@/lib/validation/contact";
 import { servicesData } from "@/config/services";
-import { Badge } from "@/components/ui/Badge";
 import { X, Send, Sparkles, CheckCircle2, AlertCircle, Loader2, ShieldCheck } from "lucide-react";
 
 export function PopUpContactModal() {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState<string | null>(null);
@@ -23,10 +24,16 @@ export function PopUpContactModal() {
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
+      fullName: "",
+      phone: "",
+      email: "",
       customerType: "residential",
       requiredService: "Residential Rooftop Solar",
+      propertyLocation: "",
+      monthlyBill: "",
       preferredProduct: "3 KWH SINGLE PHASE",
       preferredBrand: "WAREE ENERGY",
+      message: "",
       consent: true,
       honeypot: "",
     },
@@ -62,17 +69,15 @@ export function PopUpContactModal() {
 
       const resData = await response.json();
 
-      if (!response.ok) {
-        setSubmitError(resData.error || "Failed to submit enquiry. Please try again.");
+      if (!response.ok || !resData.success) {
+        setSubmitError(resData.message || resData.error || "Failed to submit enquiry. Please try again.");
         return;
       }
 
       setSubmitSuccess(resData.message || "Thank you! Our engineering team will contact you shortly.");
       reset();
-      setTimeout(() => {
-        setIsOpen(false);
-        setSubmitSuccess(null);
-      }, 4000);
+      setIsOpen(false);
+      router.push("/thank-you");
     } catch (err) {
       console.error(err);
       setSubmitError("An unexpected network error occurred. Please check your connection.");
@@ -185,22 +190,21 @@ export function PopUpContactModal() {
                 </div>
               </div>
 
-              {/* Service & Location */}
+              {/* Email & Property Location */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
                   <label className="text-[11px] font-bold uppercase tracking-wider text-[#E5BA73]">
-                    Service Category *
+                    Email Address
                   </label>
-                  <select
-                    {...register("requiredService")}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-white/10 bg-[#131722] text-[#F5EFE6] text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#E5BA73]"
-                  >
-                    {servicesData.map((s) => (
-                      <option key={s.id} value={s.title} className="bg-[#0C0E12] text-[#F5EFE6]">
-                        {s.title}
-                      </option>
-                    ))}
-                  </select>
+                  <input
+                    type="email"
+                    placeholder="e.g. name@example.com"
+                    {...register("email")}
+                    className={`w-full px-3.5 py-2.5 rounded-xl border text-xs sm:text-sm text-[#F5EFE6] bg-[#131722] placeholder:text-[#9CA3AF] focus:outline-none focus:ring-2 focus:ring-[#E5BA73] ${
+                      errors.email ? "border-red-500" : "border-white/10"
+                    }`}
+                  />
+                  {errors.email && <p className="text-[10px] text-red-400 font-bold">{errors.email.message}</p>}
                 </div>
 
                 <div className="space-y-1">
@@ -217,6 +221,23 @@ export function PopUpContactModal() {
                   />
                   {errors.propertyLocation && <p className="text-[10px] text-red-400 font-bold">{errors.propertyLocation.message}</p>}
                 </div>
+              </div>
+
+              {/* Service Category */}
+              <div className="space-y-1">
+                <label className="text-[11px] font-bold uppercase tracking-wider text-[#E5BA73]">
+                  Service Category *
+                </label>
+                <select
+                  {...register("requiredService")}
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-white/10 bg-[#131722] text-[#F5EFE6] text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#E5BA73]"
+                >
+                  {servicesData.map((s) => (
+                    <option key={s.id} value={s.title} className="bg-[#0C0E12] text-[#F5EFE6]">
+                      {s.title}
+                    </option>
+                  ))}
+                </select>
               </div>
 
               {/* Monthly Bill, Products & Brand */}

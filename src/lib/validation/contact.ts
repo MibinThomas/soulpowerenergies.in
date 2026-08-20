@@ -16,7 +16,9 @@ export const contactFormSchema = z.object({
 
   email: z
     .string()
-    .email({ message: "Please enter a valid email address." }),
+    .email({ message: "Please enter a valid email address." })
+    .optional()
+    .or(z.literal("")),
 
   customerType: z.enum(["residential", "commercial", "industrial"], {
     message: "Please select a customer type.",

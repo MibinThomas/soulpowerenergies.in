@@ -3,12 +3,14 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { contactFormSchema, ContactFormData } from "@/lib/validation/contact";
 import { servicesData } from "@/config/services";
 import { Button } from "@/components/ui/Button";
 import { Send, CheckCircle2, AlertCircle, Loader2, ShieldCheck } from "lucide-react";
 
 export function ContactForm() {
+  const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -44,13 +46,14 @@ export function ContactForm() {
 
       const resData = await response.json();
 
-      if (!response.ok) {
-        setSubmitError(resData.error || "Failed to submit enquiry. Please try again.");
+      if (!response.ok || !resData.success) {
+        setSubmitError(resData.message || resData.error || "Failed to submit enquiry. Please try again.");
         return;
       }
 
       setSubmitSuccess(resData.message || "Thank you! Our engineering team will contact you shortly.");
       reset();
+      router.push("/thank-you");
     } catch (err) {
       console.error(err);
       setSubmitError("An unexpected network error occurred. Please check your connection.");
