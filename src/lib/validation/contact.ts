@@ -33,9 +33,15 @@ export const contactFormSchema = z.object({
     .optional()
     .or(z.literal("")),
 
-  preferredContact: z.enum(["phone", "whatsapp", "email"], {
-    message: "Please select a preferred contact method.",
-  }),
+  preferredProduct: z
+    .string()
+    .optional()
+    .or(z.literal("")),
+
+  preferredBrand: z
+    .string()
+    .optional()
+    .or(z.literal("")),
 
   message: z
     .string()

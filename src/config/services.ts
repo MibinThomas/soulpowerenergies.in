@@ -1,3 +1,15 @@
+export interface SystemOption {
+  id: string;
+  name: string;
+  badge: string;
+  tagline: string;
+  description: string;
+  howItWorks: string;
+  idealFor: string;
+  keyHighlights: string[];
+  specs: { label: string; value: string }[];
+}
+
 export interface ServiceItem {
   id: string;
   slug: string;
@@ -16,6 +28,7 @@ export interface ServiceItem {
   keyFeatures: string[];
   processSteps: { title: string; desc: string }[];
   benefits: string[];
+  systemOptions?: SystemOption[];
 }
 
 export const servicesData: ServiceItem[] = [
@@ -60,6 +73,58 @@ export const servicesData: ServiceItem[] = [
       "Long-term energy bill security",
       "Enhanced property value",
     ],
+    systemOptions: [
+      {
+        id: "on-grid",
+        name: "On-Grid Solar System (Grid-Tied)",
+        badge: "Maximum ROI & KSEB Net Metering",
+        tagline: "Export surplus daytime power directly to KSEB grid for maximum financial savings.",
+        description:
+          "On-grid solar systems operate by connecting directly to the utility grid. Generated solar power satisfies your home's immediate electrical consumption, while any excess power is exported back to the KSEB grid via a bidirectional Net Meter.",
+        howItWorks:
+          "1. Rooftop solar PV panels generate DC electricity from sunlight.\n2. High-efficiency string inverter converts DC into clean 230V AC home power.\n3. Home appliances consume solar power first.\n4. Unused excess energy feeds back to KSEB grid through Net Meter, earning bill credits.",
+        idealFor:
+          "Homeowners with stable grid power looking for the lowest upfront cost, fastest payback period (3–4 years), and maximum return on investment without battery maintenance.",
+        keyHighlights: [
+          "Lowest upfront capital investment per kW",
+          "KSEB Net-metering approval & credit banking",
+          "Zero battery maintenance or replacement costs",
+          "Payback achieved in 3 to 4 years",
+        ],
+        specs: [
+          { label: "Grid Connection", value: "Direct KSEB Grid Synchronized" },
+          { label: "Battery Storage", value: "Not Required (Grid serves as virtual battery)" },
+          { label: "Blackout Operation", value: "Automatic anti-islanding safety shutdown" },
+          { label: "Net Metering", value: "Full Bi-directional KSEB Net Metering" },
+          { label: "Phase Options", value: "Single Phase (3kW) & 3-Phase (5kW, 6kW, 8kW+)" },
+        ],
+      },
+      {
+        id: "hybrid",
+        name: "Hybrid Solar System (Grid + Battery)",
+        badge: "Grid Savings + Outage Backup",
+        tagline: "Combine net metering savings with seamless battery backup during grid power cuts.",
+        description:
+          "Hybrid solar systems pair solar generation and grid net-metering with advanced Lithium battery storage. When grid outages or voltage drops occur, your home instantly switches to battery power without interruption.",
+        howItWorks:
+          "1. Solar panels power home appliances during peak sunlight hours.\n2. Excess solar energy automatically charges the Lithium LFP battery bank.\n3. Once batteries are fully charged, surplus energy exports to KSEB grid via Net Meter.\n4. During power cuts or night hours, hybrid inverter draws stored battery power in <10ms.",
+        idealFor:
+          "Homes in areas prone to frequent monsoon power outages, hilly regions (e.g. Wayanad, Thiruvambady), or families requiring uninterrupted power for ACs, medical devices, and work-from-home setups.",
+        keyHighlights: [
+          "Continuous 24/7 power independence during grid blackouts",
+          "< 10ms automatic emergency power switchover",
+          "High-cycle Lithium Iron Phosphate (LFP) safety chemistry",
+          "Full KSEB Net Metering export support when batteries are full",
+        ],
+        specs: [
+          { label: "Grid Connection", value: "Hybrid Grid Synchronized + Backup EPS" },
+          { label: "Battery Chemistry", value: "High-Safety Lithium Iron Phosphate (LFP)" },
+          { label: "Switchover Time", value: "Instantaneous (< 10 milliseconds)" },
+          { label: "Net Metering", value: "Full Bi-directional KSEB Net Metering" },
+          { label: "Phase Options", value: "Single Phase & 3-Phase Hybrid Topology" },
+        ],
+      },
+    ],
   },
   {
     id: "commercial-solar",
@@ -102,6 +167,56 @@ export const servicesData: ServiceItem[] = [
       "Improved corporate sustainability profile",
       "Protection against rising commercial electricity rates",
       "Efficient utilization of roof real estate",
+    ],
+    systemOptions: [
+      {
+        id: "on-grid-commercial",
+        name: "On-Grid Commercial Solar System",
+        badge: "Peak Tariff Reduction & Heavy Load Offset",
+        tagline: "Directly offset daytime operational energy costs for factories, offices, and institutions.",
+        description:
+          "Commercial on-grid solar plants are engineered for daytime operational businesses. By generating power during peak sunlight hours, commercial facilities drastically reduce high daytime grid tariffs and peak demand charges.",
+        howItWorks:
+          "1. High-wattage Tier-1 solar arrays capture solar radiation on commercial roofs/sheds.\n2. Multi-string 3-phase central inverters synchronize directly with commercial power lines.\n3. Daytime machinery, HVAC, lighting, and computing loads run primarily on solar energy.\n4. Any weekend or holiday excess exports back to the commercial grid.",
+        idealFor:
+          "Manufacturing plants, commercial office buildings, schools, colleges, and retail establishments operating primarily during daytime working hours.",
+        keyHighlights: [
+          "Immediate 60%–80% reduction in daytime commercial power bills",
+          "Accelerated Depreciation (AD) tax saving benefits",
+          "Scalable 3-phase multi-string inverter topology",
+          "Rapid commercial payback in 2.5 to 3.5 years",
+        ],
+        specs: [
+          { label: "System Architecture", value: "3-Phase Commercial Multi-String" },
+          { label: "Battery Requirement", value: "None required for daytime operations" },
+          { label: "Tax Benefit", value: "Eligible for Accelerated Depreciation" },
+          { label: "Commercial Payback", value: "2.5 to 3.5 Years" },
+        ],
+      },
+      {
+        id: "hybrid-commercial",
+        name: "Hybrid Commercial Solar System",
+        badge: "Critical Load Continuity & Silent Diesel Generator Replacement",
+        tagline: "Replace expensive diesel generator running costs with high-capacity Lithium BESS storage.",
+        description:
+          "Commercial hybrid solar systems combine high-capacity solar generation with commercial Lithium Battery Energy Storage Systems (BESS). They guarantee zero-interruption power continuity for critical infrastructure while eliminating expensive diesel generator fuel bills.",
+        howItWorks:
+          "1. High-capacity commercial solar array powers facility baseline loads.\n2. Integrated Commercial BESS charges rapidly from excess solar or off-peak grid.\n3. Upon grid failure, commercial hybrid inverter takes over critical circuits automatically.\n4. Intelligent energy management system (EMS) optimizes peak shaving to lower maximum demand charges.",
+        idealFor:
+          "Hospitals, IT parks, cold storage facilities, hotels, resorts, and continuous process manufacturing units requiring 100% operational uptime.",
+        keyHighlights: [
+          "Eliminates high diesel generator fuel and maintenance overheads",
+          "Zero-emissions, silent, uninterruptible power backup",
+          "Peak demand shaving to prevent utility penalty charges",
+          "Scalable commercial LFP battery cabinets (15kWh to 100kWh+)",
+        ],
+        specs: [
+          { label: "System Architecture", value: "3-Phase Hybrid Inverter + Commercial LFP BESS" },
+          { label: "Battery Capacity", value: "Modular 15kWh to 100kWh+ Commercial Storage" },
+          { label: "Generator Replacement", value: "Silent, Zero-Fuel Diesel Generator Alternative" },
+          { label: "Demand Management", value: "Integrated Peak Shaving & Load Balancing" },
+        ],
+      },
     ],
   },
   {
@@ -187,84 +302,6 @@ export const servicesData: ServiceItem[] = [
       "Prevents permanent hot-spot damage to panel glass",
       "Extends operational lifespan of solar equipment",
       "Peace of mind with local technical support",
-    ],
-  },
-  {
-    id: "hybrid-hvac",
-    slug: "solar-hybrid-hvac-solutions",
-    title: "Solar Hybrid HVAC Solutions",
-    shortTitle: "Solar HVAC",
-    tagline: "Energy-optimized air conditioning powered through clean technology.",
-    description:
-      "Specialized renewable energy air conditioning and cooling solutions delivered through our regional engineering network.",
-    fullDescription:
-      "Air conditioning represents a significant portion of power consumption in Kerala's warm climate. Working with established technology partners, Soul Power Energies assists commercial and residential clients in integrating solar power with HVAC systems to optimize cooling energy consumption.",
-    customerProblem:
-      "HVAC systems are the highest energy consumers in modern buildings, leading to heavy power bills during peak heat.",
-    solutionOverview:
-      "A specialized renewable solution leveraging direct solar power supplementation for HVAC equipment to flatten cooling-driven peak power spikes.",
-    iconName: "Wind",
-    bgImage: "/images/hero.png",
-    suitableFor: [
-      "Commercial Offices & Corporate Workspaces",
-      "Hospitality Suites & Resorts",
-      "Large Residential Properties",
-      "Educational Institutions",
-    ],
-    keyFeatures: [
-      "Solar power supplementation for cooling units",
-      "Integration with energy management networks",
-      "Engineering review for high-draw inductive loads",
-      "Supported through regional technology partner network",
-    ],
-    processSteps: [
-      { title: "Cooling Load Analysis", desc: "Assessing existing AC tonnage, peak operational hours, and solar offset capability." },
-      { title: "Partner Network Review", desc: "Coordinating with specialized HVAC technical partners." },
-      { title: "System Recommendation", desc: "Presenting a tailored solar-assisted cooling layout." },
-    ],
-    benefits: [
-      "Targeted reduction in heavy cooling energy costs",
-      "Reduces stress on local power connection during summer",
-      "Modernized green building energy profile",
-    ],
-  },
-  {
-    id: "battery-storage",
-    slug: "battery-energy-storage-systems",
-    title: "Battery Energy Storage Systems",
-    shortTitle: "Battery Storage",
-    badge: "Coming Soon",
-    isComingSoon: true,
-    tagline: "Advanced power backup solutions — currently in development.",
-    description:
-      "Next-generation energy storage solutions to provide seamless backup during grid outages. Launching soon.",
-    fullDescription:
-      "Soul Power Energies is actively preparing to launch Battery Energy Storage Systems (BESS) designed for hybrid solar integration. This solution will allow homeowners and commercial facilities to store excess solar energy produced during peak sunlight and utilize it during grid power outages or nighttime hours. Sign up for early updates.",
-    customerProblem:
-      "Standard grid-tied solar systems automatically shut down during grid outages for safety, leaving users without power unless battery storage is attached.",
-    solutionOverview:
-      "Upcoming Lithium-ion battery storage architectures integrated with hybrid inverters for uninterruptible backup power.",
-    iconName: "BatteryCharging",
-    bgImage: "/images/virgin-power-partner.png",
-    suitableFor: [
-      "Homes needing emergency night backup",
-      "Commercial premises with critical load continuity needs",
-      "Off-grid & semi-grid micro-installations",
-    ],
-    keyFeatures: [
-      "Lithium Iron Phosphate (LFP) high-safety chemistry (planned)",
-      "Hybrid inverter synchronization",
-      "Uninterruptible power transfer for essential loads",
-      "Enquiry registration active for early access",
-    ],
-    processSteps: [
-      { title: "Solution Announcement", desc: "Product lineup and specification launch coming soon." },
-      { title: "Early Interest Registration", desc: "Submit your requirement to receive priority notice when available." },
-    ],
-    benefits: [
-      "24/7 power autonomy independent of grid failures",
-      "Maximize self-consumption of generated solar energy",
-      "Clean, silent alternative to diesel generators",
     ],
   },
 ];

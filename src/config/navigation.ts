@@ -34,12 +34,10 @@ export const mainNav: NavItem[] = [
 
 export const footerNav = {
   solutions: [
-    { title: "Residential Rooftop Solar", href: "/solutions#residential-rooftop-solar" },
-    { title: "Commercial & Industrial Solar", href: "/solutions#commercial-industrial-solar" },
-    { title: "EV Charging Stations", href: "/solutions#ev-charging-station-installation" },
-    { title: "Solar Panel Maintenance", href: "/solutions#solar-panel-cleaning-and-maintenance" },
-    { title: "Solar Hybrid HVAC", href: "/solutions#solar-hybrid-hvac-solutions" },
-    { title: "Battery Energy Storage (Soon)", href: "/solutions#battery-energy-storage-systems" },
+    { title: "Residential Rooftop Solar", href: "/solutions/residential-rooftop-solar" },
+    { title: "Commercial & Industrial Solar", href: "/solutions/commercial-industrial-solar" },
+    { title: "EV Charging Stations", href: "/solutions/ev-charging-station-installation" },
+    { title: "Solar Panel Maintenance", href: "/solutions/solar-panel-cleaning-and-maintenance" },
   ],
   company: [
     { title: "About Soul Power", href: "/about" },

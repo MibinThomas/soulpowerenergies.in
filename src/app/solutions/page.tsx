@@ -13,12 +13,12 @@ import {
   Building2,
   Zap,
   Sparkles,
-  Wind,
-  BatteryCharging,
   ArrowRight,
   CheckCircle2,
   HelpCircle,
   ShieldCheck,
+  Cpu,
+  Layers,
 } from "lucide-react";
 
 export default function SolutionsPage() {
@@ -29,8 +29,6 @@ export default function SolutionsPage() {
     Building2,
     Zap,
     Sparkles,
-    Wind,
-    BatteryCharging,
   };
 
   const filteredServices = servicesData.filter((service) => {
@@ -38,22 +36,12 @@ export default function SolutionsPage() {
     return service.id === selectedFilter || service.slug === selectedFilter;
   });
 
-  const scrollToService = (slug: string) => {
-    setSelectedFilter("all");
-    setTimeout(() => {
-      const el = document.getElementById(slug);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 50);
-  };
-
   return (
     <>
       <Header />
       <main id="main-content" className="flex-1 bg-[#000000] text-[#F5EFE6]">
         {/* Page Hero */}
-        <section className="py-16 lg:py-24 relative overflow-hidden">
+        <section className="py-16 lg:py-20 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4 text-center">
             <Badge variant="gold" className="px-3.5 py-1 nestive-pill bg-[#0C0E12] text-[#E5BA73] border border-white/10">
               Solar & EV Services Directory
@@ -62,20 +50,20 @@ export default function SolutionsPage() {
               Renewable Energy & EV Charging Solutions
             </h1>
             <p className="text-base sm:text-lg text-[#EADBC8] max-w-3xl mx-auto leading-relaxed font-medium">
-              Tailored renewable engineering solutions for homes, commercial establishments, and industrial facilities across Kozhikode and Wayanad.
+              Explore dedicated solution pages for independent residential homes, commercial enterprises, EV charging setups, and panel maintenance across Kozhikode and Wayanad.
             </p>
           </div>
         </section>
 
-        {/* Interactive Solution Selector Bar */}
-        <section className="py-6 bg-[#000000]/95 backdrop-blur-md sticky top-[73px] z-30 border-y border-white/10 shadow-md">
+        {/* Interactive Solution Selector Links Bar */}
+        <section className="py-5 bg-[#000000]/95 backdrop-blur-md sticky top-[73px] z-30 border-y border-white/10 shadow-md">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <span className="text-xs font-bold uppercase tracking-wider text-[#E5BA73] font-heading shrink-0">
-                Filter Solutions:
+                Explore Solution Pages:
               </span>
 
-              <div className="flex flex-wrap items-center gap-2 overflow-x-auto pb-1 sm:pb-0 w-full sm:w-auto">
+              <div className="flex flex-wrap items-center gap-2.5 overflow-x-auto pb-1 sm:pb-0 w-full sm:w-auto">
                 <button
                   onClick={() => setSelectedFilter("all")}
                   className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
@@ -87,32 +75,28 @@ export default function SolutionsPage() {
                   All Solutions
                 </button>
                 {servicesData.map((s) => (
-                  <button
+                  <Link
                     key={s.id}
-                    onClick={() => scrollToService(s.slug)}
-                    className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
-                      selectedFilter === s.id
-                        ? "bg-gradient-to-r from-[#D97706] to-[#B45309] text-white shadow-md font-black"
-                        : "nestive-card bg-[#0C0E12] text-[#F5EFE6] hover:bg-[#131722] border border-white/10"
-                    }`}
+                    href={`/solutions/${s.slug}`}
+                    className="px-3.5 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer nestive-card bg-[#0C0E12] text-[#F5EFE6] hover:bg-[#131722] hover:text-[#E5BA73] border border-white/10 flex items-center gap-1.5"
                   >
-                    {s.shortTitle} {s.isComingSoon && "• Soon"}
-                  </button>
+                    <span>{s.shortTitle}</span>
+                    <ArrowRight className="w-3 h-3 text-[#E5BA73]" />
+                  </Link>
                 ))}
               </div>
             </div>
           </div>
         </section>
 
-        {/* Detailed Service Deep-Dives */}
+        {/* Detailed Service Cards Grid linking to dedicated pages */}
         <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           {filteredServices.map((service) => {
             const Icon = iconMap[service.iconName] || Sun;
             return (
               <div
                 key={service.id}
-                id={service.slug}
-                className="scroll-mt-36 p-6 sm:p-10 rounded-3xl nestive-card bg-[#0C0E12] border border-white/10 space-y-8 relative overflow-hidden shadow-2xl"
+                className="p-6 sm:p-10 rounded-3xl nestive-card bg-[#0C0E12] border border-white/10 space-y-8 relative overflow-hidden shadow-2xl group hover:border-[#E5BA73]/40 transition-all duration-300"
               >
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-white/10">
@@ -122,22 +106,50 @@ export default function SolutionsPage() {
                     </div>
                     <div className="space-y-1">
                       <div className="flex items-center gap-3">
-                        <h2 className="text-2xl sm:text-3xl font-normal font-serif italic text-[#F5EFE6]">
-                          {service.title}
-                        </h2>
+                        <Link href={`/solutions/${service.slug}`}>
+                          <h2 className="text-2xl sm:text-3xl font-normal font-serif italic text-[#F5EFE6] hover:text-[#E5BA73] transition-colors">
+                            {service.title}
+                          </h2>
+                        </Link>
                         {service.isComingSoon && <Badge variant="comingSoon">Coming Soon</Badge>}
                       </div>
                       <p className="text-sm font-bold text-[#E5BA73]">{service.tagline}</p>
                     </div>
                   </div>
 
-                  <Link href={`/contact#assessment?service=${service.id}`}>
-                    <Button variant="primary" size="md" className="font-black rounded-xl shadow-lg bg-gradient-to-r from-[#D97706] via-[#B45309] to-[#D97706] text-white">
-                      <span>{service.isComingSoon ? "Register Interest" : "Request Assessment"}</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </Button>
-                  </Link>
+                  <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+                    <Link href={`/solutions/${service.slug}`}>
+                      <Button variant="primary" size="md" className="w-full sm:w-auto font-black rounded-xl shadow-lg bg-gradient-to-r from-[#D97706] via-[#B45309] to-[#D97706] text-white">
+                        <span>Explore Full Solution Details</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
+
+                {/* On-Grid vs Hybrid Feature Banner preview for Solar services */}
+                {service.systemOptions && service.systemOptions.length > 0 && (
+                  <div className="p-4 sm:p-5 rounded-2xl bg-[#131722] border border-[#E5BA73]/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs">
+                    <div className="flex items-center gap-3">
+                      <Cpu className="w-5 h-5 text-[#E5BA73] shrink-0" />
+                      <div>
+                        <span className="font-bold text-[#F5EFE6] block">
+                          Available System Topologies: On-Grid (Net Metering) & Hybrid (Battery Backup)
+                        </span>
+                        <span className="text-[#EADBC8]">
+                          View detailed breakdown of payback terms, equipment specs, and blackout operations.
+                        </span>
+                      </div>
+                    </div>
+
+                    <Link href={`/solutions/${service.slug}`}>
+                      <span className="inline-flex items-center gap-1.5 font-bold text-[#E5BA73] hover:underline shrink-0">
+                        <span>Compare Topologies</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </span>
+                    </Link>
+                  </div>
+                )}
 
                 {/* Problem vs Solution Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -161,7 +173,6 @@ export default function SolutionsPage() {
 
                 {/* Suitable Property Types & Benefits */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-2">
-                  {/* Suitable Property Types */}
                   <div className="space-y-3">
                     <h3 className="text-xs font-bold text-[#E5BA73] font-heading uppercase tracking-wider">
                       Suitable Property Types
@@ -176,7 +187,6 @@ export default function SolutionsPage() {
                     </ul>
                   </div>
 
-                  {/* Key Benefits */}
                   <div className="space-y-3">
                     <h3 className="text-xs font-bold text-[#E5BA73] font-heading uppercase tracking-wider">
                       Key Solution Benefits
@@ -192,23 +202,19 @@ export default function SolutionsPage() {
                   </div>
                 </div>
 
-                {/* Typical Execution Process */}
-                {service.processSteps && service.processSteps.length > 0 && (
-                  <div className="pt-6 border-t border-white/10 space-y-4">
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-[#9CA3AF] font-heading">
-                      Typical Service Execution Process
-                    </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                      {service.processSteps.map((step, idx) => (
-                        <div key={idx} className="p-4 rounded-2xl bg-[#131722] border border-white/10 space-y-1">
-                          <span className="text-[11px] font-bold text-[#E5BA73] uppercase">Step 0{idx + 1}</span>
-                          <h4 className="text-sm font-bold text-[#F5EFE6] font-heading">{step.title}</h4>
-                          <p className="text-xs text-[#EADBC8] leading-relaxed font-medium">{step.desc}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
+                {/* Card Action Link Footer */}
+                <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                  <span className="text-xs text-[#9CA3AF] font-medium">
+                    Authorized Virgin Power EPC Engineering Specs
+                  </span>
+                  <Link
+                    href={`/solutions/${service.slug}`}
+                    className="inline-flex items-center gap-2 text-xs font-black text-[#E5BA73] hover:text-white transition-colors"
+                  >
+                    <span>View Dedicated {service.shortTitle} Page</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
               </div>
             );
           })}

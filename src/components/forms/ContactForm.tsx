@@ -23,7 +23,8 @@ export function ContactForm() {
     defaultValues: {
       customerType: "residential",
       requiredService: "Residential Rooftop Solar",
-      preferredContact: "phone",
+      preferredProduct: "3 KWH SINGLE PHASE",
+      preferredBrand: "WAREE ENERGY",
       consent: true,
       honeypot: "",
     },
@@ -192,8 +193,8 @@ export function ContactForm() {
           </div>
         </div>
 
-        {/* Monthly Bill & Preferred Contact Method */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {/* Monthly Bill, Products & Brand */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div className="space-y-1.5">
             <label className="text-xs font-bold uppercase tracking-wider text-[#E5BA73]">
               Avg. Monthly Bill (₹)
@@ -208,15 +209,31 @@ export function ContactForm() {
 
           <div className="space-y-1.5">
             <label className="text-xs font-bold uppercase tracking-wider text-[#E5BA73]">
-              Preferred Contact Method <span className="text-[#E5BA73]">*</span>
+              Products <span className="text-[#E5BA73]">*</span>
             </label>
             <select
-              {...register("preferredContact")}
+              {...register("preferredProduct")}
               className="w-full px-4 py-2.5 rounded-xl border border-white/10 bg-[#131722] text-[#F5EFE6] text-sm focus:outline-none focus:ring-2 focus:ring-[#E5BA73]"
             >
-              <option value="phone" className="bg-[#0C0E12]">Phone Call</option>
-              <option value="whatsapp" className="bg-[#0C0E12]">WhatsApp Message</option>
-              <option value="email" className="bg-[#0C0E12]">Email</option>
+              <option value="3 KWH SINGLE PHASE" className="bg-[#0C0E12]">3 KWH SINGLE PHASE</option>
+              <option value="5 KWH 3PHASE" className="bg-[#0C0E12]">5 KWH 3PHASE</option>
+              <option value="6 KWH 3PHASE" className="bg-[#0C0E12]">6 KWH 3PHASE</option>
+              <option value="8 KWH 3PHASE" className="bg-[#0C0E12]">8 KWH 3PHASE</option>
+            </select>
+          </div>
+
+          <div className="space-y-1.5">
+            <label className="text-xs font-bold uppercase tracking-wider text-[#E5BA73]">
+              Brand <span className="text-[#E5BA73]">*</span>
+            </label>
+            <select
+              {...register("preferredBrand")}
+              className="w-full px-4 py-2.5 rounded-xl border border-white/10 bg-[#131722] text-[#F5EFE6] text-sm focus:outline-none focus:ring-2 focus:ring-[#E5BA73]"
+            >
+              <option value="WAREE ENERGY" className="bg-[#0C0E12]">WAREE ENERGY</option>
+              <option value="ADANI POWER" className="bg-[#0C0E12]">ADANI POWER</option>
+              <option value="EMMVEE SOLAR" className="bg-[#0C0E12]">EMMVEE SOLAR</option>
+              <option value="Any / Expert Recommendation" className="bg-[#0C0E12]">Any / Expert Recommendation</option>
             </select>
           </div>
         </div>

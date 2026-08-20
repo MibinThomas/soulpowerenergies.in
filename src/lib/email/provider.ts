@@ -22,7 +22,8 @@ export async function sendContactNotification(data: ContactFormData): Promise<Em
     console.log(" Service:", data.requiredService);
     console.log(" Location:", data.propertyLocation);
     console.log(" Monthly Bill:", data.monthlyBill || "Not provided");
-    console.log(" Preferred Contact:", data.preferredContact);
+    console.log(" Preferred Product:", data.preferredProduct || "Not selected");
+    console.log(" Preferred Brand:", data.preferredBrand || "Not selected");
     console.log(" Message:", data.message || "None");
     console.log("--------------------------------------------------");
 
@@ -53,7 +54,8 @@ export async function sendContactNotification(data: ContactFormData): Promise<Em
           <p><strong>Required Service:</strong> ${data.requiredService}</p>
           <p><strong>Property Location:</strong> ${data.propertyLocation}</p>
           <p><strong>Monthly Electricity Bill:</strong> ₹${data.monthlyBill || "N/A"}</p>
-          <p><strong>Preferred Contact Method:</strong> ${data.preferredContact}</p>
+          <p><strong>Selected Product:</strong> ${data.preferredProduct || "N/A"}</p>
+          <p><strong>Selected Brand:</strong> ${data.preferredBrand || "N/A"}</p>
           <p><strong>Message:</strong> ${data.message || "N/A"}</p>
         `,
       }),

@@ -34,7 +34,7 @@ export function ServicesOverview() {
   });
 
   // Transform scroll progress for desktop parallax
-  const x = useTransform(smoothProgress, [0, 1], ["0%", "-68%"]);
+  const x = useTransform(smoothProgress, [0, 1], ["0%", "-52%"]);
   const bgParallaxX = useTransform(smoothProgress, [0, 1], ["0%", "30%"]);
   const progressBarWidth = useTransform(smoothProgress, [0, 1], ["5%", "100%"]);
 
@@ -164,7 +164,7 @@ export function ServicesOverview() {
                       </div>
 
                       <Link
-                        href={`/solutions#${service.slug}`}
+                        href={`/solutions/${service.slug}`}
                         className="inline-flex items-center justify-between w-full p-2.5 rounded-xl bg-[#131722] hover:bg-[#E5BA73] text-[#F5EFE6] hover:text-[#000000] text-xs font-black transition-all group/btn border border-white/10 shadow-xs"
                       >
                         <span>{service.isComingSoon ? "Register Early Interest" : "Explore Full Specification"}</span>
@@ -184,7 +184,7 @@ export function ServicesOverview() {
                 <span className="w-2 h-2 rounded-full bg-[#E5BA73] animate-pulse" />
                 <span>Horizontal Scroll Progress</span>
               </span>
-              <span>01 / 06 Solutions</span>
+              <span>01 / {String(servicesData.length).padStart(2, "0")} Solutions</span>
             </div>
 
             <div className="w-full h-1.5 rounded-full bg-[#131722] overflow-hidden">
@@ -250,7 +250,7 @@ export function ServicesOverview() {
                           </Badge>
                         ) : (
                           <span className="text-[10px] font-bold text-[#E5BA73] uppercase tracking-wider nestive-pill px-2.5 py-0.5 rounded-full border border-white/15 bg-[#000000]/90 backdrop-blur-md shadow-md">
-                            {formattedNumber} / 06
+                            {formattedNumber} / {String(servicesData.length).padStart(2, "0")}
                           </span>
                         )}
                       </div>
@@ -270,7 +270,7 @@ export function ServicesOverview() {
 
                   <div className="pt-3 border-t border-white/10 space-y-2.5 mt-3">
                     <Link
-                      href={`/solutions#${service.slug}`}
+                      href={`/solutions/${service.slug}`}
                       className="inline-flex items-center justify-between w-full p-2.5 rounded-xl bg-gradient-to-r from-[#D97706] via-[#B45309] to-[#D97706] text-white text-xs font-black transition-all shadow-md"
                     >
                       <span>{service.isComingSoon ? "Register Interest" : "Explore Solution"}</span>

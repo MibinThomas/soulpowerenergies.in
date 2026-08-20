@@ -25,7 +25,8 @@ export function PopUpContactModal() {
     defaultValues: {
       customerType: "residential",
       requiredService: "Residential Rooftop Solar",
-      preferredContact: "phone",
+      preferredProduct: "3 KWH SINGLE PHASE",
+      preferredBrand: "WAREE ENERGY",
       consent: true,
       honeypot: "",
     },
@@ -218,8 +219,8 @@ export function PopUpContactModal() {
                 </div>
               </div>
 
-              {/* Monthly Bill & Preferred Contact */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Monthly Bill, Products & Brand */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div className="space-y-1">
                   <label className="text-[11px] font-bold uppercase tracking-wider text-[#E5BA73]">
                     Monthly Bill (₹)
@@ -228,21 +229,37 @@ export function PopUpContactModal() {
                     type="number"
                     placeholder="e.g. 4500"
                     {...register("monthlyBill")}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-white/10 bg-[#131722] text-[#F5EFE6] placeholder:text-[#9CA3AF] text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#E5BA73]"
+                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-[#131722] text-[#F5EFE6] placeholder:text-[#9CA3AF] text-xs focus:outline-none focus:ring-2 focus:ring-[#E5BA73]"
                   />
                 </div>
 
                 <div className="space-y-1">
                   <label className="text-[11px] font-bold uppercase tracking-wider text-[#E5BA73]">
-                    Contact Method *
+                    Products *
                   </label>
                   <select
-                    {...register("preferredContact")}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-white/10 bg-[#131722] text-[#F5EFE6] text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#E5BA73]"
+                    {...register("preferredProduct")}
+                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-[#131722] text-[#F5EFE6] text-xs focus:outline-none focus:ring-2 focus:ring-[#E5BA73]"
                   >
-                    <option value="phone" className="bg-[#0C0E12]">Phone Call</option>
-                    <option value="whatsapp" className="bg-[#0C0E12]">WhatsApp Message</option>
-                    <option value="email" className="bg-[#0C0E12]">Email</option>
+                    <option value="3 KWH SINGLE PHASE" className="bg-[#0C0E12]">3 KWH SINGLE PHASE</option>
+                    <option value="5 KWH 3PHASE" className="bg-[#0C0E12]">5 KWH 3PHASE</option>
+                    <option value="6 KWH 3PHASE" className="bg-[#0C0E12]">6 KWH 3PHASE</option>
+                    <option value="8 KWH 3PHASE" className="bg-[#0C0E12]">8 KWH 3PHASE</option>
+                  </select>
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-[11px] font-bold uppercase tracking-wider text-[#E5BA73]">
+                    Brand *
+                  </label>
+                  <select
+                    {...register("preferredBrand")}
+                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-[#131722] text-[#F5EFE6] text-xs focus:outline-none focus:ring-2 focus:ring-[#E5BA73]"
+                  >
+                    <option value="WAREE ENERGY" className="bg-[#0C0E12]">WAREE ENERGY</option>
+                    <option value="ADANI POWER" className="bg-[#0C0E12]">ADANI POWER</option>
+                    <option value="EMMVEE SOLAR" className="bg-[#0C0E12]">EMMVEE SOLAR</option>
+                    <option value="Any / Expert Recommendation" className="bg-[#0C0E12]">Any / Expert Rec.</option>
                   </select>
                 </div>
               </div>

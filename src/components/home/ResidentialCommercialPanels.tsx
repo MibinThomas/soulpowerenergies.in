@@ -47,7 +47,7 @@ export function ResidentialCommercialPanels() {
             </div>
 
             <div className="pt-6 mt-6 border-t border-white/10">
-              <Link href="/solutions#residential-rooftop-solar">
+              <Link href="/solutions/residential-rooftop-solar">
                 <Button variant="primary" size="md" className="w-full justify-between font-black rounded-xl shadow-lg bg-gradient-to-r from-[#D97706] via-[#B45309] to-[#D97706] text-white">
                   <span>Explore Residential Solar</span>
                   <ArrowRight className="w-4 h-4" />
@@ -91,7 +91,7 @@ export function ResidentialCommercialPanels() {
             </div>
 
             <div className="pt-6 mt-6 border-t border-white/10">
-              <Link href="/solutions#commercial-industrial-solar">
+              <Link href="/solutions/commercial-industrial-solar">
                 <Button variant="secondary" size="md" className="w-full justify-between font-black rounded-xl shadow-lg bg-[#131722] text-white border border-white/10">
                   <span>Explore Commercial Solar</span>
                   <ArrowRight className="w-4 h-4 text-[#E5BA73]" />

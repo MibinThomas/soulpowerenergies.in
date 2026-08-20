@@ -103,7 +103,7 @@ export function EVChargingSection() {
               </motion.div>
 
               <div className="pt-2">
-                <Link href="/solutions#ev-charging-station-installation">
+                <Link href="/solutions/ev-charging-station-installation">
                   <Button variant="primary" size="lg" className="w-full sm:w-auto font-black rounded-xl shadow-xl bg-gradient-to-r from-[#D97706] via-[#B45309] to-[#D97706] text-white">
                     <span>Explore EV Solutions</span>
                     <ArrowRight className="w-4 h-4" />
