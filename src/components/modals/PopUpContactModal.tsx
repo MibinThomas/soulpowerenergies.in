@@ -39,19 +39,35 @@ export function PopUpContactModal() {
     },
   });
 
-  // Auto Pop-up Timer: Triggers every 1 minute (60 seconds)
+  // Auto Pop-up Timer: Triggers every 1 minute if not already submitted/closed
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      const isSubmitted = localStorage.getItem("soulpower_form_submitted");
+      const isClosed = sessionStorage.getItem("soulpower_popup_closed");
+      if (isSubmitted === "true" || isClosed === "true") {
+        return;
+      }
+    }
+
     const timer = setInterval(() => {
-      setIsOpen((prev) => {
-        if (!prev) return true;
-        return prev;
-      });
+      if (typeof window !== "undefined") {
+        const isSubmitted = localStorage.getItem("soulpower_form_submitted");
+        const isClosed = sessionStorage.getItem("soulpower_popup_closed");
+        if (isSubmitted === "true" || isClosed === "true") {
+          setIsOpen(false);
+          return;
+        }
+      }
+      setIsOpen((prev) => (!prev ? true : prev));
     }, 60000);
 
     return () => clearInterval(timer);
   }, []);
 
   const handleClose = () => {
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("soulpower_popup_closed", "true");
+    }
     setIsOpen(false);
   };
 
@@ -72,6 +88,11 @@ export function PopUpContactModal() {
       if (!response.ok || !resData.success) {
         setSubmitError(resData.message || resData.error || "Failed to submit enquiry. Please try again.");
         return;
+      }
+
+      if (typeof window !== "undefined") {
+        localStorage.getItem("soulpower_form_submitted");
+        localStorage.setItem("soulpower_form_submitted", "true");
       }
 
       setSubmitSuccess(resData.message || "Thank you! Our engineering team will contact you shortly.");

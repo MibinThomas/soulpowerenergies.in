@@ -51,6 +51,10 @@ export function ContactForm() {
         return;
       }
 
+      if (typeof window !== "undefined") {
+        localStorage.setItem("soulpower_form_submitted", "true");
+      }
+
       setSubmitSuccess(resData.message || "Thank you! Our engineering team will contact you shortly.");
       reset();
       router.push("/thank-you");
