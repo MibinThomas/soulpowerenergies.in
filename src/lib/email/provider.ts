@@ -8,7 +8,7 @@ export interface EmailSendResult {
 
 export async function sendContactNotification(data: ContactFormData): Promise<EmailSendResult> {
   const apiKey = process.env.RESEND_API_KEY;
-  const notificationEmail = process.env.CONTACT_NOTIFICATION_EMAIL || "leads@soulpowerenergies.in";
+  const notificationEmail = process.env.CONTACT_NOTIFICATION_EMAIL || "info@soulpowerenergies.in";
 
   // Development / Placeholder fallback when Resend API key is not yet added in .env
   if (!apiKey) {
