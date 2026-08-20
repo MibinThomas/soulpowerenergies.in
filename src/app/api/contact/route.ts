@@ -34,22 +34,17 @@ export async function POST(req: NextRequest) {
     // Process notification
     const emailResult = await sendContactNotification(data);
 
-    if (!emailResult.success) {
-      return NextResponse.json(
-        { success: false, message: emailResult.message },
-        { status: 500 }
-      );
-    }
-
     return NextResponse.json({
       success: true,
-      message: "Thank you! Your site assessment request has been received. Our team will contact you shortly.",
+      message:
+        emailResult.message ||
+        "Thank you! Your site assessment request has been received. Our team will contact you shortly.",
       devLogged: emailResult.devLogged,
     });
   } catch (error) {
     console.error("API Contact Route Error:", error);
     return NextResponse.json(
-      { success: false, message: "Internal server error." },
+      { success: false, message: "Internal server error. Please try again." },
       { status: 500 }
     );
   }
