@@ -93,15 +93,16 @@ export function SolarPowerSwitchShowcase() {
         {/* 3D Modern Solar Home Stage */}
         <div className="relative rounded-[24px] overflow-hidden min-h-[340px] sm:min-h-[500px] bg-[#090D16] shadow-2xl flex flex-col justify-between p-4 sm:p-8 border border-slate-200/40">
           
-          {/* Base Unpowered Image Layer */}
+          {/* Base Unpowered Image Layer (LCP Priority Target) */}
           <div className="absolute inset-0 z-0 bg-[#090D16]">
             <Image
               src="/images/nestive-solar-home-off.webp"
               alt="Unpowered 3D Solar Home"
               fill
               priority
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-              quality={80}
+              fetchPriority="high"
+              sizes="(max-width: 640px) 384px, (max-width: 1024px) 640px, 600px"
+              quality={75}
               className="object-cover object-center"
             />
           </div>
@@ -117,8 +118,8 @@ export function SolarPowerSwitchShowcase() {
               src="/images/nestive-solar-home-on.webp"
               alt="Illuminated 3D Solar Home"
               fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-              quality={80}
+              sizes="(max-width: 640px) 384px, (max-width: 1024px) 640px, 600px"
+              quality={75}
               className="object-cover object-center"
             />
           </motion.div>
