@@ -1,0 +1,11 @@
+# Allow all search engine crawlers full access to public content
+User-agent: *
+Allow: /
+
+# Disallow internal API endpoints & post-submission conversion pages
+Disallow: /api/
+Disallow: /thank-you
+
+# Sitemap reference
+Sitemap: https://soulpowerenergies.in/sitemap.xml
+Host: https://soulpowerenergies.in

@@ -96,10 +96,12 @@ export function SolarPowerSwitchShowcase() {
           {/* Base Unpowered Image Layer */}
           <div className="absolute inset-0 z-0 bg-[#090D16]">
             <Image
-              src="/images/nestive-solar-home-off.png"
+              src="/images/nestive-solar-home-off.webp"
               alt="Unpowered 3D Solar Home"
               fill
               priority
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+              quality={80}
               className="object-cover object-center"
             />
           </div>
@@ -112,10 +114,11 @@ export function SolarPowerSwitchShowcase() {
             className="absolute inset-0 z-1 bg-[#090D16]"
           >
             <Image
-              src="/images/nestive-solar-home-on.png"
+              src="/images/nestive-solar-home-on.webp"
               alt="Illuminated 3D Solar Home"
               fill
-              priority
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+              quality={80}
               className="object-cover object-center"
             />
           </motion.div>

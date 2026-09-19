@@ -107,6 +107,7 @@ export function ServicesOverview() {
                           src={service.bgImage}
                           alt={service.title}
                           fill
+                          sizes="(max-width: 768px) 100vw, 500px"
                           className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
                         />
                         

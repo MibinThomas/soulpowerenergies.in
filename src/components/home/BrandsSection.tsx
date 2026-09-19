@@ -40,6 +40,7 @@ export function BrandsSection() {
                   src={brand.logoUrl}
                   alt={`${brand.name} Authorized Partner Logo`}
                   fill
+                  sizes="(max-width: 768px) 50vw, 200px"
                   className="object-contain p-2"
                 />
               </div>

@@ -47,7 +47,7 @@ export const servicesData: ServiceItem[] = [
     solutionOverview:
       "We design efficient grid-tied solar rooftop systems using high-tier solar panels and reliable inverters, converting abundant sunlight into clean, free power for your household appliances.",
     iconName: "Sun",
-    bgImage: "/images/residential-solar.png",
+    bgImage: "/images/residential-solar.webp",
     suitableFor: [
       "Independent Villas & Bungalows",
       "Residential Independent Homes",
@@ -141,7 +141,7 @@ export const servicesData: ServiceItem[] = [
     solutionOverview:
       "Engineering high-capacity commercial solar systems that directly power day-to-day operations, lower daytime peak power charges, and provide predictable energy economics.",
     iconName: "Building2",
-    bgImage: "/images/commercial-solar.png",
+    bgImage: "/images/commercial-solar.webp",
     suitableFor: [
       "Commercial Office Buildings",
       "Factories & Manufacturing Plants",
@@ -234,7 +234,7 @@ export const servicesData: ServiceItem[] = [
     solutionOverview:
       "We deliver safe, certified EV charger installations with proper earthing, protective breakers, and load management for seamless daily charging.",
     iconName: "Zap",
-    bgImage: "/images/ev-charging.png",
+    bgImage: "/images/ev-charging.webp",
     suitableFor: [
       "Private Residential Garages",
       "Apartment Complexes & Gated Communities",
@@ -277,7 +277,7 @@ export const servicesData: ServiceItem[] = [
     solutionOverview:
       "Routine professional cleaning and preventive technical check-ups that restore clean light absorption and catch issues early.",
     iconName: "Sparkles",
-    bgImage: "/images/maintenance.png",
+    bgImage: "/images/maintenance.webp",
     suitableFor: [
       "Existing Residential Solar Systems",
       "Commercial Rooftop Solar Arrays",

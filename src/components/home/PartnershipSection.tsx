@@ -28,6 +28,7 @@ export function PartnershipSection() {
                   alt={siteImages.virginPowerPartner.alt}
                   width={siteImages.virginPowerPartner.width}
                   height={siteImages.virginPowerPartner.height}
+                  sizes="(max-width: 768px) 100vw, 500px"
                   className="w-full h-[360px] sm:h-[420px] object-cover group-hover:scale-105 transition-transform duration-700"
                 />
 

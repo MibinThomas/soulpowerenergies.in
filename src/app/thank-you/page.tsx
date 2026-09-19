@@ -19,6 +19,10 @@ export const metadata: Metadata = {
   title: "Enquiry Received | Soul Power Energies",
   description:
     "Thank you for submitting your site assessment request. Our local engineering team in Thiruvambady will evaluate your solar requirements and contact you shortly.",
+  robots: {
+    index: false,
+    follow: true,
+  },
 };
 
 export default function ThankYouPage() {

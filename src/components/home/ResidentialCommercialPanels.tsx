@@ -27,6 +27,7 @@ export function ResidentialCommercialPanels() {
                   src={siteImages.residentialSolar.src}
                   alt={siteImages.residentialSolar.alt}
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute top-3 left-3 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full sthira-pill bg-white/95 backdrop-blur-md text-[#D97706] border border-slate-200/80 text-xs font-bold uppercase tracking-wider shadow-md">
@@ -71,6 +72,7 @@ export function ResidentialCommercialPanels() {
                   src={siteImages.commercialSolar.src}
                   alt={siteImages.commercialSolar.alt}
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute top-3 left-3 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full sthira-pill bg-white/95 backdrop-blur-md text-[#D97706] border border-slate-200/80 text-xs font-bold uppercase tracking-wider shadow-md">
