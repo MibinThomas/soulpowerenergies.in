@@ -47,10 +47,18 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     images: [
       {
-        url: "/opengraph-image",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
+        type: "image/jpeg",
         alt: "Soul Power Energies - Solar & EV Infrastructure Kozhikode & Wayanad",
+      },
+      {
+        url: "/og-whatsapp.png",
+        width: 1200,
+        height: 630,
+        type: "image/png",
+        alt: "Soul Power Energies - WhatsApp Preview",
       },
     ],
   },
@@ -58,7 +66,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.meta.defaultTitle,
     description: siteConfig.meta.defaultDescription,
-    images: ["/twitter-image"],
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
