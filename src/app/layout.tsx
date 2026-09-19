@@ -23,7 +23,10 @@ export const metadata: Metadata = {
   description:
     "Rooftop solar, commercial power plants, and EV charging station installations across Kozhikode and Wayanad. Authorized partner of Virgin Power.",
   icons: {
-    icon: "/logo/mobile logo.png",
+    icon: [
+      { url: "/logo/mobile logo.png", type: "image/png" },
+      { url: "/icon.png", type: "image/png" },
+    ],
     shortcut: "/logo/mobile logo.png",
     apple: "/logo/mobile logo.png",
   },
