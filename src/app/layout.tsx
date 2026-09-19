@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { siteConfig } from "@/config/site";
 import { PopUpContactModal } from "@/components/modals/PopUpContactModal";
 
 const artificFont = localFont({
@@ -19,9 +20,16 @@ const artificFont = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Soul Power Energies | Solar & EV Infrastructure Kozhikode & Wayanad",
-  description:
-    "Rooftop solar, commercial power plants, and EV charging station installations across Kozhikode and Wayanad. Authorized partner of Virgin Power.",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: siteConfig.meta.defaultTitle,
+    template: siteConfig.meta.titleTemplate,
+  },
+  description: siteConfig.meta.defaultDescription,
+  keywords: siteConfig.meta.keywords,
+  authors: [{ name: "Soul Power Energies" }],
+  creator: "Soul Power Energies",
+  publisher: "Virgin Power and Engineering Pvt. Ltd.",
   icons: {
     icon: [
       { url: "/logo/mobile logo.png", type: "image/png" },
@@ -29,6 +37,39 @@ export const metadata: Metadata = {
     ],
     shortcut: "/logo/mobile logo.png",
     apple: "/logo/mobile logo.png",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    url: siteConfig.url,
+    title: siteConfig.meta.defaultTitle,
+    description: siteConfig.meta.defaultDescription,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Soul Power Energies - Solar & EV Infrastructure Kozhikode & Wayanad",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.meta.defaultTitle,
+    description: siteConfig.meta.defaultDescription,
+    images: ["/twitter-image"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
