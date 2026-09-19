@@ -1,31 +1,32 @@
 import type { Metadata } from "next";
-import { Outfit, Plus_Jakarta_Sans, Instrument_Serif } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { PopUpContactModal } from "@/components/modals/PopUpContactModal";
 
-const fontHeading = Outfit({
-  variable: "--font-heading",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-});
-
-const fontBody = Plus_Jakarta_Sans({
-  variable: "--font-body",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const fontSerif = Instrument_Serif({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
+const artificFont = localFont({
+  src: [
+    { path: "../../public/fonts/artific-font-family/artifictrial-thin.otf", weight: "100", style: "normal" },
+    { path: "../../public/fonts/artific-font-family/artifictrial-light.otf", weight: "300", style: "normal" },
+    { path: "../../public/fonts/artific-font-family/artifictrial-regular.otf", weight: "400", style: "normal" },
+    { path: "../../public/fonts/artific-font-family/artifictrial-medium.otf", weight: "500", style: "normal" },
+    { path: "../../public/fonts/artific-font-family/artifictrial-semibold.otf", weight: "600", style: "normal" },
+    { path: "../../public/fonts/artific-font-family/artifictrial-bold.otf", weight: "700", style: "normal" },
+    { path: "../../public/fonts/artific-font-family/artifictrial-superbold.otf", weight: "800", style: "normal" },
+    { path: "../../public/fonts/artific-font-family/artifictrial-black.otf", weight: "900", style: "normal" },
+  ],
+  variable: "--font-artific",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   title: "Soul Power Energies | Solar & EV Infrastructure Kozhikode & Wayanad",
   description:
     "Rooftop solar, commercial power plants, and EV charging station installations across Kozhikode and Wayanad. Authorized partner of Virgin Power.",
+  icons: {
+    icon: "/logo/mobile logo.png",
+    shortcut: "/logo/mobile logo.png",
+    apple: "/logo/mobile logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -36,11 +37,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fontHeading.variable} ${fontBody.variable} ${fontSerif.variable} h-full antialiased`}
+      className={`${artificFont.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body
-        className="min-h-full flex flex-col bg-[#000000] text-[#F5EFE6] selection:bg-[#E5BA73] selection:text-[#000000] font-sans"
+        className="min-h-full flex flex-col bg-[#F8F9FC] text-[#0F172A] selection:bg-[#D97706] selection:text-white font-sans"
         suppressHydrationWarning
       >
         {children}

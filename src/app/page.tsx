@@ -3,7 +3,6 @@ import { siteConfig } from "@/config/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StickyMobileActionBar } from "@/components/layout/StickyMobileActionBar";
-import { HeroCarouselSection } from "@/components/home/HeroCarouselSection";
 import { HeroSection } from "@/components/home/HeroSection";
 import { TrustHighlights } from "@/components/home/TrustHighlights";
 import { ServicesOverview } from "@/components/home/ServicesOverview";
@@ -58,9 +57,7 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <Header />
       <main id="main-content" className="flex-1">
-        <HeroCarouselSection />
         <HeroSection />
         <TrustHighlights />
         <ServicesOverview />

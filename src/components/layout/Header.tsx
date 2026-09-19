@@ -1,20 +1,13 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { mainNav } from "@/config/navigation";
-import { siteConfig } from "@/config/site";
 import { Logo } from "@/components/ui/Logo";
-import { Button } from "@/components/ui/Button";
-import { AnnouncementBar } from "./AnnouncementBar";
 import { MobileNav } from "./MobileNav";
-import { Menu } from "lucide-react";
+import { Headphones } from "lucide-react";
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const pathname = usePathname();
 
   const handleClose = useCallback(() => {
     setMobileNavOpen(false);
@@ -24,76 +17,46 @@ export function Header() {
     setMobileNavOpen(true);
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <header className="sticky top-0 z-40 w-full transition-all">
-      <AnnouncementBar />
+    <header className="relative z-40 w-full bg-transparent">
+      {/* Main Transparent Navbar */}
+      <div className="w-full py-3 sm:py-4 border-b border-transparent bg-transparent">
+        <div className="w-full px-4 sm:px-8 lg:px-16 flex items-center justify-between gap-2">
+          {/* Left Aligned Brand Logo */}
+          <Logo />
 
-      <div
-        className={`w-full transition-all duration-300 ${
-          isScrolled
-            ? "bg-[#000000]/95 backdrop-blur-xl py-3 shadow-xl border-b border-white/10"
-            : "bg-[#000000]/90 backdrop-blur-md py-4 border-b border-white/10"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Brand Logo */}
-          <Logo variant="light" showTagline={!isScrolled} />
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#EADBC8]" aria-label="Main Navigation">
-            {mainNav.map((item, idx) => {
-              const isActive = pathname === item.href;
-              return (
-                <div key={item.href} className="flex items-center gap-2">
-                  {idx > 0 && <span className="text-[#E5BA73]/40 font-bold">•</span>}
-                  <Link
-                    href={item.href}
-                    className={`transition-colors py-1 px-2.5 rounded-lg ${
-                      isActive
-                        ? "text-[#E5BA73] font-bold underline underline-offset-4 decoration-[#E5BA73]"
-                        : "hover:text-[#F5EFE6] hover:bg-[#0C0E12]"
-                    }`}
-                  >
-                    {item.title}
-                  </Link>
-                </div>
-              );
-            })}
-          </nav>
-
-          {/* Right Action Actions */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            <Link href="/contact#assessment" className="hidden sm:inline-block">
-              <Button variant="primary" size="md" className="shadow-md font-black rounded-xl px-5 text-sm py-2 bg-gradient-to-r from-[#D97706] via-[#B45309] to-[#D97706] text-white">
-                Site Assessment
-              </Button>
+          {/* Right Aligned Header Bar: CONNECT US badge + Modern Hamburger Drawer Trigger */}
+          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
+            {/* CONNECT US Call/Contact Badge */}
+            <Link
+              href="/contact#assessment"
+              className="inline-flex items-center gap-2.5 group cursor-pointer focus:outline-none"
+            >
+              <span className="hidden sm:inline text-xs font-extrabold uppercase tracking-widest text-[#0F172A] group-hover:text-[#D97706] transition-colors">
+                CONNECT US
+              </span>
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-r from-[#D97706] to-[#B45309] text-white flex items-center justify-center shadow-md shadow-[#D97706]/30 group-hover:scale-105 transition-all">
+                <Headphones className="w-4 h-4 text-white" />
+              </div>
             </Link>
 
-            {/* Mobile Drawer Trigger */}
+            {/* Modern Hamburger Drawer Trigger Button */}
             <button
               onClick={handleOpen}
-              className="md:hidden p-2 rounded-xl border border-white/15 bg-[#0C0E12] text-[#F5EFE6] hover:bg-[#131722] focus:outline-none cursor-pointer"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white border border-slate-200 text-[#0F172A] hover:border-[#D97706] hover:text-[#D97706] flex items-center justify-center shadow-xs transition-all cursor-pointer group"
               aria-label="Open navigation menu"
             >
-              <Menu className="w-5 h-5 text-[#E5BA73]" />
+              <div className="w-4 h-3.5 flex flex-col justify-between items-end transition-all group-hover:scale-110">
+                <span className="w-full h-[2.5px] bg-current rounded-full transition-all duration-300" />
+                <span className="w-3/4 h-[2.5px] bg-[#D97706] rounded-full transition-all duration-300 group-hover:w-full" />
+                <span className="w-full h-[2.5px] bg-current rounded-full transition-all duration-300" />
+              </div>
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Navigation Drawer */}
+      {/* Modern Slide-over Drawer Menu */}
       <MobileNav isOpen={mobileNavOpen} onClose={handleClose} />
     </header>
   );

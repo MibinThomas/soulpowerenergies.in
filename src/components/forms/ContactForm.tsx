@@ -84,8 +84,8 @@ export function ContactForm() {
 
       {/* Error Alert */}
       {submitError && (
-        <div className="p-4 rounded-2xl bg-red-950/60 border border-red-500/40 text-red-200 text-sm flex items-start gap-3">
-          <AlertCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
+        <div className="p-4 rounded-2xl bg-amber-950/60 border border-amber-500/40 text-amber-200 text-sm flex items-start gap-3">
+          <AlertCircle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
           <div className="space-y-1">
             <span className="font-bold">Submission Error</span>
             <p>{submitError}</p>
@@ -108,10 +108,10 @@ export function ContactForm() {
               placeholder="e.g. Anjali Nair"
               {...register("fullName")}
               className={`w-full px-4 py-2.5 rounded-xl border text-sm text-[#F5EFE6] bg-[#131722] placeholder:text-[#9CA3AF] focus:outline-none focus:ring-2 focus:ring-[#E5BA73] ${
-                errors.fullName ? "border-red-400 bg-red-950/20" : "border-white/10"
+                errors.fullName ? "border-amber-400 bg-amber-950/20" : "border-white/10"
               }`}
             />
-            {errors.fullName && <p className="text-[11px] text-red-400 font-bold">{errors.fullName.message}</p>}
+            {errors.fullName && <p className="text-[11px] text-amber-400 font-bold">{errors.fullName.message}</p>}
           </div>
 
           <div className="space-y-1.5">
@@ -123,10 +123,10 @@ export function ContactForm() {
               placeholder="e.g. +91 98765 43210"
               {...register("phone")}
               className={`w-full px-4 py-2.5 rounded-xl border text-sm text-[#F5EFE6] bg-[#131722] placeholder:text-[#9CA3AF] focus:outline-none focus:ring-2 focus:ring-[#E5BA73] ${
-                errors.phone ? "border-red-400 bg-red-950/20" : "border-white/10"
+                errors.phone ? "border-amber-400 bg-amber-950/20" : "border-white/10"
               }`}
             />
-            {errors.phone && <p className="text-[11px] text-red-400 font-bold">{errors.phone.message}</p>}
+            {errors.phone && <p className="text-[11px] text-amber-400 font-bold">{errors.phone.message}</p>}
           </div>
         </div>
 
@@ -141,10 +141,10 @@ export function ContactForm() {
               placeholder="e.g. name@example.com"
               {...register("email")}
               className={`w-full px-4 py-2.5 rounded-xl border text-sm text-[#F5EFE6] bg-[#131722] placeholder:text-[#9CA3AF] focus:outline-none focus:ring-2 focus:ring-[#E5BA73] ${
-                errors.email ? "border-red-400 bg-red-950/20" : "border-white/10"
+                errors.email ? "border-amber-400 bg-amber-950/20" : "border-white/10"
               }`}
             />
-            {errors.email && <p className="text-[11px] text-red-400 font-bold">{errors.email.message}</p>}
+            {errors.email && <p className="text-[11px] text-amber-400 font-bold">{errors.email.message}</p>}
           </div>
 
           <div className="space-y-1.5">
@@ -189,10 +189,10 @@ export function ContactForm() {
               placeholder="e.g. Thiruvambady, Kozhikode"
               {...register("propertyLocation")}
               className={`w-full px-4 py-2.5 rounded-xl border text-sm text-[#F5EFE6] bg-[#131722] placeholder:text-[#9CA3AF] focus:outline-none focus:ring-2 focus:ring-[#E5BA73] ${
-                errors.propertyLocation ? "border-red-400 bg-red-950/20" : "border-white/10"
+                errors.propertyLocation ? "border-amber-400 bg-amber-950/20" : "border-white/10"
               }`}
             />
-            {errors.propertyLocation && <p className="text-[11px] text-red-400 font-bold">{errors.propertyLocation.message}</p>}
+            {errors.propertyLocation && <p className="text-[11px] text-amber-400 font-bold">{errors.propertyLocation.message}</p>}
           </div>
         </div>
 
@@ -266,7 +266,7 @@ export function ContactForm() {
               I consent to Soul Power Energies contacting me regarding this site assessment request.
             </span>
           </label>
-          {errors.consent && <p className="text-[11px] text-red-400 font-bold">{errors.consent.message}</p>}
+          {errors.consent && <p className="text-[11px] text-amber-400 font-bold">{errors.consent.message}</p>}
         </div>
 
         {/* Submit Button */}

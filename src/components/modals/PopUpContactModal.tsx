@@ -96,7 +96,7 @@ export function PopUpContactModal() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={handleClose}
-            className="fixed inset-0 bg-black/80 backdrop-blur-md"
+            className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm"
           />
 
           {/* Modal Body Card */}
@@ -105,12 +105,12 @@ export function PopUpContactModal() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="relative w-full max-w-lg sm:max-w-xl max-h-[90vh] overflow-y-auto rounded-3xl bg-[#0C0E12] border border-white/15 p-6 sm:p-8 shadow-2xl text-[#F5EFE6] space-y-6 z-10"
+            className="relative w-full max-w-lg sm:max-w-xl max-h-[90vh] overflow-y-auto rounded-[32px] bg-white border border-slate-200/80 p-6 sm:p-8 shadow-2xl text-[#0F172A] space-y-6 z-10"
           >
             {/* Close Button */}
             <button
               onClick={handleClose}
-              className="absolute top-5 right-5 p-2 rounded-full bg-[#131722] border border-white/15 text-[#F5EFE6] hover:bg-[#E5BA73] hover:text-[#000000] transition-all cursor-pointer z-20"
+              className="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 text-[#0F172A] hover:bg-[#D97706] hover:text-white flex items-center justify-center transition-all cursor-pointer z-20"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
@@ -118,22 +118,22 @@ export function PopUpContactModal() {
 
             {/* Modal Header */}
             <div className="space-y-2 pr-8">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full nestive-pill bg-[#131722] text-[#E5BA73] text-xs font-bold border border-white/10">
-                <Sparkles className="w-3.5 h-3.5 fill-[#E5BA73]" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full sthira-pill bg-[#D97706]/10 text-[#D97706] text-xs font-bold">
+                <Sparkles className="w-3.5 h-3.5 stroke-[2.5]" />
                 <span>Free Solar Feasibility Check</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-normal font-serif italic text-[#F5EFE6] leading-tight">
-                Calculate Savings & Schedule Site Visit
+              <h2 className="text-2xl sm:text-3xl font-black text-[#0F172A] leading-tight">
+                Calculate Savings & Schedule Site Visit<span className="text-[#D97706]">.</span>
               </h2>
-              <p className="text-xs sm:text-sm text-[#EADBC8] leading-relaxed font-medium">
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
                 Fill out this quick enquiry form for customized rooftop solar & EV charging specs across Kozhikode and Wayanad.
               </p>
             </div>
 
             {/* Success Alert */}
             {submitSuccess && (
-              <div className="p-4 rounded-2xl bg-emerald-950/60 border border-emerald-500/40 text-emerald-200 text-xs sm:text-sm flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+              <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm flex items-start gap-3">
+                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
                 <div className="space-y-1">
                   <span className="font-bold">Enquiry Received!</span>
                   <p>{submitSuccess}</p>
@@ -143,8 +143,8 @@ export function PopUpContactModal() {
 
             {/* Error Alert */}
             {submitError && (
-              <div className="p-4 rounded-2xl bg-red-950/60 border border-red-500/40 text-red-200 text-xs sm:text-sm flex items-start gap-3">
-                <AlertCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
+              <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-800 text-xs sm:text-sm flex items-start gap-3">
+                <AlertCircle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                 <div className="space-y-1">
                   <span className="font-bold">Submission Error</span>
                   <p>{submitError}</p>
@@ -160,80 +160,80 @@ export function PopUpContactModal() {
               {/* Name & Phone */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <label className="text-[11px] font-bold uppercase tracking-wider text-[#E5BA73]">
+                  <label className="text-[11px] font-bold uppercase tracking-wider text-slate-600">
                     Full Name *
                   </label>
                   <input
                     type="text"
                     placeholder="e.g. Anjali Nair"
                     {...register("fullName")}
-                    className={`w-full px-3.5 py-2.5 rounded-xl border text-xs sm:text-sm text-[#F5EFE6] bg-[#131722] placeholder:text-[#9CA3AF] focus:outline-none focus:ring-2 focus:ring-[#E5BA73] ${
-                      errors.fullName ? "border-red-500" : "border-white/10"
+                    className={`w-full px-3.5 py-2.5 rounded-xl border text-xs sm:text-sm text-[#0F172A] bg-slate-50 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#D97706] ${
+                      errors.fullName ? "border-amber-500" : "border-slate-200/80"
                     }`}
                   />
-                  {errors.fullName && <p className="text-[10px] text-red-400 font-bold">{errors.fullName.message}</p>}
+                  {errors.fullName && <p className="text-[10px] text-amber-600 font-bold">{errors.fullName.message}</p>}
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-[11px] font-bold uppercase tracking-wider text-[#E5BA73]">
+                  <label className="text-[11px] font-bold uppercase tracking-wider text-slate-600">
                     Phone Number *
                   </label>
                   <input
                     type="tel"
                     placeholder="e.g. +91 98765 43210"
                     {...register("phone")}
-                    className={`w-full px-3.5 py-2.5 rounded-xl border text-xs sm:text-sm text-[#F5EFE6] bg-[#131722] placeholder:text-[#9CA3AF] focus:outline-none focus:ring-2 focus:ring-[#E5BA73] ${
-                      errors.phone ? "border-red-500" : "border-white/10"
+                    className={`w-full px-3.5 py-2.5 rounded-xl border text-xs sm:text-sm text-[#0F172A] bg-slate-50 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#D97706] ${
+                      errors.phone ? "border-amber-500" : "border-slate-200/80"
                     }`}
                   />
-                  {errors.phone && <p className="text-[10px] text-red-400 font-bold">{errors.phone.message}</p>}
+                  {errors.phone && <p className="text-[10px] text-amber-600 font-bold">{errors.phone.message}</p>}
                 </div>
               </div>
 
               {/* Email & Property Location */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <label className="text-[11px] font-bold uppercase tracking-wider text-[#E5BA73]">
+                  <label className="text-[11px] font-bold uppercase tracking-wider text-slate-600">
                     Email Address
                   </label>
                   <input
                     type="email"
                     placeholder="e.g. name@example.com"
                     {...register("email")}
-                    className={`w-full px-3.5 py-2.5 rounded-xl border text-xs sm:text-sm text-[#F5EFE6] bg-[#131722] placeholder:text-[#9CA3AF] focus:outline-none focus:ring-2 focus:ring-[#E5BA73] ${
-                      errors.email ? "border-red-500" : "border-white/10"
+                    className={`w-full px-3.5 py-2.5 rounded-xl border text-xs sm:text-sm text-[#0F172A] bg-slate-50 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#D97706] ${
+                      errors.email ? "border-amber-500" : "border-slate-200/80"
                     }`}
                   />
-                  {errors.email && <p className="text-[10px] text-red-400 font-bold">{errors.email.message}</p>}
+                  {errors.email && <p className="text-[10px] text-amber-600 font-bold">{errors.email.message}</p>}
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-[11px] font-bold uppercase tracking-wider text-[#E5BA73]">
+                  <label className="text-[11px] font-bold uppercase tracking-wider text-slate-600">
                     Property Location *
                   </label>
                   <input
                     type="text"
                     placeholder="e.g. Thiruvambady, Kozhikode"
                     {...register("propertyLocation")}
-                    className={`w-full px-3.5 py-2.5 rounded-xl border text-xs sm:text-sm text-[#F5EFE6] bg-[#131722] placeholder:text-[#9CA3AF] focus:outline-none focus:ring-2 focus:ring-[#E5BA73] ${
-                      errors.propertyLocation ? "border-red-500" : "border-white/10"
+                    className={`w-full px-3.5 py-2.5 rounded-xl border text-xs sm:text-sm text-[#0F172A] bg-slate-50 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#D97706] ${
+                      errors.propertyLocation ? "border-amber-500" : "border-slate-200/80"
                     }`}
                   />
-                  {errors.propertyLocation && <p className="text-[10px] text-red-400 font-bold">{errors.propertyLocation.message}</p>}
+                  {errors.propertyLocation && <p className="text-[10px] text-amber-600 font-bold">{errors.propertyLocation.message}</p>}
                 </div>
               </div>
 
               {/* Service Category */}
               <div className="space-y-1">
-                <label className="text-[11px] font-bold uppercase tracking-wider text-[#E5BA73]">
+                <label className="text-[11px] font-bold uppercase tracking-wider text-slate-600">
                   Service Category *
                 </label>
                 <select
                   {...register("requiredService")}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-white/10 bg-[#131722] text-[#F5EFE6] text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#E5BA73]"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200/80 bg-slate-50 text-[#0F172A] text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#D97706]"
                 >
                   {servicesData.map((s) => (
-                    <option key={s.id} value={s.title} className="bg-[#0C0E12] text-[#F5EFE6]">
+                    <option key={s.id} value={s.title} className="bg-white text-[#0F172A]">
                       {s.title}
                     </option>
                   ))}
@@ -243,44 +243,44 @@ export function PopUpContactModal() {
               {/* Monthly Bill, Products & Brand */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div className="space-y-1">
-                  <label className="text-[11px] font-bold uppercase tracking-wider text-[#E5BA73]">
+                  <label className="text-[11px] font-bold uppercase tracking-wider text-slate-600">
                     Monthly Bill (₹)
                   </label>
                   <input
                     type="number"
                     placeholder="e.g. 4500"
                     {...register("monthlyBill")}
-                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-[#131722] text-[#F5EFE6] placeholder:text-[#9CA3AF] text-xs focus:outline-none focus:ring-2 focus:ring-[#E5BA73]"
+                    className="w-full px-3 py-2 rounded-xl border border-slate-200/80 bg-slate-50 text-[#0F172A] placeholder:text-slate-400 text-xs focus:outline-none focus:ring-2 focus:ring-[#D97706]"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-[11px] font-bold uppercase tracking-wider text-[#E5BA73]">
+                  <label className="text-[11px] font-bold uppercase tracking-wider text-slate-600">
                     Products *
                   </label>
                   <select
                     {...register("preferredProduct")}
-                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-[#131722] text-[#F5EFE6] text-xs focus:outline-none focus:ring-2 focus:ring-[#E5BA73]"
+                    className="w-full px-3 py-2 rounded-xl border border-slate-200/80 bg-slate-50 text-[#0F172A] text-xs focus:outline-none focus:ring-2 focus:ring-[#D97706]"
                   >
-                    <option value="3 KWH SINGLE PHASE" className="bg-[#0C0E12]">3 KWH SINGLE PHASE</option>
-                    <option value="5 KWH 3PHASE" className="bg-[#0C0E12]">5 KWH 3PHASE</option>
-                    <option value="6 KWH 3PHASE" className="bg-[#0C0E12]">6 KWH 3PHASE</option>
-                    <option value="8 KWH 3PHASE" className="bg-[#0C0E12]">8 KWH 3PHASE</option>
+                    <option value="3 KWH SINGLE PHASE" className="bg-white">3 KWH SINGLE PHASE</option>
+                    <option value="5 KWH 3PHASE" className="bg-white">5 KWH 3PHASE</option>
+                    <option value="6 KWH 3PHASE" className="bg-white">6 KWH 3PHASE</option>
+                    <option value="8 KWH 3PHASE" className="bg-white">8 KWH 3PHASE</option>
                   </select>
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-[11px] font-bold uppercase tracking-wider text-[#E5BA73]">
+                  <label className="text-[11px] font-bold uppercase tracking-wider text-slate-600">
                     Brand *
                   </label>
                   <select
                     {...register("preferredBrand")}
-                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-[#131722] text-[#F5EFE6] text-xs focus:outline-none focus:ring-2 focus:ring-[#E5BA73]"
+                    className="w-full px-3 py-2 rounded-xl border border-slate-200/80 bg-slate-50 text-[#0F172A] text-xs focus:outline-none focus:ring-2 focus:ring-[#D97706]"
                   >
-                    <option value="WAREE ENERGY" className="bg-[#0C0E12]">WAREE ENERGY</option>
-                    <option value="ADANI POWER" className="bg-[#0C0E12]">ADANI POWER</option>
-                    <option value="EMMVEE SOLAR" className="bg-[#0C0E12]">EMMVEE SOLAR</option>
-                    <option value="Any / Expert Recommendation" className="bg-[#0C0E12]">Any / Expert Rec.</option>
+                    <option value="WAREE ENERGY" className="bg-white">WAREE ENERGY</option>
+                    <option value="ADANI POWER" className="bg-white">ADANI POWER</option>
+                    <option value="EMMVEE SOLAR" className="bg-white">EMMVEE SOLAR</option>
+                    <option value="Any / Expert Recommendation" className="bg-white">Any / Expert Rec.</option>
                   </select>
                 </div>
               </div>
@@ -290,7 +290,7 @@ export function PopUpContactModal() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-[#D97706] via-[#B45309] to-[#D97706] text-white font-black text-sm sm:text-base shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                  className="w-full py-3.5 px-6 rounded-full btn-primary-gold text-white font-extrabold text-xs sm:text-sm uppercase tracking-widest shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     <>
@@ -306,8 +306,8 @@ export function PopUpContactModal() {
                 </button>
               </div>
 
-              <div className="flex items-center justify-center gap-2 text-[10px] text-[#9CA3AF] pt-1">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#E5BA73]" />
+              <div className="flex items-center justify-center gap-2 text-[10px] text-slate-500 font-medium pt-1">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#D97706] stroke-[2.5]" />
                 <span>Authorized Virgin Power Partner • Zero Spam Guarantee</span>
               </div>
             </form>

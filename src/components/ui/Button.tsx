@@ -10,25 +10,25 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "primary", size = "md", children, ...props }, ref) => {
     const baseStyles =
-      "inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E5BA73] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C0E12] active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none cursor-pointer";
+      "inline-flex items-center justify-center font-bold rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D97706] focus-visible:ring-offset-2 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none cursor-pointer tracking-wider uppercase";
 
     const variants = {
       primary:
-        "bg-[#E5BA73] hover:bg-[#F0C987] text-[#0C0E12] font-bold shadow-lg shadow-[#E5BA73]/20 hover:shadow-xl hover:shadow-[#E5BA73]/30 border border-[#F5EFE6]/30",
+        "bg-gradient-to-r from-[#D97706] via-[#B45309] to-[#D97706] hover:from-[#B45309] hover:to-[#92400E] text-white shadow-lg shadow-[#D97706]/30 hover:shadow-xl hover:shadow-[#D97706]/40 border border-transparent",
       secondary:
-        "bg-[#1E2433] hover:bg-[#272F42] text-[#F5EFE6] shadow-md border border-[#EADBC8]/20 hover:border-[#E5BA73]/40",
+        "bg-[#0F172A] hover:bg-[#1E293B] text-white shadow-md border border-transparent",
       outline:
-        "border-2 border-[#E5BA73] text-[#E5BA73] hover:bg-[#E5BA73] hover:text-[#0C0E12] bg-transparent font-semibold",
+        "border-2 border-[#D97706] text-[#D97706] hover:bg-[#D97706] hover:text-white bg-transparent",
       ghost:
-        "text-[#EADBC8] hover:bg-[#EADBC8]/10 hover:text-[#F5EFE6] bg-transparent",
+        "text-[#334155] hover:bg-slate-100 hover:text-[#0F172A] bg-transparent normal-case font-semibold",
       dark:
-        "bg-[#131722] hover:bg-[#1A1F2C] text-[#F5EFE6] border border-[#EADBC8]/20 shadow-md hover:border-[#E5BA73]/30",
+        "bg-[#0F172A] hover:bg-[#1E293B] text-white shadow-md border border-slate-700",
     };
 
     const sizes = {
-      sm: "px-3.5 py-1.5 text-xs gap-1.5",
-      md: "px-5 py-2.5 text-sm gap-2",
-      lg: "px-7 py-3.5 text-base gap-2.5 font-bold",
+      sm: "px-4 py-2 text-xs gap-1.5",
+      md: "px-6 py-3 text-xs sm:text-sm gap-2",
+      lg: "px-8 py-4 text-sm sm:text-base gap-2.5",
     };
 
     return (

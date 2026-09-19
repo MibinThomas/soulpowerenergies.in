@@ -23,20 +23,12 @@ export function StickyMobileActionBar() {
 
   const actionItems = [
     {
-      id: "email",
-      label: "Email Enquiry",
-      icon: Mail,
-      href: `mailto:${email}`,
-      isExternal: false,
-      color: "hover:border-[#E5BA73] text-[#E5BA73]",
-    },
-    {
       id: "whatsapp",
       label: "WhatsApp Chat",
       icon: MessageCircle,
       href: `https://wa.me/${whatsapp.replace(/[^0-9]/g, "")}`,
       isExternal: true,
-      color: "hover:border-[#E5BA73] text-[#E5BA73]",
+      color: "bg-[#25D366] text-white",
     },
     {
       id: "call",
@@ -44,28 +36,36 @@ export function StickyMobileActionBar() {
       icon: Phone,
       href: `tel:${phone}`,
       isExternal: false,
-      color: "hover:border-[#E5BA73] text-[#E5BA73]",
+      color: "bg-[#0F172A] text-white",
+    },
+    {
+      id: "email",
+      label: "Email Enquiry",
+      icon: Mail,
+      href: `mailto:${email}`,
+      isExternal: false,
+      color: "bg-[#0F172A] text-white",
     },
     {
       id: "location",
-      label: "Thiruvambadi HQ Location",
+      label: "Thiruvambadi Location",
       icon: MapPin,
       href: siteConfig.contact.mapUrl,
       isExternal: true,
-      color: "hover:border-[#E5BA73] text-[#E5BA73]",
+      color: "bg-[#0F172A] text-white",
     },
     {
       id: "enquire",
-      label: "Free Site Assessment",
+      label: "Site Assessment",
       icon: FileText,
       href: "/contact#assessment",
       isExternal: false,
-      color: "hover:border-[#E5BA73] text-[#E5BA73] font-bold",
+      color: "bg-[#D97706] text-white font-bold",
     },
   ];
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <div className="floating-action-bar fixed bottom-6 right-6 z-40 flex flex-col items-end">
       {/* Expanded Vertical Floating Actions */}
       <AnimatePresence>
         {isOpen && (
@@ -81,7 +81,7 @@ export function StickyMobileActionBar() {
               const content = (
                 <div className="flex items-center gap-3 group">
                   {/* Tooltip Label */}
-                  <span className="hidden sm:inline-block px-3 py-1 rounded-full bg-[#000000] text-[#F5EFE6] text-xs font-semibold backdrop-blur-md border border-white/10 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+                  <span className="hidden sm:inline-block px-3 py-1 rounded-full bg-[#0F172A] text-white text-xs font-bold shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
                     {item.label}
                   </span>
 
@@ -90,7 +90,7 @@ export function StickyMobileActionBar() {
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: idx * 0.04 }}
-                    className={`w-12 h-12 rounded-full bg-[#0C0E12]/95 backdrop-blur-md border-2 border-white/15 shadow-2xl flex items-center justify-center group-hover:scale-110 active:scale-95 transition-all duration-200 ${item.color}`}
+                    className={`w-12 h-12 rounded-full shadow-xl flex items-center justify-center group-hover:scale-110 active:scale-95 transition-all duration-200 ${item.color}`}
                   >
                     <Icon className="w-5 h-5" />
                   </motion.div>
@@ -117,13 +117,11 @@ export function StickyMobileActionBar() {
         )}
       </AnimatePresence>
 
-      {/* Main Floating Trigger Button */}
+      {/* Main Golden Amber Floating Action Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`relative w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 focus:outline-none cursor-pointer border-2 ${
-          isOpen
-            ? "bg-[#D97706] border-white rotate-90 scale-105"
-            : "bg-[#0C0E12] backdrop-blur-md border-white/15 hover:scale-110 hover:border-[#E5BA73]"
+        className={`relative w-14 h-14 rounded-full bg-gradient-to-r from-[#D97706] to-[#B45309] text-white shadow-2xl flex items-center justify-center transition-all duration-300 focus:outline-none cursor-pointer border-2 border-white hover:scale-105 active:scale-95 ${
+          isOpen ? "rotate-90 bg-[#B45309]" : ""
         }`}
         aria-label={isOpen ? "Close floating contact menu" : "Open floating contact menu"}
       >
@@ -131,8 +129,8 @@ export function StickyMobileActionBar() {
           <X className="w-6 h-6 text-white font-bold" />
         ) : (
           <>
-            <MessageSquare className="w-6 h-6 text-[#E5BA73]" />
-            <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-[#E5BA73] border-2 border-[#000000] animate-ping" />
+            <MessageSquare className="w-6 h-6 text-white fill-white" />
+            <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-white border-2 border-[#D97706] animate-ping" />
           </>
         )}
       </button>

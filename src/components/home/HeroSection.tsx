@@ -1,52 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
-import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
+import { CheckCircle2, ArrowRight } from "lucide-react";
+import { Header } from "@/components/layout/Header";
 import { SolarPowerSwitchShowcase } from "./SolarPowerSwitchShowcase";
 
-function TypewriterSubtitle() {
-  const phrases = ["The Smart Way", "With Clean Solar", "With Zero Grid Cost"];
-  const [textIndex, setTextIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    const currentPhrase = phrases[textIndex];
-    let typingSpeed = isDeleting ? 40 : 85;
-
-    if (!isDeleting && charIndex === currentPhrase.length) {
-      typingSpeed = 2200; // Hold full phrase before deleting
-      const timeout = setTimeout(() => setIsDeleting(true), typingSpeed);
-      return () => clearTimeout(timeout);
-    } else if (isDeleting && charIndex === 0) {
-      setIsDeleting(false);
-      setTextIndex((prev) => (prev + 1) % phrases.length);
-      typingSpeed = 400;
-    }
-
-    const timeout = setTimeout(() => {
-      setCharIndex((prev) => prev + (isDeleting ? -1 : 1));
-    }, typingSpeed);
-
-    return () => clearTimeout(timeout);
-  }, [charIndex, isDeleting, textIndex]);
-
-  return (
-    <span className="not-italic font-sans text-[#E5BA73] font-extrabold inline-flex items-center">
-      <span>{phrases[textIndex].substring(0, charIndex)}</span>
-      <span className="animate-pulse ml-1 text-[#E5BA73] font-extralight">|</span>
-    </span>
-  );
-}
-
 export function HeroSection() {
-  const steps = [
-    { num: "01", label: "Enquiry", desc: "Consultation" },
-    { num: "02", label: "Site Audit", desc: "Feasibility" },
-    { num: "03", label: "Custom Design", desc: "Engineering" },
-    { num: "04", label: "Solar Active", desc: "Grid Sync" },
+  const trustTags = [
+    { label: "Virgin Power Partner" },
+    { label: "Subsidy Ready" },
+    { label: "ISO Certified" },
   ];
 
   // Motion Variants
@@ -55,103 +20,99 @@ export function HeroSection() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.12,
+        staggerChildren: 0.1,
         delayChildren: 0.1,
       },
     },
   };
 
   const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 18 },
+    hidden: { opacity: 0, y: 16 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6 },
+      transition: { duration: 0.5 },
     },
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#000000] text-[#F5EFE6] pt-4 sm:pt-10 pb-10 sm:pb-20">
-      {/* Background Soft Ambient Glows */}
-      <div className="absolute top-1/4 right-5 sm:right-10 w-[280px] sm:w-[520px] h-[280px] sm:h-[520px] bg-[#E5BA73]/10 rounded-full blur-[90px] sm:blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-5 left-5 sm:left-10 w-[220px] sm:w-[420px] h-[220px] sm:h-[420px] bg-[#D97706]/10 rounded-full blur-[80px] sm:blur-[120px] pointer-events-none" />
+    <section className="relative overflow-hidden bg-[#F8F9FC] text-[#0F172A] sthira-hero-bg">
+      {/* Solar Panel Texture Background Image with Soft Light Overlay */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <Image
+          src="/images/carousel-slide-1.jpg"
+          alt="Solar Panel Array"
+          fill
+          priority
+          className="object-cover object-center filter brightness-105 contrast-90 opacity-20"
+        />
+        {/* Soft STHIRA light color overlay (allows solar panel texture to show through cleanly) */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F8F9FC]/70 via-[#F8F9FC]/85 to-[#F8F9FC]" />
+        {/* Soft Angled Golden Tint Geometry Band */}
+        <div className="absolute top-1/2 -left-20 w-[120%] h-72 sm:h-96 sthira-banner-stripe pointer-events-none" />
+      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8 sm:space-y-14">
-        {/* Main Hero Grid */}
+      {/* Transparent Header integrated seamlessly at top of Hero Canvas */}
+      <div className="relative z-20">
+        <Header />
+      </div>
+
+      {/* Hero Content Grid */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-8 sm:py-14 lg:py-18 space-y-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* Left Column: Mobile-Optimized Copy */}
+          {/* Left Column: STHIRA Aesthetic Copy */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="lg:col-span-6 space-y-5 sm:space-y-7 text-left"
+            className="lg:col-span-6 space-y-6 text-left"
           >
-            {/* Social Proof Trust Badge */}
-            <motion.div variants={itemVariants} className="hidden sm:inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full nestive-pill text-xs text-[#EADBC8] border border-white/15 max-w-full shadow-xs bg-[#0C0E12]/90">
-              <div className="flex -space-x-2 shrink-0">
-                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#E5BA73] border-2 border-[#000000] flex items-center justify-center text-[9px] sm:text-[10px] font-bold text-[#000000]">
-                  SP
-                </div>
-                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#D97706] border-2 border-[#000000] flex items-center justify-center text-[9px] sm:text-[10px] font-bold text-white">
-                  VP
-                </div>
-                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#0C0E12] border-2 border-[#000000] flex items-center justify-center text-[9px] sm:text-[10px] font-bold text-[#E5BA73]">
-                  ★
-                </div>
+            {/* Top Pill Badge */}
+            <motion.div variants={itemVariants}>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full sthira-pill bg-white/90 backdrop-blur-md text-xs font-bold text-[#D97706] shadow-xs">
+                <span className="w-2 h-2 rounded-full bg-[#D97706] animate-pulse" />
+                <span>SOLAR & ENERGY LEADERS</span>
               </div>
-              <span className="font-semibold truncate text-[#F5EFE6]">+10,000 Kerala Homes Powered</span>
             </motion.div>
 
-            {/* Headline Hierarchy with Larger Font & Typewriter Animation */}
+            {/* Giant STHIRA-style Headline */}
             <motion.div variants={itemVariants} className="space-y-3">
-              <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl text-[#F5EFE6] italic font-normal tracking-tight leading-[1.08]">
-                Power Your Home <br className="hidden sm:inline" />
-                <TypewriterSubtitle />
+              <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight text-[#0F172A] leading-[1.02]">
+                SOUL POWER<span className="text-[#D97706]">.</span>
               </h1>
               
-              {/* Short & Impactful Value Prop */}
-              <p className="text-sm sm:text-lg text-[#EADBC8] max-w-xl leading-relaxed font-medium">
-                Zero grid dependence. Custom rooftop solar & EV charging systems engineered for Kozhikode & Wayanad.
+              <h2 className="text-xl sm:text-3xl font-bold text-[#334155] tracking-tight">
+                Rooftop Solar & EV Solutions by SOUL POWER.
+              </h2>
+              
+              <p className="text-sm sm:text-base text-slate-700 max-w-xl leading-relaxed font-semibold pt-2">
+                SOUL POWER delivers thoughtfully engineered rooftop solar and EV infrastructure that bring together structural strength, precision, and dependable performance for modern Kerala energy needs.
               </p>
             </motion.div>
 
-            {/* Conversion CTA Pill Button */}
-            <motion.div variants={itemVariants} className="pt-1 sm:pt-2">
+            {/* Golden Primary CTA Button */}
+            <motion.div variants={itemVariants} className="pt-2">
               <Link href="/contact#assessment" className="inline-block">
-                <button className="inline-flex items-center gap-3 p-1.5 pr-6 rounded-full bg-gradient-to-r from-[#D97706] via-[#B45309] to-[#D97706] text-white shadow-xl hover:scale-105 transition-all group cursor-pointer">
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white text-[#D97706] flex items-center justify-center font-bold shadow-md group-hover:scale-105 transition-transform">
-                    <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-[#D97706] fill-[#D97706]" />
-                  </div>
-                  <span className="text-xs sm:text-sm font-black tracking-wider uppercase text-white">
-                    CONNECT YOUR SPACE
-                  </span>
+                <button className="btn-primary-gold inline-flex items-center gap-3 px-8 py-4 rounded-full text-xs sm:text-sm font-extrabold uppercase tracking-widest cursor-pointer group">
+                  <span>CONNECT US</span>
                   <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
                 </button>
               </Link>
             </motion.div>
 
-            {/* Desktop Step Cards (01 - 04) */}
-            <motion.div variants={itemVariants} className="hidden sm:grid grid-cols-4 gap-3 pt-4 border-t border-white/10">
-              {steps.map((step) => (
-                <div
-                  key={step.num}
-                  className="p-3 rounded-2xl nestive-card bg-[#0C0E12]/90 space-y-1.5 hover:border-[#E5BA73] transition-colors border border-white/10"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-[#E5BA73] font-mono">{step.num}</span>
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#E5BA73]" />
-                  </div>
-                  <div>
-                    <h2 className="text-xs font-bold text-[#F5EFE6] font-heading">{step.label}</h2>
-                    <p className="text-[10px] text-[#9CA3AF]">{step.desc}</p>
-                  </div>
+            {/* Bottom Trust Tag Strip */}
+            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 sm:gap-6 pt-4 text-xs font-bold text-[#0F172A]">
+              {trustTags.map((tag) => (
+                <div key={tag.label} className="flex items-center gap-1.5 bg-white/60 backdrop-blur-xs px-3 py-1 rounded-full border border-slate-200/60 shadow-2xs">
+                  <CheckCircle2 className="w-4 h-4 text-[#D97706] stroke-[2.5]" />
+                  <span>{tag.label}</span>
                 </div>
               ))}
             </motion.div>
           </motion.div>
 
-          {/* Right Column: Embedded 3D Solar Power Showcase */}
+          {/* Right Column: Embedded 3D Lighting House Solar Power Showcase */}
           <motion.div
             initial={{ opacity: 0, scale: 0.97 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -160,24 +121,6 @@ export function HeroSection() {
           >
             <SolarPowerSwitchShowcase />
           </motion.div>
-        </div>
-
-        {/* Mobile Streamlined 4-Step Pill Strip */}
-        <div className="sm:hidden pt-2">
-          <div className="grid grid-cols-2 gap-2">
-            {steps.map((step) => (
-              <div
-                key={step.num}
-                className="p-2.5 rounded-xl nestive-card bg-[#0C0E12] flex items-center gap-2 border border-white/10"
-              >
-                <span className="text-[11px] font-bold text-[#E5BA73] font-mono shrink-0">{step.num}</span>
-                <div className="truncate">
-                  <span className="text-xs font-bold text-[#F5EFE6] block truncate">{step.label}</span>
-                  <span className="text-[10px] text-[#9CA3AF] block truncate">{step.desc}</span>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>
