@@ -1,11 +1,13 @@
-"use client";
-
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, Variants } from "framer-motion";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 import { Header } from "@/components/layout/Header";
-import { SolarPowerSwitchShowcase } from "./SolarPowerSwitchShowcase";
+
+const SolarPowerSwitchShowcase = dynamic(
+  () => import("./SolarPowerSwitchShowcase").then((mod) => mod.SolarPowerSwitchShowcase),
+  { loading: () => <div className="min-h-[340px] rounded-[32px] bg-white border border-slate-200/80 shadow-2xl" /> }
+);
 
 export function HeroSection() {
   const trustTags = [

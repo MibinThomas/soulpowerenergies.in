@@ -1,22 +1,24 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import dynamic from "next/dynamic";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
-import { PopUpContactModal } from "@/components/modals/PopUpContactModal";
+
+const PopUpContactModal = dynamic(
+  () => import("@/components/modals/PopUpContactModal").then((mod) => mod.PopUpContactModal)
+);
 
 const artificFont = localFont({
   src: [
-    { path: "../../public/fonts/artific-font-family/artifictrial-thin.otf", weight: "100", style: "normal" },
-    { path: "../../public/fonts/artific-font-family/artifictrial-light.otf", weight: "300", style: "normal" },
     { path: "../../public/fonts/artific-font-family/artifictrial-regular.otf", weight: "400", style: "normal" },
     { path: "../../public/fonts/artific-font-family/artifictrial-medium.otf", weight: "500", style: "normal" },
     { path: "../../public/fonts/artific-font-family/artifictrial-semibold.otf", weight: "600", style: "normal" },
     { path: "../../public/fonts/artific-font-family/artifictrial-bold.otf", weight: "700", style: "normal" },
-    { path: "../../public/fonts/artific-font-family/artifictrial-superbold.otf", weight: "800", style: "normal" },
     { path: "../../public/fonts/artific-font-family/artifictrial-black.otf", weight: "900", style: "normal" },
   ],
   variable: "--font-artific",
   display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -102,4 +104,5 @@ export default function RootLayout({
     </html>
   );
 }
+
 
