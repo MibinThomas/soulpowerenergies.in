@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
 import { servicesData } from "@/config/services";
+import { blogsData } from "@/config/blogs";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = (siteConfig.url || "https://soulpowerenergies.in").replace(/\/$/, "");
@@ -15,6 +16,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/solutions`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/blog`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
@@ -59,6 +66,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...serviceRoutes];
+  // Dynamic blog detail pages
+  const blogRoutes: MetadataRoute.Sitemap = blogsData.map((blog) => ({
+    url: `${baseUrl}/blog/${blog.slug}`,
+    lastModified: new Date(blog.updatedAt),
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
+  return [...staticRoutes, ...serviceRoutes, ...blogRoutes];
 }
+
 

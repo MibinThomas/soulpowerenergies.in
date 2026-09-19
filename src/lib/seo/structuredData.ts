@@ -68,3 +68,43 @@ export function generateFAQSchema() {
     })),
   };
 }
+
+export function generateBlogPostingSchema(post: {
+  title: string;
+  description: string;
+  slug: string;
+  publishedAt: string;
+  updatedAt: string;
+  image: string;
+  authorName: string;
+}) {
+  const baseUrl = (siteConfig.url || "https://soulpowerenergies.in").replace(/\/$/, "");
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    url: `${baseUrl}/blog/${post.slug}`,
+    datePublished: post.publishedAt,
+    dateModified: post.updatedAt,
+    image: `${baseUrl}${post.image}`,
+    author: {
+      "@type": "Person",
+      name: post.authorName,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      logo: {
+        "@type": "ImageObject",
+        url: `${baseUrl}/logo/mobile logo.png`,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${baseUrl}/blog/${post.slug}`,
+    },
+  };
+}
+

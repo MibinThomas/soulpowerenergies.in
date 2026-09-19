@@ -26,6 +26,11 @@ export const mainNav: NavItem[] = [
     description: "Tier-1 Solar Panels, Inverters & EV Technology Partners",
   },
   {
+    title: "Blog",
+    href: "/blog",
+    description: "Solar guides, PM Surya Ghar subsidy news & EV charging tips",
+  },
+  {
     title: "Contact",
     href: "/contact",
     description: "Get in touch or request a free site assessment",
@@ -43,6 +48,7 @@ export const footerNav = {
     { title: "About Soul Power", href: "/about" },
     { title: "Engineering Partnership", href: "/about#partnership" },
     { title: "Brands & Technology", href: "/brands" },
+    { title: "Solar & EV Blog", href: "/blog" },
     { title: "Service Coverage", href: "/#service-area" },
     { title: "Contact Us", href: "/contact" },
   ],
