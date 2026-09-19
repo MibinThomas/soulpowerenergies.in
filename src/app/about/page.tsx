@@ -63,59 +63,59 @@ export default function AboutPage() {
   return (
     <>
       <Header />
-      <main id="main-content" className="flex-1 bg-[#000000] text-[#F5EFE6]">
-        {/* Hero Section */}
-        <section className="py-16 lg:py-24 relative overflow-hidden">
+      <main id="main-content" className="flex-1 bg-[#F8F9FC] text-[#0F172A]">
+        {/* Hero Banner Section */}
+        <section className="py-20 relative overflow-hidden sthira-hero-bg">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4 text-center">
-            <Badge variant="gold" className="px-3.5 py-1 nestive-pill bg-[#0C0E12] text-[#E5BA73] border border-white/10">
+            <Badge variant="gold" className="px-3.5 py-1 sthira-pill bg-white text-[#D97706]">
               About Soul Power Energies
             </Badge>
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-normal font-serif italic tracking-tight text-[#F5EFE6]">
-              Local Renewable Service, <span className="text-[#E5BA73]">Proven Engineering Backing</span>
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#0F172A]">
+              Local Renewable Service, <span className="text-[#D97706]">Proven Engineering Backing</span>
             </h1>
-            <p className="text-base sm:text-lg text-[#EADBC8] max-w-3xl mx-auto leading-relaxed font-medium">
+            <p className="text-base sm:text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed font-medium">
               Based in Thiruvambady, Kozhikode, delivering customized rooftop solar and EV charging infrastructure across Kozhikode and Wayanad.
             </p>
           </div>
         </section>
 
         {/* Company Background */}
-        <section className="py-16">
+        <section className="py-20 bg-[#F8F9FC]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-6 space-y-6">
-                <Badge variant="gold" className="px-3.5 py-1 nestive-pill bg-[#0C0E12] text-[#E5BA73] border border-white/10">Company Overview</Badge>
-                <h2 className="text-3xl sm:text-4xl font-normal font-serif italic text-[#F5EFE6] leading-tight">
-                  Empowering Northern Kerala With Clean Energy Solutions
+                <Badge variant="gold" className="px-3.5 py-1 sthira-pill bg-white text-[#D97706]">Company Overview</Badge>
+                <h2 className="text-3xl sm:text-4xl font-black text-[#0F172A] leading-tight">
+                  Empowering Northern Kerala With Clean Energy Solutions<span className="text-[#D97706]">.</span>
                 </h2>
-                <p className="text-base text-[#EADBC8] leading-relaxed font-medium">
+                <p className="text-base text-slate-600 leading-relaxed font-medium">
                   Soul Power Energies is an authorized partner of {siteConfig.partner.fullName}. Based in Thiruvambady, Kozhikode, the company brings established renewable-energy expertise, quality-focused solutions, and personalized local service to homes, businesses, and industries across the region.
                 </p>
-                <p className="text-base text-[#EADBC8] leading-relaxed font-medium">
+                <p className="text-base text-slate-600 leading-relaxed font-medium">
                   We believe that adopting solar power should be simple, transparent, and dependable. By combining Tier-1 equipment selection with responsive on-ground engineering support, we help local property owners take control of their electricity costs.
                 </p>
 
-                <div className="p-4 rounded-2xl nestive-card bg-[#0C0E12] text-[#F5EFE6] text-xs flex items-start gap-3 border border-white/10 shadow-sm">
-                  <MapPin className="w-5 h-5 text-[#E5BA73] shrink-0 mt-0.5" />
+                <div className="p-4 rounded-2xl sthira-card text-[#0F172A] text-xs flex items-start gap-3 border border-slate-200/80 shadow-xs">
+                  <MapPin className="w-5 h-5 text-[#D97706] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-bold text-[#E5BA73]">Regional Commitment: </span>
+                    <span className="font-bold text-[#D97706]">Regional Commitment: </span>
                     Serving Kozhikode, Wayanad, Thiruvambady, and neighboring northern Kerala districts.
                   </div>
                 </div>
               </div>
 
               <div className="lg:col-span-6">
-                <div className="relative rounded-3xl overflow-hidden nestive-card bg-[#0C0E12] border border-white/10 shadow-xl">
+                <div className="relative rounded-[32px] overflow-hidden sthira-card bg-white border border-slate-200/80 shadow-xl">
                   <Image
                     src={siteImages.keralaLandscape.src}
                     alt={siteImages.keralaLandscape.alt}
                     width={siteImages.keralaLandscape.width}
                     height={siteImages.keralaLandscape.height}
-                    className="w-full h-[400px] object-cover opacity-100 filter brightness-90"
+                    className="w-full h-[400px] object-cover filter brightness-95"
                   />
-                  <div className="absolute bottom-6 inset-x-6 p-4 rounded-2xl nestive-card bg-[#000000]/90 backdrop-blur-md text-[#F5EFE6] space-y-1 border border-white/15">
-                    <p className="text-xs font-bold text-[#E5BA73]">Northern Kerala Environment</p>
-                    <p className="text-xs text-[#EADBC8]">Customized solar structural mounting for local tropical climate</p>
+                  <div className="absolute bottom-6 inset-x-6 p-4 rounded-2xl bg-white/95 backdrop-blur-md text-[#0F172A] space-y-1 border border-slate-200/80 shadow-xl">
+                    <p className="text-xs font-bold text-[#D97706]">Northern Kerala Environment</p>
+                    <p className="text-xs text-slate-600 font-medium">Customized solar structural mounting for local tropical climate</p>
                   </div>
                 </div>
               </div>
@@ -124,27 +124,27 @@ export default function AboutPage() {
         </section>
 
         {/* Mission & Vision Cards */}
-        <section className="py-16">
+        <section className="py-16 bg-[#F8F9FC]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Mission */}
-              <div className="p-8 sm:p-10 rounded-3xl nestive-card bg-[#0C0E12] border border-white/10 space-y-4 shadow-xl">
-                <div className="w-12 h-12 rounded-2xl bg-[#131722] text-[#E5BA73] flex items-center justify-center border border-white/10">
-                  <Target className="w-6 h-6" />
+              <div className="p-8 sm:p-10 rounded-[32px] sthira-card space-y-4 shadow-xl">
+                <div className="w-12 h-12 rounded-2xl bg-[#D97706]/10 text-[#D97706] flex items-center justify-center">
+                  <Target className="w-6 h-6 stroke-[2.2]" />
                 </div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#E5BA73] font-heading block">Our Mission</span>
-                <h3 className="text-xl sm:text-2xl font-normal font-serif italic text-[#F5EFE6] leading-snug">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#D97706] block">Our Mission</span>
+                <h3 className="text-xl sm:text-2xl font-bold text-[#0F172A] leading-snug">
                   &ldquo;To make clean, reliable and affordable solar energy accessible to homes and businesses while helping customers reduce energy costs and contribute to a more sustainable future.&rdquo;
                 </h3>
               </div>
 
               {/* Vision */}
-              <div className="p-8 sm:p-10 rounded-3xl nestive-card bg-[#0C0E12] border border-white/10 space-y-4 shadow-xl">
-                <div className="w-12 h-12 rounded-2xl bg-[#131722] text-[#E5BA73] flex items-center justify-center border border-white/10">
-                  <Eye className="w-6 h-6" />
+              <div className="p-8 sm:p-10 rounded-[32px] sthira-card space-y-4 shadow-xl">
+                <div className="w-12 h-12 rounded-2xl bg-[#D97706]/10 text-[#D97706] flex items-center justify-center">
+                  <Eye className="w-6 h-6 stroke-[2.2]" />
                 </div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#E5BA73] font-heading block">Our Vision</span>
-                <h3 className="text-xl sm:text-2xl font-normal font-serif italic text-[#F5EFE6] leading-snug">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#D97706] block">Our Vision</span>
+                <h3 className="text-xl sm:text-2xl font-bold text-[#0F172A] leading-snug">
                   &ldquo;To become the most trusted renewable-energy solutions provider across northern Kerala, recognized for technical excellence, customer care, and sustainable innovation.&rdquo;
                 </h3>
               </div>
@@ -153,12 +153,12 @@ export default function AboutPage() {
         </section>
 
         {/* Core Values Grid */}
-        <section className="py-16">
+        <section className="py-16 bg-[#F8F9FC]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
             <div className="text-center max-w-2xl mx-auto space-y-3">
-              <Badge variant="gold" className="px-3.5 py-1 nestive-pill bg-[#0C0E12] text-[#E5BA73] border border-white/10">Our Core Principles</Badge>
-              <h2 className="text-3xl sm:text-4xl font-normal font-serif italic text-[#F5EFE6]">
-                The Values That Drive Us
+              <Badge variant="gold" className="px-3.5 py-1 sthira-pill bg-white text-[#D97706]">Our Core Principles</Badge>
+              <h2 className="text-3xl sm:text-4xl font-black text-[#0F172A]">
+                The Values That Drive Us<span className="text-[#D97706]">.</span>
               </h2>
             </div>
 
@@ -168,13 +168,13 @@ export default function AboutPage() {
                 return (
                   <div
                     key={idx}
-                    className="p-6 rounded-3xl nestive-card bg-[#0C0E12] border border-white/10 shadow-md space-y-3"
+                    className="p-6 rounded-[28px] sthira-card sthira-card-hover space-y-3"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-[#131722] text-[#E5BA73] flex items-center justify-center border border-white/10">
-                      <Icon className="w-5 h-5" />
+                    <div className="w-12 h-12 rounded-2xl bg-[#D97706]/10 text-[#D97706] flex items-center justify-center">
+                      <Icon className="w-6 h-6 stroke-[2.2]" />
                     </div>
-                    <h3 className="text-lg font-bold text-[#F5EFE6] font-heading">{v.title}</h3>
-                    <p className="text-xs text-[#EADBC8] leading-relaxed font-medium">{v.desc}</p>
+                    <h3 className="text-lg font-bold text-[#0F172A]">{v.title}</h3>
+                    <p className="text-xs text-slate-600 leading-relaxed font-medium">{v.desc}</p>
                   </div>
                 );
               })}
@@ -183,31 +183,31 @@ export default function AboutPage() {
         </section>
 
         {/* Partnership & Engineering Backing */}
-        <section className="py-16" id="partnership">
+        <section className="py-20 bg-[#F8F9FC]" id="partnership">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
             <div className="max-w-3xl space-y-4">
-              <Badge variant="gold" className="px-3.5 py-1 nestive-pill bg-[#0C0E12] text-[#E5BA73] border border-white/10">
+              <Badge variant="gold" className="px-3.5 py-1 sthira-pill bg-white text-[#D97706]">
                 Authorized Engineering Partnership
               </Badge>
-              <h2 className="text-3xl sm:text-4xl font-normal font-serif italic text-[#F5EFE6]">
-                Supported by Virgin Power and Engineering Pvt. Ltd.
+              <h2 className="text-3xl sm:text-4xl font-black text-[#0F172A]">
+                Supported by Virgin Power and Engineering Pvt. Ltd<span className="text-[#D97706]">.</span>
               </h2>
-              <p className="text-base text-[#EADBC8] leading-relaxed font-medium">
+              <p className="text-base text-slate-600 leading-relaxed font-medium">
                 As an authorized partner of Virgin Power and Engineering Pvt. Ltd., Soul Power Energies operates with access to seasoned engineering workflows, proven technical benchmarks, and complete EPC execution standards.
               </p>
             </div>
 
-            <div className="p-6 rounded-3xl nestive-card bg-[#0C0E12] border border-white/10 text-[#F5EFE6] text-xs space-y-3 shadow-xl">
-              <div className="flex items-center gap-2 text-[#E5BA73] font-bold">
-                <ShieldCheck className="w-4 h-4" />
+            <div className="p-6 rounded-[28px] sthira-card text-[#0F172A] text-xs space-y-3 shadow-xl">
+              <div className="flex items-center gap-2 text-[#D97706] font-bold">
+                <ShieldCheck className="w-4 h-4 stroke-[2.5]" />
                 <span>Accreditation Notice</span>
               </div>
-              <p className="text-[#EADBC8]/80 leading-relaxed">{siteConfig.partner.wording}</p>
+              <p className="text-slate-600 leading-relaxed font-medium">{siteConfig.partner.wording}</p>
             </div>
 
             <div className="pt-4">
               <Link href="/contact#assessment">
-                <Button variant="primary" size="lg" className="font-black rounded-xl shadow-xl bg-gradient-to-r from-[#D97706] via-[#B45309] to-[#D97706] text-white">
+                <Button variant="primary" size="lg" className="font-extrabold rounded-full shadow-xl">
                   <span>Speak to Our Engineering Team</span>
                   <ArrowRight className="w-5 h-5" />
                 </Button>

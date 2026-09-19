@@ -51,20 +51,20 @@ export function SolutionDetailClient({
   const selectedOption = service.systemOptions?.find((opt) => opt.id === activeOptionId) || service.systemOptions?.[0];
 
   return (
-    <div className="space-y-12 py-10 lg:py-16">
+    <div className="space-y-12 py-10 lg:py-16 bg-[#F8F9FC] text-[#0F172A]">
       {/* Hero Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-3xl nestive-card bg-[#0C0E12] border border-white/10 p-6 sm:p-10 lg:p-12 overflow-hidden shadow-2xl space-y-8">
+        <div className="relative rounded-[32px] sthira-card bg-white border border-slate-200/80 p-6 sm:p-10 lg:p-12 overflow-hidden shadow-2xl space-y-8">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
             <div className="space-y-4 max-w-3xl">
-              <div className="inline-flex items-center gap-2.5 px-3.5 py-1 rounded-full nestive-pill bg-[#131722] text-[#E5BA73] text-xs font-bold border border-white/10">
-                <Icon className="w-4 h-4 text-[#E5BA73]" />
+              <div className="inline-flex items-center gap-2.5 px-3.5 py-1 rounded-full sthira-pill bg-white text-[#D97706] text-xs font-bold border border-slate-200/80">
+                <Icon className="w-4 h-4 text-[#D97706] stroke-[2.2]" />
                 <span>{service.shortTitle}</span>
               </div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-normal font-serif italic tracking-tight text-[#F5EFE6] leading-tight">
-                {service.title}
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0F172A] leading-tight">
+                {service.title}<span className="text-[#D97706]">.</span>
               </h1>
-              <p className="text-base sm:text-lg text-[#EADBC8] leading-relaxed font-medium">
+              <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-medium">
                 {service.tagline}
               </p>
             </div>
@@ -74,7 +74,7 @@ export function SolutionDetailClient({
                 <Button
                   variant="primary"
                   size="lg"
-                  className="w-full justify-center font-black rounded-2xl shadow-xl bg-gradient-to-r from-[#D97706] via-[#B45309] to-[#D97706] text-white py-3.5"
+                  className="w-full justify-center font-extrabold rounded-full shadow-xl py-3.5"
                 >
                   <span>Request Free Site Audit</span>
                   <ArrowRight className="w-4 h-4" />
@@ -82,9 +82,9 @@ export function SolutionDetailClient({
               </Link>
               <Link href="/solutions">
                 <Button
-                  variant="outline"
+                  variant="ghost"
                   size="md"
-                  className="w-full justify-center rounded-2xl text-xs font-bold border-white/15 text-[#F5EFE6] hover:bg-[#131722]"
+                  className="w-full justify-center rounded-full text-xs font-bold border border-slate-200/80 text-[#0F172A] hover:bg-slate-100"
                 >
                   <ArrowLeft className="w-3.5 h-3.5" />
                   <span>Back to All Solutions</span>
@@ -94,20 +94,20 @@ export function SolutionDetailClient({
           </div>
 
           {/* Hero Banner Image */}
-          <div className="relative w-full h-56 sm:h-80 rounded-2xl overflow-hidden border border-white/15 shadow-xl">
+          <div className="relative w-full h-56 sm:h-80 rounded-2xl overflow-hidden border border-slate-200/80 shadow-xl">
             <Image
               src={service.bgImage}
               alt={service.title}
               fill
               priority
-              className="object-cover filter brightness-90"
+              className="object-cover filter brightness-95"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0C0E12] via-transparent to-transparent opacity-80" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80" />
             <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-center justify-between gap-4">
-              <span className="text-xs sm:text-sm font-bold text-[#F5EFE6] bg-[#000000]/80 backdrop-blur-md px-4 py-2 rounded-xl border border-white/15">
+              <span className="text-xs sm:text-sm font-bold text-[#0F172A] bg-white/95 backdrop-blur-md px-4 py-2 rounded-xl border border-slate-200/80 shadow-md">
                 Authorized Virgin Power Engineering Specs
               </span>
-              <span className="text-xs font-bold text-[#E5BA73] bg-[#000000]/80 backdrop-blur-md px-4 py-2 rounded-xl border border-white/15">
+              <span className="text-xs font-bold text-[#D97706] bg-white/95 backdrop-blur-md px-4 py-2 rounded-xl border border-slate-200/80 shadow-md">
                 Kozhikode & Wayanad On-Ground Support
               </span>
             </div>
@@ -121,20 +121,20 @@ export function SolutionDetailClient({
       {service.systemOptions && service.systemOptions.length > 0 && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="text-center space-y-3 max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full nestive-pill bg-[#0C0E12] text-[#E5BA73] text-xs font-bold border border-white/10">
-              <SlidersHorizontal className="w-3.5 h-3.5 text-[#E5BA73]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full sthira-pill bg-white text-[#D97706] text-xs font-bold border border-slate-200/80">
+              <SlidersHorizontal className="w-3.5 h-3.5 text-[#D97706] stroke-[2.2]" />
               <span>System Topology Selection</span>
             </div>
-            <h2 className="text-2xl sm:text-4xl font-normal font-serif italic text-[#F5EFE6]">
-              Choose Your Solar Setup: On-Grid vs. Hybrid
+            <h2 className="text-2xl sm:text-4xl font-black text-[#0F172A]">
+              Choose Your Solar Setup: On-Grid vs. Hybrid<span className="text-[#D97706]">.</span>
             </h2>
-            <p className="text-xs sm:text-sm text-[#EADBC8] leading-relaxed font-medium">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
               Explore the technical advantages, battery backup capabilities, and payback periods of our On-Grid (Net Metering) and Hybrid (Battery Backup) configurations.
             </p>
           </div>
 
           {/* Tab Selector Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 p-1.5 rounded-2xl bg-[#0C0E12] border border-white/10 max-w-2xl mx-auto">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 p-1.5 rounded-2xl bg-white border border-slate-200/80 max-w-2xl mx-auto shadow-xs">
             {service.systemOptions.map((opt) => {
               const isActive = opt.id === activeOptionId;
               return (
@@ -143,11 +143,11 @@ export function SolutionDetailClient({
                   onClick={() => setActiveOptionId(opt.id)}
                   className={`w-full sm:w-1/2 py-3 px-5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center justify-center gap-2 ${
                     isActive
-                      ? "bg-gradient-to-r from-[#D97706] to-[#B45309] text-white shadow-lg font-black"
-                      : "text-[#EADBC8] hover:text-[#F5EFE6] hover:bg-[#131722]"
+                      ? "bg-gradient-to-r from-[#D97706] to-[#B45309] text-white shadow-md font-black"
+                      : "text-[#0F172A] hover:bg-slate-100"
                   }`}
                 >
-                  <Cpu className="w-4 h-4" />
+                  <Cpu className="w-4 h-4 stroke-[2.2]" />
                   <span>{opt.name}</span>
                 </button>
               );
@@ -156,22 +156,22 @@ export function SolutionDetailClient({
 
           {/* Selected Option Content Box */}
           {selectedOption && (
-            <div className="p-6 sm:p-10 rounded-3xl nestive-card bg-[#0C0E12] border border-[#E5BA73]/30 space-y-8 shadow-2xl relative overflow-hidden">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-white/10">
+            <div className="p-6 sm:p-10 rounded-[32px] sthira-card bg-white border border-[#D97706]/30 space-y-8 shadow-2xl relative overflow-hidden">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-100">
                 <div className="space-y-1">
-                  <span className="inline-block px-3 py-1 rounded-full bg-[#131722] border border-[#E5BA73]/40 text-[#E5BA73] text-xs font-bold mb-1">
+                  <span className="inline-block px-3 py-1 rounded-full bg-[#D97706]/10 border border-[#D97706]/30 text-[#D97706] text-xs font-bold mb-1">
                     {selectedOption.badge}
                   </span>
-                  <h3 className="text-2xl font-bold font-serif italic text-[#F5EFE6]">
+                  <h3 className="text-2xl font-black text-[#0F172A]">
                     {selectedOption.name}
                   </h3>
-                  <p className="text-xs sm:text-sm font-bold text-[#E5BA73]">
+                  <p className="text-xs sm:text-sm font-bold text-[#D97706]">
                     {selectedOption.tagline}
                   </p>
                 </div>
 
                 <Link href={`/contact#assessment?service=${service.id}&option=${selectedOption.id}`}>
-                  <Button variant="primary" size="md" className="font-black rounded-xl bg-gradient-to-r from-[#D97706] via-[#B45309] to-[#D97706] text-white shadow-md shrink-0">
+                  <Button variant="primary" size="md" className="font-extrabold rounded-full shadow-md shrink-0">
                     <span>Inquire About {selectedOption.name}</span>
                     <ArrowRight className="w-4 h-4" />
                   </Button>
@@ -179,18 +179,18 @@ export function SolutionDetailClient({
               </div>
 
               {/* Description */}
-              <p className="text-sm sm:text-base text-[#EADBC8] leading-relaxed font-medium">
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-medium">
                 {selectedOption.description}
               </p>
 
               {/* How it Works & Ideal For */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* How it works */}
-                <div className="p-5 sm:p-6 rounded-2xl bg-[#131722] border border-white/10 space-y-3">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#E5BA73] font-heading flex items-center gap-2">
-                    <Layers className="w-4 h-4 text-[#E5BA73]" /> How It Works
+                <div className="p-5 sm:p-6 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#D97706] flex items-center gap-2">
+                    <Layers className="w-4 h-4 text-[#D97706] stroke-[2.2]" /> How It Works
                   </h4>
-                  <div className="space-y-2 text-xs sm:text-sm text-[#F5EFE6] leading-relaxed">
+                  <div className="space-y-2 text-xs sm:text-sm text-slate-700 leading-relaxed">
                     {selectedOption.howItWorks.split("\n").map((step, i) => (
                       <p key={i} className="font-medium">{step}</p>
                     ))}
@@ -198,11 +198,11 @@ export function SolutionDetailClient({
                 </div>
 
                 {/* Ideal For */}
-                <div className="p-5 sm:p-6 rounded-2xl bg-[#131722] border border-white/10 space-y-3">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#E5BA73] font-heading flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-[#E5BA73]" /> Best Suited Candidates
+                <div className="p-5 sm:p-6 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#D97706] flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 text-[#D97706] stroke-[2.2]" /> Best Suited Candidates
                   </h4>
-                  <p className="text-xs sm:text-sm text-[#EADBC8] leading-relaxed font-medium">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
                     {selectedOption.idealFor}
                   </p>
                 </div>
@@ -212,14 +212,14 @@ export function SolutionDetailClient({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-2">
                 {/* Key Highlights */}
                 <div className="space-y-3">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#E5BA73] font-heading">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#D97706]">
                     Key Advantage Highlights
                   </h4>
                   <ul className="space-y-2.5">
                     {selectedOption.keyHighlights.map((highlight, idx) => (
-                      <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#F5EFE6]">
-                        <CheckCircle2 className="w-4 h-4 text-[#E5BA73] shrink-0 mt-0.5" />
-                        <span className="font-medium">{highlight}</span>
+                      <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#0F172A]">
+                        <CheckCircle2 className="w-4 h-4 text-[#D97706] shrink-0 mt-0.5 stroke-[2.5]" />
+                        <span className="font-semibold">{highlight}</span>
                       </li>
                     ))}
                   </ul>
@@ -227,14 +227,14 @@ export function SolutionDetailClient({
 
                 {/* Technical Specs */}
                 <div className="space-y-3">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#E5BA73] font-heading">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#D97706]">
                     System Technical & Financial Specs
                   </h4>
-                  <div className="divide-y divide-white/10 rounded-2xl bg-[#131722] border border-white/10 overflow-hidden text-xs">
+                  <div className="divide-y divide-slate-200/80 rounded-2xl bg-slate-50 border border-slate-200/80 overflow-hidden text-xs">
                     {selectedOption.specs.map((spec, idx) => (
                       <div key={idx} className="p-3 flex items-center justify-between gap-4">
-                        <span className="text-[#EADBC8] font-bold">{spec.label}</span>
-                        <span className="text-[#F5EFE6] font-semibold text-right">{spec.value}</span>
+                        <span className="text-slate-600 font-bold">{spec.label}</span>
+                        <span className="text-[#0F172A] font-extrabold text-right">{spec.value}</span>
                       </div>
                     ))}
                   </div>
@@ -248,20 +248,20 @@ export function SolutionDetailClient({
       {/* Problem vs Solution Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="p-6 sm:p-8 rounded-3xl nestive-card bg-[#0C0E12] border border-white/10 space-y-3 shadow-xl">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#E5BA73] flex items-center gap-2 font-heading">
-              <HelpCircle className="w-4 h-4 text-[#E5BA73]" /> Common Customer Challenge
+          <div className="p-6 sm:p-8 rounded-[32px] sthira-card space-y-3 shadow-xl">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#D97706] flex items-center gap-2">
+              <HelpCircle className="w-4 h-4 text-[#D97706] stroke-[2.2]" /> Common Customer Challenge
             </span>
-            <p className="text-sm sm:text-base text-[#EADBC8] leading-relaxed font-medium">
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-medium">
               {service.customerProblem}
             </p>
           </div>
 
-          <div className="p-6 sm:p-8 rounded-3xl nestive-card bg-[#0C0E12] border border-white/10 space-y-3 shadow-xl">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#E5BA73] flex items-center gap-2 font-heading">
-              <ShieldCheck className="w-4 h-4 text-[#E5BA73]" /> The Soul Power Advantage
+          <div className="p-6 sm:p-8 rounded-[32px] sthira-card space-y-3 shadow-xl">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#D97706] flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-[#D97706] stroke-[2.2]" /> The Soul Power Advantage
             </span>
-            <p className="text-sm sm:text-base text-[#F5EFE6] leading-relaxed font-medium">
+            <p className="text-sm sm:text-base text-[#0F172A] leading-relaxed font-semibold">
               {service.solutionOverview}
             </p>
           </div>
@@ -270,35 +270,35 @@ export function SolutionDetailClient({
 
       {/* Suitable Properties & Solution Benefits */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-6 sm:p-10 rounded-3xl nestive-card bg-[#0C0E12] border border-white/10 space-y-8 shadow-2xl">
-          <h2 className="text-2xl font-bold font-serif italic text-[#F5EFE6]">
-            Application Scope & Core Benefits
+        <div className="p-6 sm:p-10 rounded-[32px] sthira-card space-y-8 shadow-2xl">
+          <h2 className="text-2xl font-black text-[#0F172A]">
+            Application Scope & Core Benefits<span className="text-[#D97706]">.</span>
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-4">
-              <h3 className="text-xs font-bold text-[#E5BA73] font-heading uppercase tracking-wider">
+              <h3 className="text-xs font-bold text-[#D97706] uppercase tracking-wider">
                 Suitable Property Premises
               </h3>
               <ul className="space-y-2.5">
                 {service.suitableFor.map((item, idx) => (
-                  <li key={idx} className="flex items-center gap-3 text-sm text-[#F5EFE6]">
-                    <CheckCircle2 className="w-4.5 h-4.5 text-[#E5BA73] shrink-0" />
-                    <span className="font-medium">{item}</span>
+                  <li key={idx} className="flex items-center gap-3 text-sm text-[#0F172A] font-semibold">
+                    <CheckCircle2 className="w-4.5 h-4.5 text-[#D97706] shrink-0 stroke-[2.5]" />
+                    <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-xs font-bold text-[#E5BA73] font-heading uppercase tracking-wider">
+              <h3 className="text-xs font-bold text-[#D97706] uppercase tracking-wider">
                 Key Economic & Operational Benefits
               </h3>
               <ul className="space-y-2.5">
                 {service.benefits.map((benefit, idx) => (
-                  <li key={idx} className="flex items-center gap-3 text-sm text-[#F5EFE6]">
-                    <CheckCircle2 className="w-4.5 h-4.5 text-[#E5BA73] shrink-0" />
-                    <span className="font-medium">{benefit}</span>
+                  <li key={idx} className="flex items-center gap-3 text-sm text-[#0F172A] font-semibold">
+                    <CheckCircle2 className="w-4.5 h-4.5 text-[#D97706] shrink-0 stroke-[2.5]" />
+                    <span>{benefit}</span>
                   </li>
                 ))}
               </ul>
@@ -310,26 +310,26 @@ export function SolutionDetailClient({
       {/* Execution Process Steps */}
       {service.processSteps && service.processSteps.length > 0 && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="p-6 sm:p-10 rounded-3xl nestive-card bg-[#0C0E12] border border-white/10 space-y-6 shadow-2xl">
+          <div className="p-6 sm:p-10 rounded-[32px] sthira-card space-y-6 shadow-2xl">
             <div className="space-y-1">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#E5BA73] font-heading">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#D97706]">
                 Step-by-Step Workflow
               </span>
-              <h2 className="text-2xl font-bold font-serif italic text-[#F5EFE6]">
-                Our Turnkey Execution Process
+              <h2 className="text-2xl font-black text-[#0F172A]">
+                Our Turnkey Execution Process<span className="text-[#D97706]">.</span>
               </h2>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {service.processSteps.map((step, idx) => (
-                <div key={idx} className="p-5 rounded-2xl bg-[#131722] border border-white/10 space-y-2">
-                  <span className="text-xs font-bold text-[#E5BA73] uppercase">
+                <div key={idx} className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
+                  <span className="text-xs font-bold text-[#D97706] uppercase">
                     Step 0{idx + 1}
                   </span>
-                  <h3 className="text-base font-bold text-[#F5EFE6] font-heading">
+                  <h3 className="text-base font-bold text-[#0F172A]">
                     {step.title}
                   </h3>
-                  <p className="text-xs text-[#EADBC8] leading-relaxed font-medium">
+                  <p className="text-xs text-slate-600 leading-relaxed font-medium">
                     {step.desc}
                   </p>
                 </div>
@@ -341,12 +341,12 @@ export function SolutionDetailClient({
 
       {/* Direct Site Assessment CTA */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-[#131722] via-[#0C0E12] to-[#131722] border border-[#E5BA73]/30 text-center space-y-6 shadow-2xl relative overflow-hidden">
+        <div className="p-8 sm:p-12 rounded-[32px] sthira-card text-center space-y-6 shadow-2xl relative overflow-hidden">
           <div className="space-y-3 max-w-2xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-normal font-serif italic text-[#F5EFE6]">
-              Ready to Upgrade Your Property to Solar?
+            <h2 className="text-3xl sm:text-4xl font-black text-[#0F172A]">
+              Ready to Upgrade Your Property to Solar<span className="text-[#D97706]">?</span>
             </h2>
-            <p className="text-sm sm:text-base text-[#EADBC8] leading-relaxed font-medium">
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-medium">
               Schedule a free site assessment with our local engineering team in Kozhikode & Wayanad for custom calculations and equipment specifications.
             </p>
           </div>
@@ -356,7 +356,7 @@ export function SolutionDetailClient({
               <Button
                 variant="primary"
                 size="lg"
-                className="font-black rounded-2xl shadow-xl bg-gradient-to-r from-[#D97706] via-[#B45309] to-[#D97706] text-white px-8 py-4 text-base"
+                className="font-extrabold rounded-full shadow-xl px-8 py-4 text-base"
               >
                 <span>Request Custom Site Proposal & Solar Audit</span>
                 <ArrowRight className="w-5 h-5" />
@@ -368,27 +368,27 @@ export function SolutionDetailClient({
 
       {/* Pagination Footer Switcher */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-white/10">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-slate-200/80">
           <Link
             href={`/solutions/${prevService.slug}`}
-            className="flex items-center gap-3 p-4 rounded-2xl bg-[#0C0E12] border border-white/10 hover:border-[#E5BA73] text-[#F5EFE6] hover:text-[#E5BA73] transition-all w-full sm:w-auto"
+            className="flex items-center gap-3 p-4 rounded-2xl sthira-card text-[#0F172A] hover:text-[#D97706] transition-all w-full sm:w-auto"
           >
-            <ArrowLeft className="w-5 h-5 text-[#E5BA73] shrink-0" />
+            <ArrowLeft className="w-5 h-5 text-[#D97706] shrink-0" />
             <div className="text-left space-y-0.5">
-              <span className="text-[10px] font-bold uppercase text-[#9CA3AF] block">Previous Solution</span>
+              <span className="text-[10px] font-bold uppercase text-slate-400 block">Previous Solution</span>
               <span className="text-sm font-bold block">{prevService.title}</span>
             </div>
           </Link>
 
           <Link
             href={`/solutions/${nextService.slug}`}
-            className="flex items-center justify-end gap-3 p-4 rounded-2xl bg-[#0C0E12] border border-white/10 hover:border-[#E5BA73] text-[#F5EFE6] hover:text-[#E5BA73] transition-all w-full sm:w-auto text-right"
+            className="flex items-center justify-end gap-3 p-4 rounded-2xl sthira-card text-[#0F172A] hover:text-[#D97706] transition-all w-full sm:w-auto text-right"
           >
             <div className="text-right space-y-0.5">
-              <span className="text-[10px] font-bold uppercase text-[#9CA3AF] block">Next Solution</span>
+              <span className="text-[10px] font-bold uppercase text-slate-400 block">Next Solution</span>
               <span className="text-sm font-bold block">{nextService.title}</span>
             </div>
-            <ArrowRight className="w-5 h-5 text-[#E5BA73] shrink-0" />
+            <ArrowRight className="w-5 h-5 text-[#D97706] shrink-0" />
           </Link>
         </div>
       </section>

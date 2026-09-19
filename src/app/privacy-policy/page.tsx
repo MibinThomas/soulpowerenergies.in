@@ -3,6 +3,7 @@ import { siteConfig } from "@/config/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StickyMobileActionBar } from "@/components/layout/StickyMobileActionBar";
+import { Shield } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Soul Power Energies",
@@ -11,61 +12,85 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <>
+    <div className="min-h-screen flex flex-col bg-[#F8F9FC] text-[#0F172A] font-sans antialiased">
       <Header />
-      <main id="main-content" className="flex-1 bg-[#000000] text-[#F5EFE6] py-16">
+      <main id="main-content" className="flex-1 sthira-hero-bg py-12 sm:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-          <div className="border-b border-white/10 pb-6 space-y-2">
-            <h1 className="text-3xl sm:text-5xl font-normal font-serif italic text-[#F5EFE6]">
-              Privacy Policy
+          <div className="border-b border-slate-200/80 pb-6 space-y-3">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full sthira-pill bg-white text-[#D97706] text-xs font-bold border border-[#D97706]/30 shadow-sm uppercase tracking-wider">
+              <Shield className="w-3.5 h-3.5" />
+              <span>Legal Notice</span>
+            </span>
+            <h1 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
+              Privacy Policy<span className="text-[#D97706]">.</span>
             </h1>
-            <p className="text-xs text-[#E5BA73] font-bold">Last updated: August 2026</p>
+            <p className="text-xs text-[#D97706] font-extrabold uppercase tracking-wider">Last updated: August 2026</p>
           </div>
 
-          <div className="p-8 sm:p-10 rounded-3xl nestive-card bg-[#0C0E12] border border-white/10 space-y-6 text-sm text-[#F5EFE6] leading-relaxed shadow-xl font-medium">
-            <p>
-              At <strong>Soul Power Energies</strong> (&ldquo;we&rdquo;, &ldquo;our&rdquo;, &ldquo;us&rdquo;), we are committed to respecting your privacy and protecting the personal data shared with us. This Privacy Policy outlines how we collect, use, and safeguard your information when you visit our website or submit an enquiry for solar or EV charging services.
+          <div className="p-8 sm:p-12 rounded-[32px] sthira-card bg-white border border-slate-200/80 space-y-6 text-sm text-slate-700 leading-relaxed shadow-xl font-medium">
+            <p className="text-base text-slate-800 leading-relaxed font-semibold">
+              At <strong className="text-slate-900 font-extrabold">Soul Power Energies</strong> (&ldquo;we&rdquo;, &ldquo;our&rdquo;, &ldquo;us&rdquo;), we are committed to respecting your privacy and protecting the personal data shared with us. This Privacy Policy outlines how we collect, use, and safeguard your information when you visit our website or submit an enquiry for solar or EV charging services.
             </p>
 
-            <h2 className="text-xl font-normal font-serif italic text-[#E5BA73] pt-2">1. Information We Collect</h2>
-            <p>
-              When you fill out our contact or site assessment enquiry form, we may collect:
-            </p>
-            <ul className="list-disc pl-6 space-y-1 text-[#EADBC8]">
-              <li>Full Name</li>
-              <li>Phone Number & WhatsApp contact details</li>
-              <li>Email Address</li>
-              <li>Property location and electricity bill details</li>
-              <li>Services requested and preferred contact methods</li>
-            </ul>
+            <div className="space-y-3 pt-2 border-t border-slate-100">
+              <h2 className="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+                <span className="text-[#D97706]">1.</span> Information We Collect
+              </h2>
+              <p>
+                When you fill out our contact or site assessment enquiry form, we may collect:
+              </p>
+              <ul className="list-disc pl-6 space-y-1.5 text-slate-600">
+                <li>Full Name</li>
+                <li>Phone Number &amp; WhatsApp contact details</li>
+                <li>Email Address</li>
+                <li>Property location and electricity bill details</li>
+                <li>Services requested and preferred contact methods</li>
+              </ul>
+            </div>
 
-            <h2 className="text-xl font-normal font-serif italic text-[#E5BA73] pt-2">2. How We Use Your Information</h2>
-            <p>We collect and process your information solely for legitimate business purposes:</p>
-            <ul className="list-disc pl-6 space-y-1 text-[#EADBC8]">
-              <li>To evaluate rooftop solar feasibility and schedule requested on-ground site assessments</li>
-              <li>To contact you via phone, WhatsApp, or email regarding your enquiry</li>
-              <li>To provide customer support and service updates in Kozhikode and Wayanad</li>
-            </ul>
+            <div className="space-y-3 pt-4 border-t border-slate-100">
+              <h2 className="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+                <span className="text-[#D97706]">2.</span> How We Use Your Information
+              </h2>
+              <p>We collect and process your information solely for legitimate business purposes:</p>
+              <ul className="list-disc pl-6 space-y-1.5 text-slate-600">
+                <li>To evaluate rooftop solar feasibility and schedule requested on-ground site assessments</li>
+                <li>To contact you via phone, WhatsApp, or email regarding your enquiry</li>
+                <li>To provide customer support and service updates in Kozhikode and Wayanad</li>
+              </ul>
+            </div>
 
-            <h2 className="text-xl font-normal font-serif italic text-[#E5BA73] pt-2">3. Partnership & Data Protection</h2>
-            <p>
-              As an authorized partner of {siteConfig.partner.fullName}, technical site assessment data may be reviewed internally with our engineering team for component sizing and system design. We do not sell, rent, or lease your personal information to third-party marketers.
-            </p>
+            <div className="space-y-3 pt-4 border-t border-slate-100">
+              <h2 className="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+                <span className="text-[#D97706]">3.</span> Partnership &amp; Data Protection
+              </h2>
+              <p>
+                As an authorized partner of {siteConfig.partner.fullName}, technical site assessment data may be reviewed internally with our engineering team for component sizing and system design. We do not sell, rent, or lease your personal information to third-party marketers.
+              </p>
+            </div>
 
-            <h2 className="text-xl font-normal font-serif italic text-[#E5BA73] pt-2">4. Data Security</h2>
-            <p>
-              We implement appropriate technical security measures to protect your submitted payload against unauthorized access, alteration, or disclosure.
-            </p>
+            <div className="space-y-3 pt-4 border-t border-slate-100">
+              <h2 className="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+                <span className="text-[#D97706]">4.</span> Data Security
+              </h2>
+              <p>
+                We implement appropriate technical security measures to protect your submitted payload against unauthorized access, alteration, or disclosure.
+              </p>
+            </div>
 
-            <h2 className="text-xl font-normal font-serif italic text-[#E5BA73] pt-2">5. Contact Us</h2>
-            <p>
-              If you have any questions regarding this Privacy Policy, please contact our team at <strong>Thiruvambady, Kozhikode, Kerala</strong>.
-            </p>
+            <div className="space-y-3 pt-4 border-t border-slate-100">
+              <h2 className="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+                <span className="text-[#D97706]">5.</span> Contact Us
+              </h2>
+              <p>
+                If you have any questions regarding this Privacy Policy, please contact our team at <strong className="text-slate-900 font-bold">Thiruvambady, Kozhikode, Kerala</strong>.
+              </p>
+            </div>
           </div>
         </div>
       </main>
       <Footer />
       <StickyMobileActionBar />
-    </>
+    </div>
   );
 }

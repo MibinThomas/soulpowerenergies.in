@@ -39,27 +39,27 @@ export default function SolutionsPage() {
   return (
     <>
       <Header />
-      <main id="main-content" className="flex-1 bg-[#000000] text-[#F5EFE6]">
+      <main id="main-content" className="flex-1 bg-[#F8F9FC] text-[#0F172A]">
         {/* Page Hero */}
-        <section className="py-16 lg:py-20 relative overflow-hidden">
+        <section className="py-20 relative overflow-hidden sthira-hero-bg">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4 text-center">
-            <Badge variant="gold" className="px-3.5 py-1 nestive-pill bg-[#0C0E12] text-[#E5BA73] border border-white/10">
+            <Badge variant="gold" className="px-3.5 py-1 sthira-pill bg-white text-[#D97706]">
               Solar & EV Services Directory
             </Badge>
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-normal font-serif italic tracking-tight text-[#F5EFE6]">
-              Renewable Energy & EV Charging Solutions
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#0F172A]">
+              Renewable Energy & EV Charging Solutions<span className="text-[#D97706]">.</span>
             </h1>
-            <p className="text-base sm:text-lg text-[#EADBC8] max-w-3xl mx-auto leading-relaxed font-medium">
+            <p className="text-base sm:text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed font-medium">
               Explore dedicated solution pages for independent residential homes, commercial enterprises, EV charging setups, and panel maintenance across Kozhikode and Wayanad.
             </p>
           </div>
         </section>
 
         {/* Interactive Solution Selector Links Bar */}
-        <section className="py-5 bg-[#000000]/95 backdrop-blur-md sticky top-[73px] z-30 border-y border-white/10 shadow-md">
+        <section className="py-4 bg-white/95 backdrop-blur-md sticky top-0 z-30 border-y border-slate-200/80 shadow-xs">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#E5BA73] font-heading shrink-0">
+              <span className="text-xs font-extrabold uppercase tracking-wider text-[#D97706] shrink-0">
                 Explore Solution Pages:
               </span>
 
@@ -69,7 +69,7 @@ export default function SolutionsPage() {
                   className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                     selectedFilter === "all"
                       ? "bg-gradient-to-r from-[#D97706] to-[#B45309] text-white shadow-md font-black"
-                      : "nestive-card bg-[#0C0E12] text-[#F5EFE6] hover:bg-[#131722] border border-white/10"
+                      : "sthira-card bg-white text-[#0F172A] hover:bg-slate-100"
                   }`}
                 >
                   All Solutions
@@ -78,10 +78,10 @@ export default function SolutionsPage() {
                   <Link
                     key={s.id}
                     href={`/solutions/${s.slug}`}
-                    className="px-3.5 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer nestive-card bg-[#0C0E12] text-[#F5EFE6] hover:bg-[#131722] hover:text-[#E5BA73] border border-white/10 flex items-center gap-1.5"
+                    className="px-3.5 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer sthira-card bg-white text-[#0F172A] hover:bg-slate-100 hover:text-[#D97706] flex items-center gap-1.5"
                   >
                     <span>{s.shortTitle}</span>
-                    <ArrowRight className="w-3 h-3 text-[#E5BA73]" />
+                    <ArrowRight className="w-3.5 h-3.5 text-[#D97706]" />
                   </Link>
                 ))}
               </div>
@@ -96,30 +96,30 @@ export default function SolutionsPage() {
             return (
               <div
                 key={service.id}
-                className="p-6 sm:p-10 rounded-3xl nestive-card bg-[#0C0E12] border border-white/10 space-y-8 relative overflow-hidden shadow-2xl group hover:border-[#E5BA73]/40 transition-all duration-300"
+                className="p-6 sm:p-10 rounded-[32px] sthira-card space-y-8 relative overflow-hidden shadow-xl group hover:border-[#D97706]/40 transition-all duration-300"
               >
                 {/* Header */}
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-white/10">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-slate-100">
                   <div className="flex items-start gap-4">
-                    <div className="p-3.5 rounded-2xl bg-[#131722] text-[#E5BA73] border border-white/10 shrink-0">
-                      <Icon className="w-8 h-8" />
+                    <div className="p-3.5 rounded-2xl bg-[#D97706]/10 text-[#D97706] shrink-0">
+                      <Icon className="w-8 h-8 stroke-[2.2]" />
                     </div>
                     <div className="space-y-1">
                       <div className="flex items-center gap-3">
                         <Link href={`/solutions/${service.slug}`}>
-                          <h2 className="text-2xl sm:text-3xl font-normal font-serif italic text-[#F5EFE6] hover:text-[#E5BA73] transition-colors">
+                          <h2 className="text-2xl sm:text-3xl font-black text-[#0F172A] hover:text-[#D97706] transition-colors">
                             {service.title}
                           </h2>
                         </Link>
                         {service.isComingSoon && <Badge variant="comingSoon">Coming Soon</Badge>}
                       </div>
-                      <p className="text-sm font-bold text-[#E5BA73]">{service.tagline}</p>
+                      <p className="text-sm font-bold text-[#D97706]">{service.tagline}</p>
                     </div>
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-3 shrink-0">
                     <Link href={`/solutions/${service.slug}`}>
-                      <Button variant="primary" size="md" className="w-full sm:w-auto font-black rounded-xl shadow-lg bg-gradient-to-r from-[#D97706] via-[#B45309] to-[#D97706] text-white">
+                      <Button variant="primary" size="md" className="w-full sm:w-auto font-extrabold rounded-full shadow-md">
                         <span>Explore Full Solution Details</span>
                         <ArrowRight className="w-4 h-4" />
                       </Button>
@@ -129,21 +129,21 @@ export default function SolutionsPage() {
 
                 {/* On-Grid vs Hybrid Feature Banner preview for Solar services */}
                 {service.systemOptions && service.systemOptions.length > 0 && (
-                  <div className="p-4 sm:p-5 rounded-2xl bg-[#131722] border border-[#E5BA73]/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs">
+                  <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs">
                     <div className="flex items-center gap-3">
-                      <Cpu className="w-5 h-5 text-[#E5BA73] shrink-0" />
+                      <Cpu className="w-5 h-5 text-[#D97706] shrink-0 stroke-[2.2]" />
                       <div>
-                        <span className="font-bold text-[#F5EFE6] block">
+                        <span className="font-bold text-[#0F172A] block">
                           Available System Topologies: On-Grid (Net Metering) & Hybrid (Battery Backup)
                         </span>
-                        <span className="text-[#EADBC8]">
+                        <span className="text-slate-600 font-medium">
                           View detailed breakdown of payback terms, equipment specs, and blackout operations.
                         </span>
                       </div>
                     </div>
 
                     <Link href={`/solutions/${service.slug}`}>
-                      <span className="inline-flex items-center gap-1.5 font-bold text-[#E5BA73] hover:underline shrink-0">
+                      <span className="inline-flex items-center gap-1.5 font-bold text-[#D97706] hover:underline shrink-0">
                         <span>Compare Topologies</span>
                         <ArrowRight className="w-3.5 h-3.5" />
                       </span>
@@ -153,34 +153,34 @@ export default function SolutionsPage() {
 
                 {/* Problem vs Solution Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="p-5 rounded-2xl bg-[#131722] border border-white/10 space-y-2">
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#E5BA73] flex items-center gap-1.5 font-heading">
-                      <HelpCircle className="w-4 h-4 text-[#E5BA73]" /> Customer Problem
+                  <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#D97706] flex items-center gap-1.5">
+                      <HelpCircle className="w-4 h-4 text-[#D97706] stroke-[2.2]" /> Customer Problem
                     </span>
-                    <p className="text-sm text-[#EADBC8] leading-relaxed font-medium">{service.customerProblem}</p>
+                    <p className="text-sm text-slate-600 leading-relaxed font-medium">{service.customerProblem}</p>
                   </div>
 
-                  <div className="p-5 rounded-2xl bg-[#131722] border border-white/10 space-y-2">
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#E5BA73] flex items-center gap-1.5 font-heading">
-                      <ShieldCheck className="w-4 h-4 text-[#E5BA73]" /> Soul Power Solution
+                  <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#D97706] flex items-center gap-1.5">
+                      <ShieldCheck className="w-4 h-4 text-[#D97706] stroke-[2.2]" /> Soul Power Solution
                     </span>
-                    <p className="text-sm text-[#F5EFE6] leading-relaxed font-medium">{service.solutionOverview}</p>
+                    <p className="text-sm text-[#0F172A] leading-relaxed font-semibold">{service.solutionOverview}</p>
                   </div>
                 </div>
 
                 {/* Full Description */}
-                <p className="text-base text-[#EADBC8] leading-relaxed font-medium">{service.fullDescription}</p>
+                <p className="text-base text-slate-600 leading-relaxed font-medium">{service.fullDescription}</p>
 
                 {/* Suitable Property Types & Benefits */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-2">
                   <div className="space-y-3">
-                    <h3 className="text-xs font-bold text-[#E5BA73] font-heading uppercase tracking-wider">
+                    <h3 className="text-xs font-bold text-[#D97706] uppercase tracking-wider">
                       Suitable Property Types
                     </h3>
                     <ul className="space-y-2">
                       {service.suitableFor.map((item, idx) => (
-                        <li key={idx} className="flex items-center gap-2.5 text-sm text-[#F5EFE6]">
-                          <CheckCircle2 className="w-4 h-4 text-[#E5BA73] shrink-0" />
+                        <li key={idx} className="flex items-center gap-2.5 text-sm text-[#0F172A] font-semibold">
+                          <CheckCircle2 className="w-4 h-4 text-[#D97706] shrink-0 stroke-[2.5]" />
                           <span>{item}</span>
                         </li>
                       ))}
@@ -188,13 +188,13 @@ export default function SolutionsPage() {
                   </div>
 
                   <div className="space-y-3">
-                    <h3 className="text-xs font-bold text-[#E5BA73] font-heading uppercase tracking-wider">
+                    <h3 className="text-xs font-bold text-[#D97706] uppercase tracking-wider">
                       Key Solution Benefits
                     </h3>
                     <ul className="space-y-2">
                       {service.benefits.map((benefit, idx) => (
-                        <li key={idx} className="flex items-center gap-2.5 text-sm text-[#F5EFE6]">
-                          <CheckCircle2 className="w-4 h-4 text-[#E5BA73] shrink-0" />
+                        <li key={idx} className="flex items-center gap-2.5 text-sm text-[#0F172A] font-semibold">
+                          <CheckCircle2 className="w-4 h-4 text-[#D97706] shrink-0 stroke-[2.5]" />
                           <span>{benefit}</span>
                         </li>
                       ))}
@@ -203,13 +203,13 @@ export default function SolutionsPage() {
                 </div>
 
                 {/* Card Action Link Footer */}
-                <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-                  <span className="text-xs text-[#9CA3AF] font-medium">
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-xs text-slate-500 font-medium">
                     Authorized Virgin Power EPC Engineering Specs
                   </span>
                   <Link
                     href={`/solutions/${service.slug}`}
-                    className="inline-flex items-center gap-2 text-xs font-black text-[#E5BA73] hover:text-white transition-colors"
+                    className="inline-flex items-center gap-2 text-xs font-black text-[#D97706] hover:text-[#B45309] transition-colors"
                   >
                     <span>View Dedicated {service.shortTitle} Page</span>
                     <ArrowRight className="w-4 h-4" />
