@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import dynamic from "next/dynamic";
+import Script from "next/script";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
+
+// Google Analytics 4 measurement ID. Override per-environment with
+// NEXT_PUBLIC_GA_MEASUREMENT_ID; leave it empty to disable tracking entirely.
+const GA_MEASUREMENT_ID =
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-Q1SMZX3HJB";
 
 const PopUpContactModal = dynamic(
   () => import("@/components/modals/PopUpContactModal").then((mod) => mod.PopUpContactModal)
@@ -100,6 +106,25 @@ export default function RootLayout({
       >
         {children}
         <PopUpContactModal />
+
+        {/* Google tag (gtag.js) */}
+        {GA_MEASUREMENT_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', '${GA_MEASUREMENT_ID}');
+              `}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   );
