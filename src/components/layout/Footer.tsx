@@ -112,7 +112,20 @@ export function Footer() {
 
         {/* Bottom Legal & Copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-medium">
-          <p>© {new Date().getFullYear()} Soul Power Energies. All rights reserved.</p>
+          <div className="flex flex-col sm:flex-row items-center gap-1.5 sm:gap-5 text-center sm:text-left">
+            <p>© {new Date().getFullYear()} Soul Power Energies. All rights reserved.</p>
+            <p>
+              Designed and developed by{" "}
+              <a
+                href="https://www.webeyecraft.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-slate-600 hover:text-[#D97706] transition-colors"
+              >
+                webeyecraft
+              </a>
+            </p>
+          </div>
 
           <div className="flex items-center gap-6">
             {footerNav.legal.map((item) => (
